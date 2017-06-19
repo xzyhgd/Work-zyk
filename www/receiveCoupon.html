@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>领取优惠券</title>
+    <script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/receiveCoupon.css" />
+    <script src="./js/cookie.js"></script>
+
+</head>
+
+<body>
+    <div class="vessel">
+
+        <div class="head">
+            <img src="./img/50yuan.png" alt="">
+        </div>
+
+        <div class="buttom">
+            <div class="lqBtn"><img src="./img/dianjilingquan.png" alt=""></div>
+            <div class="explain">
+                <p>活动说明:</p>
+                <span class="expTxtOne">1活动期间,每个账号限领取一张优惠券</span>
+                <span class="expTxtTwo">2领取成功后,可以在充值油卡时使用优惠券</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="popup" class="popup">
+    </div>
+    <div id="tiqu" class="tiqu">
+        <span class="tip">领取成功</span>
+        <div class="tipShu">
+            <img class="fr" src="./img/chenggong.png">
+            <span class="shuru">恭喜您!成功领取了50元优惠券,赶紧去看看吧</span>
+        </div>
+
+        <div class="but">
+            <span class="no">确定</span><span class="yes">立即查看</span>
+        </div>
+    </div>
+
+    <div id="popup1" class="popup">
+    </div>
+    <div id="tiqu1" class="tiqu">
+        <span class="tip">温馨提示</span>
+        <div class="tipShu">
+            <img class="fr" src="./img/chenggong.png">
+            <span class="shuru shuruSp">您已领取过优惠券</span>
+        </div>
+
+        <div class="but">
+            <span class="no">确定</span><span class="yes">立即查看</span>
+        </div>
+    </div>
+
+    <div id="popup2" class="popup">
+    </div>
+    <div id="tiqu2" class="tiqu">
+        <span class="tip">温馨提示</span>
+        <div class="tipShu">
+            <img class="fr" src="./img/chenggong.png">
+            <span class="shuru shuruSp">您已领取过优惠券</span>
+        </div>
+
+        <div class="but">
+            <span class="no">确定</span>
+        </div>
+    </div>
+
+    <span class="toast">
+            <span class="toast-su">我在测试看看</span>
+    </span>
+
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/share.js"></script>
+    <script>
+        $(function () {
+            var onlyID = decodeURI(html_name('onlyID'));
+
+            var t = 3;
+            function toast(status) {
+                console.log(t);
+                $(".toast").show();
+                $(".toast .toast-su").html(status);
+                var i = setTimeout(toast, 1000);
+                t--;
+                if (t <= 0) {
+                    $(".toast").hide();
+                    clearTimeout(i);
+                }
+            }
+            $('.yes').click(function () {
+                window.location.href = "yk_Coupon.html?onlyID=" + onlyID;
+            })
+            $(".no").click(function () {
+                hideM();
+                hideP();
+                hideE();
+            });
+            function showM() {
+                $("#popup").show();
+                $("#tiqu").show();
+            }
+            function hideM() {
+                $("#popup").hide();
+                $("#tiqu").hide();
+            }
+            function showP() {
+                $("#popup1").show();
+                $("#tiqu1").show();
+            }
+            function hideP() {
+                $("#popup1").hide();
+                $("#tiqu1").hide();
+            }
+            function showE() {
+                $("#popup2").show();
+                $("#tiqu2").show();
+            }
+            function hideE() {
+                $("#popup2").hide();
+                $("#tiqu2").hide();
+            }
+
+            $('.lqBtn img').click(function () {
+
+                var dataJudge = {};
+                dataJudge.onlyID = onlyID;
+                dataJudge.优惠券id = '001';
+                dataJudge = JSON.stringify(dataJudge);
+                $.ajax({
+                    url: "/ajax.post?func=CZ_YK_yhqhq",
+                    type: "POST",
+                    data: 'data=' + dataJudge,
+                    success: function (p) {
+                        console.log(p);
+                        if (p.状态 == '成功') {
+                            $('#tiqu .shuru').html(p.提示语);
+                            console.log(p.提示语);
+                            showM();
+                            
+                        } else if(p.状态 == '您已领取过优惠券') {
+                            showP();
+                            // t = 3;
+                            // toast(p.状态);
+                        }else{
+                            showE();
+                            $('#tiqu2 .shuruSp').html(p.状态);
+                        }
+
+                    }
+                })
+            });
+
+        })
+    </script>
+</body>
+
+</html>

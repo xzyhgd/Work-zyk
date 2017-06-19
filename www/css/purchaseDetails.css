@@ -1,0 +1,190 @@
+body{overflow-y: hidden;}
+
+/*main*/
+	.fixed-box{width:100%;position: fixed;top:0;z-index: 100;background: #FFFFFF;border-bottom: .05rem solid #E0E0E0;}	
+	.fixed-box-2{width:100%;position: fixed;top:0;z-index: 100;}	
+	.alpha { height: 100%; overflow-y: hidden!important; }
+	/*.container-box{overflow-y: scroll;overflow-x: hidden;position: relative;}*/
+	.part {background: #FFFFFF;}
+	#thelist>div{border-bottom: .05rem solid #E0E0E0;}
+	#thelist>div:first-child{margin-top: 0;}
+
+/*转油卡*/
+	.part-card{height: 4rem;border-bottom: .05rem solid #E0E0E0;}
+	.cardNum{font-size:1.1rem;line-height: 1.5;}
+	.cardType{font-size: .65rem;line-height: 1.5;}
+	
+	.icon-m-card img{width:1.25rem;height: 1.25rem;}
+	.price-title{font-size: .9rem;margin:1.25rem 0 .5rem 0}
+	.price-sort{}
+	.price-detail{margin-top:.4rem;width:5.25rem;height:2.9rem;border: .05rem solid #48A0DC;border-radius:.15rem;}
+	.price-detail span{font-size:.8rem;color:#48A0DC;}
+	.price-in{font-size:.8rem!important;color:#48A0DC!important;margin:1rem auto .5rem;}
+	.style-change {background-color:#48A0DC;}
+	.style-change span {color:#FFFFFF}
+
+/*代购详情*/
+
+
+	
+	.account-details-search{height:2.1rem;}
+	.account-details-st{height: 2.1rem;position:relative}
+	.account-details-nd{height: 2.1rem;position:relative}
+	.details-list{height: 2rem;position:relative}
+	.account-details-st:after{ position:absolute;bottom:-0.1rem;left:-0.75rem;content:'';width:18rem;height:1px;border-bottom:.1rem solid #E0E0E0;-webkit-transform: scaleY(0.5);}
+	.details-list:after{ position:absolute;bottom:-0.1rem;left:-0.75rem;content:'';width:18rem;height:1px;border-bottom:.1rem solid #E0E0E0;-webkit-transform: scaleY(0.5);}
+	
+	.ac-d-input{width:14.5rem;height:1.5rem;font-size:.65rem;color:#999;padding: 0.05rem 1.5rem;border: .05rem solid #F3F3F3;border-radius:.1rem;background: url(../img/ic_search_input.png)no-repeat 3% 50%;background-size:.8rem .8rem;}
+	.ac-d-search{font-size:.75rem;}
+	.ac-d-delete{width:1.5rem;height:2.1rem;line-height:2.1rem;background: url(../img/ic_search_delete.png) no-repeat center center;background-size:.9rem .9rem;z-index: 1000;position:absolute;left:13.5rem}
+	.ac-d-name{font-size:.75rem;}
+	.ac-d-account{font-size:.75rem;padding-left: .5rem;}
+	.ac-d-num{font-size:.75rem;}
+	.check-more-p{font-size:.65rem;padding-left: .4rem;}
+	.ac-d-title{font-size:.65rem;}
+	.ac-d-price{font-size:.8rem;padding-left: .65rem;}
+	
+	.details-list li span{padding-left: .25rem;font-size:.6rem;display: block;height: .8rem;line-height: .8rem;}
+	.details-list .list-1 img{width:1rem;height: 1rem;}
+	.details-list .list-1{flex:1;}
+	.details-list .list-1{height:1rem;border-left: .1rem solid #E0E0E0;}
+	.details-list .list-1:first-child{border-left:none;}
+	.details-list .list-2 img{width:1rem;height: .8rem;}
+	.details-list .list-2{width:4.5rem;padding-left: .3rem;}
+	.details-list .list-2:first-child{padding-left: 0;}
+	
+		
+	.account-details-rd {height: 1.8rem;}
+	.account-details-rd div:first-child span{font-size:.65rem}
+	.account-details-rd div:last-child span{font-size:.65rem}
+	
+
+
+/*账户记录*/
+	.account-record-st{height: 1.5rem;position:relative}
+	.account-record-nd{height: 3.5rem;position:relative}
+	.account-record-st:after{ position:absolute;bottom:-0.1rem;left:.75rem;content:'';width:16.5rem;height:1px;border-bottom:.1rem solid #E0E0E0;-webkit-transform: scaleY(0.5);}
+	.ac-r-name,.ac-r-account{font-size:.75rem}
+	.ac-r-account{padding-left: .2rem;}
+	.ac-r-title{font-size:.8rem;padding-left: .75rem; border-left:.15rem solid #2B9CED}
+	.ac-r-price{font-size: 1rem;position:relative}
+	.top-symbol{font-size:.6rem;color:#FFFFFF;width:1.7rem;padding: .15rem .2rem;border-radius: .2rem;position:absolute;top:-1rem;right: -1.5rem;}
+	.operate-details{height: 2.8rem;}
+	.ac-r-time,.ac-r-cardnum,.ac-r-operate{font-size: .65rem;color:#666}
+	.ac-r-operate{padding: .2rem .2rem;}
+	.ac-r-points{font-size:.9rem;color:#000;line-height: 1.5;}
+	
+	.ac-r-time{line-height: 1.5}
+	.operate-details li:first-child{flex:1;}
+	.operate-details li:nth-child(2){flex:1;}
+	.operate-details li:last-child{flex:1;}
+	
+	
+/*月返详情*/
+	.monthly-st{ position:relative; height: 2.5rem; line-height: 2.5rem;  }
+	.monthly-record-title{ font-size:.85rem; text-align: center;}
+	.monthly-record-time{ font-size:.6rem; position: absolute; right: 0; }
+	.ac-r-title-nd{font-size:.8rem;padding-left: .825rem; }
+	.account-record-rd{height:2.5rem;}
+	.hasback span,.noback span{ font-size:.6rem; line-height: 1.5; }
+	.hasback .hasback-price,.noback .noback-price{ font-size:.85rem; color:#000000; }
+	.monthly-st:after{ position:absolute;bottom:-0.1rem;left:.75rem;content:'';width:16.5rem;height:.05rem;border-bottom:.1rem solid #E0E0E0;-webkit-transform: scaleY(0.5);}
+	.ac-r-status{font-size:.65rem;padding: .2rem .4rem;}	
+	.ac-r-oilcard{font-size: .75rem;}
+
+
+/*我的加油卡*/
+.myOilCard{
+	width:18rem;
+	margin: 0 auto;
+}
+.myOilCard .showCard{
+	width:16.5rem;
+	height:4rem;
+	margin: 0.75rem auto;
+	border-radius: 6px;
+	color: #fff;
+}
+.myOilCard .showCard dl {
+	overflow: hidden;
+}
+.myOilCard .showCard dl dt{
+	float: left;
+	width:3.25rem;
+	height:4rem;
+
+}
+
+.myOilCard .showCard dl dt img{
+	margin: 0.5rem 0.75rem;
+}
+.myOilCard .showCard dl dd.cardNature{
+	font-size: 0.7rem;
+	color:#fff;
+	padding-top: .5rem;
+}
+.myOilCard .showCard dl dd.cardName{
+	font-size: 0.6rem;
+	color:#fcfcfc;	
+	padding-top: .4rem;
+}
+.myOilCard .showCard dl dd.cardNum{
+	font-size: 1rem;
+	color:#fcfcfc;	
+	padding-top: .2rem;
+	overflow:hidden; 
+	white-space:nowrap; 
+	text-overflow : ellipsis
+}
+.myOilCard .CNPCard{
+	background:rgb(225,164,79);
+}
+.myOilCard .CNPCard  dl dt img{
+	width: 1.775rem;
+	height:1.7rem;
+}
+.myOilCard .CPDCard{
+	background:rgb(222,118,87);
+}
+.myOilCard .CPDCard  dl dt img{
+	width: 1.625rem;
+	height:1.7rem;
+}
+.myOilCard .removeCard{
+	width: 18rem;
+	height:4.05rem;
+	background:rgb(225,164,79);
+	border-radius: 0px;
+}
+.myOilCard .removeCard dt{
+	width: 4.6rem;
+	float:right!important;
+	background:#eb655b;
+	font-size: 0.7rem;
+	line-height:4.05rem;
+	text-align: center;	
+}
+.myOilCard .removeCard dd{
+	margin-left: 0.75rem!important;
+}
+.myOilCard .addCard{
+	width:16.5rem;
+	height:3rem;
+	margin: .5rem auto .5rem;
+	background: #fff;
+	border-radius: 6px;
+}
+.myOilCard .addCard span{
+	font-size: 0.8rem;
+	line-height:3rem;
+	margin-left: 0.9rem!important;
+}
+.myOilCard .addCard span img{
+	width:1.5rem;
+	height:1.5rem;
+	vertical-align: middle;
+	margin-right: 0.75rem;
+}
+
+
+

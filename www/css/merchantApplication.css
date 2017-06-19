@@ -1,0 +1,90 @@
+	html{font-size:20px}
+	body{background-color: #FFFFFF;}
+	/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+	select::-ms-expand { display: none; }
+	select { /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/ border: solid 1px #000; /*很关键：将默认的select选择框样式清除*/ appearance: none; -moz-appearance: none; -webkit-appearance: none; /*在选择框的最右侧中间显示小箭头图片*/ background: url(../img/ic_arrow_down.png) no-repeat scroll 95% center transparent; /*为下拉小箭头留出一点位置，避免被文字覆盖*/ padding-right: 1.5rem; padding-left: .25rem; }
+	input[type="checkbox"]:focus,button:focus,select:focus,option:focus{outline: none;}
+	
+/*布局*/	
+ 	.fixed-bottom{position: fixed; right: 0; left: 0; z-index: 1030; bottom: 0; margin-bottom: 0;}
+
+
+/*color*/
+	.col-333{color:#333333;}
+	.col-999{color:#999999;}
+	.col-FF4{color:#FF4848}
+	.bgc-2D9{background-color: #2D9CED;}
+	.bgc-666{background-color: #666666;}
+	
+/*padding & margin*/
+    .m-t-1r{margin-top: 1rem;}
+    .m-tb-1r{margin: 1rem 0;}
+    .m-b-4r5{margin-bottom: 4.5rem;}
+    .m-b-2r{margin-bottom: 2rem;}
+    
+    .p-t-1r{padding-top: 1rem;}
+    .p-tb-1r{padding: 1rem 0;}
+    .p-rl-8{padding: 0 8%;}
+
+/*main*/
+	.alpha { height: 100%; overflow-y: hidden!important; }
+	.container-box{overflow-y: scroll;overflow-x: hidden;}
+	
+	.part {background: #FFFFFF;}
+	.tips-part{min-height: 3.25rem;}
+	.select-part,.input-part{height:2.25rem}
+	.select-part,.input-part,.tips-part{position: relative;}
+	
+	.tips-part {padding: 0 1rem;}
+	.tips-part div:first-child{margin-right: 1rem;}
+	.tips-part div:last-child{margin-left: .25rem;}
+	.tips-part div p{color:#999999;font-size:.65rem;line-height: 1.2;}
+	.tips-part img{width: 2rem;height: 2rem;display: block;}
+	.input-part input {padding-left: .25rem;}
+	/*.select-part select {width:65%;}*/
+	.input-part span,.select-part span{color:#333333;font-size:.8rem;padding-left: .75rem;}
+	.input-part input{color:#999999;font-size:.75rem;height: 1.5rem; border:none}
+	.select-part span:nth-child(2){color:#999999;font-size:.75rem;}
+	.select-part span:nth-child(1){flex:5; -prefix-box-flex: 5; -webkit-box-flex: 5; -webkit-flex: 5; -moz-box-flex: 5; -ms-flex: 5; }
+	.select-part span:nth-child(2){flex:9; -prefix-box-flex: 9; -webkit-box-flex: 9; -webkit-flex: 9; -moz-box-flex: 9; -ms-flex: 9;}
+	.select-part span:nth-child(3){flex:.5; -prefix-box-flex: .5; -webkit-box-flex: .5; -webkit-flex: .5; -moz-box-flex: .5; -ms-flex: .5; margin-right: 1rem;margin-bottom: .25rem;}
+	
+	.input-part:before,.select-part:before,.tips-part:before{ position:absolute;top:-1px;left:.75rem;content:'';width:100%;height:1px;border-top:1px solid #999999;-webkit-transform: scaleY(0.5);}
+	.part div:first-child:before{content: ""; border-top:none;}
+
+	.tips{padding:0 .75rem;margin-top: .25rem;}
+	.tips p{font-size:.6rem;line-height: 1rem;}
+	
+	
+	
+    .select-part .arrow_down {
+	    width: .7rem;
+	    height: .7rem;
+		padding: 0;
+	    border-right: 2px solid #e5dede;
+	    border-bottom: 2px solid #e5dede;
+	    -moz-transform: rotate(45deg);
+	    -webkit-transform: rotate(45deg);
+	    -o-transform: rotate(45deg);
+	    transform: rotate(45deg);
+    }
+    
+/*footer*/	
+	.footer { width: 100%; }
+	.bottom-btn .btn-n{text-align: center; height:2rem}
+	.footer-2 { width: 100%; bottom: 0; position: fixed; z-index: 2000; background-color: #FFFFFF;}
+
+/*协议书*/
+    
+	.content-title {font-size:0.9rem;}
+	.content-text {font-size: 0.7rem;line-height:1.5;text-indent:0.7rem;color:#666666; }		
+	.div-input {height: 2.1rem;}
+	.div-input .agree-flag{-webkit-tap-highlight-color: rgba(0,0,0,0); margin-left: .75rem;}
+	.div-input .agree-img{vertical-align:middle;width:1rem;height:1rem; }
+	.div-input .confirm-tips{font-size: 0.65rem;padding-left:.3rem;display: inline-block; color:#C01923;}
+
+
+/*按鈕*/
+   	.btn-n{ border: 0; color: #FFFFFF; font-size: 0.8rem; padding-left: 0.125rem;letter-spacing: 0.125rem;}
+   	.btn-w-100 {width: 100%;}
+

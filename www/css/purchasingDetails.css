@@ -1,0 +1,182 @@
+        html{
+			-webkit-tap-highlight-color: rgba(0,0,0,0);
+		}
+		body {
+        	background-color: #f5f6f7;
+        }
+        
+        .container {
+        	padding: 0;
+        }
+        
+        .conDividend {
+        	background-color: white;
+        	height: 5.5rem;
+        	margin: 0.3rem 0;
+        }
+        
+        .orderNumTime {
+        	padding: 0.75rem;
+        	font-size: 0.6rem;
+        	overflow: hidden;
+        }
+		.orderPriceNum{
+			font-size: 0.75rem;
+			color: #2B9CED;
+		}               
+        .orderTime {
+        	float: right;
+        }
+        
+        .orderTxt {
+        	text-align: center;
+        	font-size: 0.75rem;
+        }
+        
+        .odeTxtNum {
+        	font-size: 0.75rem;
+        	color: #2B9CED;
+        }
+        
+        .orderPrice {
+        	font-size: 0.6rem;
+        	height: 2.2rem;
+        	line-height: 1.65rem;
+        	text-align: center;
+        	background: white;
+        }
+        
+        .divMarTop {
+        	margin-top: 0.75rem;
+        }
+        
+        .alradyPayImg {
+        	height: 2.2rem;
+        	float: right;
+        }
+        
+        .noPayImg {
+        	height: 2.2rem;
+        	float: right;
+        }
+        /*支付类别*/
+        
+        .payWay {
+        	padding: 0.2rem;
+        	font-size: 0.6rem;
+        	height: 2.8rem;
+        	width: 1rem;
+        	color: #FF6D63;
+        	outline: #FF6D63 dotted 1px;
+        }
+        
+        .dividendPay {
+        	padding: 0.2rem;
+        	font-size: 0.6rem;
+        	height: 2.8rem;
+        	width: 1rem;
+        	color: #FF6D63;
+        	outline: #FF6D63 dotted 1px;
+        }
+        
+        .basicPay {
+        	padding: 0.2rem;
+        	font-size: 0.6rem;
+        	height: 2.8rem;
+        	width: 1rem;
+        	color: #FFB841;
+        	outline: #FFB841 dotted 1px;
+        }
+        
+        .wechatPay {
+        	padding: 0.2rem;
+        	font-size: 0.6rem;
+        	height: 2.8rem;
+        	width: 1rem;
+        	color: #098807;
+        	outline: #098807 dotted 1px;
+        }
+        
+        .zfbPay {
+        	padding: 0.2rem 0.4rem;
+        	font-size: 0.6rem;
+        	height: 2.8rem;
+        	width: 1rem;
+        	color: #00AAEE;
+        	outline: #00AAEE dotted 1px;
+        }
+        
+        .unionPay {
+        	padding: 0.2rem;
+        	font-size: 0.6rem;
+        	height: 2.8rem;
+        	width: 1rem;
+        	color: #047988;
+        	outline: #047988 dotted 1px;
+        }
+        /*toast*/
+        
+        .toast {
+        	width: 18rem;
+        	height: 2rem;
+        	line-height: 2rem;
+        	display: inline-block;
+        	position: fixed;
+        	font-size: .65rem;
+        	left: 0;
+        	bottom: 5rem;
+        	z-index: 111111;
+        	text-align: center;
+        	display: none;
+        }
+        
+        .toast .toast-su {
+        	height: 2rem;
+        	line-height: 2rem;
+        	display: inline-block;
+        	margin: 0 auto;
+        	background-color: #666;
+        	border: 0.05rem solid #dfdfdf;
+        	border-radius: .25rem;
+        	-moz-border-radius: .25rem;
+        	-webkit-border-radius: .25rem;
+        	-moz-border-radius: .25rem;
+        	font-size: .6rem;
+        	color: #fff;
+        	padding-left: .5rem;
+        	padding-right: .5rem;
+        }
+        
+ 		/*切换按钮*/
+ 
+        
+        .change-shop {
+        	width: 18rem;
+        	height: 2.25rem;
+        	margin: 0 auto;
+        	background-color: #fff;
+        }
+        
+        .change-shop .purshop,
+        .myshop {
+        	width: 7.5rem;
+        	height: 2.25rem;
+        	line-height: 2.25rem;
+        	text-align: center;
+        	float: left;
+        	font-size: .85rem;
+        }
+        
+        .change-shop .purshop {
+        	margin-left: 1.5rem;
+        }
+        
+        .change-shop .myshop {
+        	margin-left: .75rem;
+        }
+        
+        .bor2b9 {
+        	border-bottom: 0.10rem solid #2b9ced;
+        	color: #2b9ced;
+        }
+   

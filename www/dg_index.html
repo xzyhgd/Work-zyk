@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <script src="js/util.js"></script>
+    <link href="css/common.css">
+    <link rel="stylesheet" href="css/dg_index.css" />
+    <title>代购</title>
+</head>
+<body>
+    <div class="container">
+        <div class="fir">
+            <img class="firImg" src="./img/youkataocan_btn.png" alt="">
+            <span class="firExplain">购买油卡套餐</span>
+            <img class="twoImg" src="./img/jiantou-3.png" alt="">
+            <span class="ddRecord">订单记录</span>
+        </div>
+        <div class="list">
+
+            <!--<div class="card">
+                <div class="left">
+                    <p class="oneP">油卡套餐一</p>
+                    <p class="twoP">商家3004送200</p>
+                    <p class="thrP">购买油卡套餐,享特价优惠</p>
+                </div>
+                <div class="right">
+                    <strong class="monCon">
+                        <span class="monSign">￥</span>12000
+                    </strong>
+                </div>
+            </div>-->
+
+        </div>
+    </div>
+    <script src="./js/cookie.js"></script>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/share.js"></script>
+    <script>
+        var onlyID = decodeURI(html_name('onlyID'));
+        $(function () {
+            $(".ddRecord").click(function () {
+                window.location.href = "dg_Details1.html?onlyID=" + onlyID;
+            });
+            var data = {};
+            data.开卡 = '销售';
+            data.onlyID = onlyID;
+            data = JSON.stringify(data);
+            $.ajax({
+                url: "/ajax.post?func=CZ_YK_tclb",
+                type: "POST",
+                data: 'data=' + data,
+                success: function (p) {
+                    if (p.状态 == '成功') {
+                        console.log(p);
+                        $.each(p.列表, function (i) {
+                            $(".list").append('<div class="card card' + i + '" data-id="' + p.列表[i].套餐id + '" data-txt="' + p.列表[i].说明 + '" data-sum="' + p.列表[i].面值 + '" data-name="' + p.列表[i].名称 + '"><div class="left"><p class="oneP">油卡套餐' + (i+1) + '</p><div class="twoP">' + p.列表[i].名称 + '</div><p class="thrP">购买油卡套餐,享特价优惠</p></div>' +
+                                '<div class="right"><span class="monCon"><span class="monSign">￥</span>' +
+                                '</span></div></div>');
+
+                            var mz = parseFloat(p.列表[i].面值).toFixed(0);
+
+                            $('.card' + i + ' .right .monCon').html('<span class="monSign">￥</span>' + mz);
+
+                        });
+
+                        var count = 0;
+                        $.each($('.container .list .card'), function (a) {
+
+                            col = ['oneCol', 'seCol', 'thrCol'];
+
+                            if (count == 0) {
+                                $(this).addClass(col[count]);
+                                count++;
+                            } else if (count == 1) {
+                                $(this).addClass(col[count]);
+                                count++;
+                            } else {
+                                $(this).addClass(col[count]);
+                                count = 0;
+                            }
+
+                        });
+
+                        $(".container .list .card").click(function () {
+                            var tcID = $(this).attr("data-id");
+                            var tcExplain = $(this).attr("data-txt");
+                            var tcNum = $(this).attr("data-sum");
+                            var tcTit = $(this).attr("data-name");
+                            var isChange = '';
+                            console.log(tcID);
+                            console.log(tcExplain);
+                            console.log(tcNum);
+                            console.log(tcTit);
+                            setCookie("tcID", tcID);
+                            setCookie("tcExplain", tcExplain);
+                            setCookie("tcNum", tcNum);
+                            setCookie("tcTit", tcTit);
+                            setCookie("isChange",isChange);
+                            window.location.href = "dg_saleBuyNew.html?onlyID=" + onlyID;
+                        });
+
+                    } else {
+                    }
+                }
+            });
+
+
+        })
+    </script>
+</body>
+
+</html>

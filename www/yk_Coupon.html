@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>我的优惠券</title>
+		<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" href="css/yk_Coupon.css" />
+		<script src="./js/cookie.js"></script>
+
+	</head>
+
+	<body>
+		<div class="vessel">
+			<div class="jiange"></div>
+			<div class="showlist">
+
+				<!--<div class="imgCon">
+                <div class="con_left"><span class="yhq_price"><span class="moneySign">￥</span><span class="yhqPrice">50</span></span>
+                </div>
+                <div class="con_right">
+                    <span class="yhq_txt">1.充值中石油,中石化均可使用2.限支付方式:邮费账户</span>
+                    <div class="timeCon">
+                        <span class="yhq_time">有效期<span class="timeFir">2017-05-22</span></span>
+                        <span class="yhq_timeNext"><span id="hiddenTxt">隐藏</span>至<span class="timeLast">2017-05-22</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="imgCon">
+                <div class="con_left"><span class="yhq_price"><span class="moneySign">￥</span><span class="yhqPrice">50</span></span>
+                </div>
+                <div class="con_right">
+                    <ul class="yhq_txt">
+                    	<li>1.充值中石油,中石化均可使用</li>
+                    	<li>2.限支付方式:邮费账户</li>	
+                    </ul>
+                    <div class="timeCon">
+                        <span class="yhq_time">有效期<span class="timeFir">2017-05-22</span></span>
+                        <span class="yhq_timeNext"><span id="hiddenTxt">隐藏</span>至<span class="timeLast">2017-05-22</span></span>
+                    </div>
+                    <div class="uesBtn">立即使用</div>
+                </div>
+            </div>-->
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/share.js"></script>
+		<script>
+			$(function() {
+				function showF() {
+					var datas = {};
+					datas.onlyID = decodeURI(html_name('onlyID'));
+					datas = JSON.stringify(datas);
+					console.log(datas)
+
+					$.ajax({
+						url: "/ajax.post?func=CZ_YK_yhjlb",
+						type: "POST",
+						data: {
+							data: datas
+						},
+						success: function(json) {
+							if(json.状态 == '成功') {
+
+								console.log(json.列表);
+
+									$.each(json.列表, function(i) {
+
+										if(json.列表[i].状态 == '已过期') {
+											$(".showlist").append('<div class="imgConGuoqi">' +
+												'<div class="con_left">' +
+												'<span class="yhq_price">' +
+												'<span class="moneySign">￥</span>' +
+												'<span class="yhqPrice">' + json.列表[i].金额.substring(0,2) + '</span></span></div>' +
+												'<div class="con_right">' +
+												'<ul class="yhq_txt">' + json.列表[i].使用说明 + '</ul><div class="timeCon">' +
+												'<span class="yhq_time">有效期<span class="timeFir">' + json.列表[i].录入时间.substring(0, 10) + '</span></span>' +
+												'<span class="yhq_timeNext"><span id="hiddenTxt">隐藏</span>至<span class="timeLast">' + json.列表[i].使用期限.substring(0, 10) + '</span></span></div>' +
+												'</div></div>');
+										} else if(json.列表[i].状态 == '已使用') {
+											$(".showlist").append('<div class="imgConYishiyong">' +
+												'<div class="con_left">' +
+												'<span class="yhq_price">' +
+												'<span class="moneySign">￥</span>' +
+												'<span class="yhqPrice">' + json.列表[i].金额.substring(0,2) + '</span></span></div>' +
+												'<div class="con_right">' +
+												'<ul class="yhq_txt">' + json.列表[i].使用说明 + '</ul><div class="timeCon">' +
+												'<span class="yhq_time">有效期<span class="timeFir">' + json.列表[i].录入时间.substring(0, 10) + '</span></span>' +
+												'<span class="yhq_timeNext"><span id="hiddenTxt">隐藏</span>至<span class="timeLast">' + json.列表[i].使用期限.substring(0, 10) + '</span></span></div>' +
+												'</div></div>');
+										} else if(json.列表[i].状态 == '即将过期') {
+											$(".showlist").append('<div class="imgConjijiangGuoqi">' +
+												'<div class="con_left">' +
+												'<span class="yhq_price">' +
+												'<span class="moneySign">￥</span>' +
+												'<span class="yhqPrice">' + json.列表[i].金额.substring(0,2) + '</span></span></div>' +
+												'<div class="con_right">' +
+												'<ul class="yhq_txt">' + json.列表[i].使用说明 + '</ul><div class="timeCon">' +
+												'<span class="yhq_time">有效期<span class="timeFir">' + json.列表[i].录入时间.substring(0, 10) + '</span></span>' +
+												'<span class="yhq_timeNext"><span id="hiddenTxt">隐藏</span>至<span class="timeLast">' + json.列表[i].使用期限.substring(0, 10) + '</span></span></div>' +
+												'</div></div>');
+										} else {
+											$(".showlist").append('<div class="imgCon">' +
+												'<div class="con_left">' +
+												'<span class="yhq_price">' +
+												'<span class="moneySign">￥</span>' +
+												'<span class="yhqPrice">' + json.列表[i].金额.substring(0,2) + '</span></span></div>' +
+												'<div class="con_right">' +
+												'<ul class="yhq_txt">' + json.列表[i].使用说明 + '</ul><div class="timeCon">' +
+												'<span class="yhq_time">有效期<span class="timeFir">' + json.列表[i].录入时间.substring(0, 10) + '</span></span>' +
+												'<span class="yhq_timeNext"><span id="hiddenTxt">隐藏</span>至<span class="timeLast">' + json.列表[i].使用期限.substring(0, 10) + '</span></span></div>' +
+												'</div></div>');
+										}
+										
+										var con_txt = json.列表[i].使用说明;
+										var strs = new Array();
+										strs = con_txt.split("；");
+										var htmlAdd = '';
+										for(var i = 0; i < strs.length; i++) {
+											htmlAdd += "<li>" + strs[i] + "</li>";
+										}
+										$(".yhq_txt").html(htmlAdd);
+
+									});
+
+							} else {
+								$('.showlist').append('<div class="bodyBg"><div class="content"><div><img class="tit_img"src="img/no_data.png"/></div><p class="no_Data">无数据</p></div></div>');
+							}
+						}
+					});
+				}
+				showF();
+			})
+		</script>
+	</body>
+
+</html>

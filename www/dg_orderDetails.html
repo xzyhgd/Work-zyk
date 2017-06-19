@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+	<title>订单详情</title>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" href="css/orderDetails.css" />
+	<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+	<!--<div class="header">
+			<span class="icon-chevron-left"></span>代购详情
+	</div>-->
+	<div class="orderDetails">
+		<div class="ord_money">
+			<p><span id="accountName">杨军伟</span><span class="tcNum">10张</span></p>
+		</div>
+		<div class="ord_info">
+			<!--<ul id="ord_detail">
+				<li>套餐号<span class="taocanNum">123456</span></li>
+				<li>商品详情<span class="moreDeta">商城消费金卡</span></li>
+				<li>购买数量<span class="goumaiNum">10</span></li>
+				<li>支付方式<span class="payWay">支付宝</span></li>
+				<li>支付金额<span class="zhifuSum">950.00</span></li>
+				<li>创建时间<span class="operTime">2016-01-01 0:00</span></li>
+			</ul>-->
+		</div>
+	</div>
+	<span class="toast">                 
+                <span class="toast-su">温馨提示</span>
+	</span>
+	<script type="text/javascript" src="js/share.js"></script>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var onlyID = decodeURI(html_name('onlyID'));
+		$("#accountName").html(getCookie("dgName"));
+		$(".tcNum").html(getCookie("goumaiNum") + "张");
+		$(function () {
+
+			var t = 3;
+
+			function toast(status) {
+				$(".toast").show();
+				$(".toast .toast-su").html(status);
+				var i = setTimeout(toast, 1000);
+				t--;
+				if (t <= 0) {
+					$(".toast").hide();
+					clearTimeout(i);
+				}
+			}
+
+			var data = {};
+			var ys = 0;
+			data.onlyID = onlyID;
+			data.客户账号 = getCookie("poneNum");
+			data.页数 = ys;
+			data = JSON.stringify(data);
+			console.log(data);
+			$.ajax({
+				url: "/ajax.post?func=CZ_YK_dgxq2",
+				type: "POST",
+				data: 'data=' + data,
+				success: function (p) {
+					if (p.状态 == '成功') {
+						console.log(p);
+						$.each(p.列表, function (i) {
+							$(".ord_info").append('<ul class="ord_detail"><li>套餐号<span class="taocanNum">' +
+								p.列表[i].卡号 + '</span></li><li>商品详情<span class="moreDeta">' +
+								p.列表[i].名称 + '</span></li><li>购买数量<span class="goumaiNum">' +
+								p.列表[i].数量 + '</span></li><li>支付方式<span class="payWay">' +
+								p.列表[i].支付方式 + '</span></li><li>支付金额<span class="zhifuSum">' +
+								p.列表[i].面值 + '</span></li><li>创建时间<span class="operTime">' +
+								p.列表[i].录入时间 + '</span></li></ul>');
+						});
+						ys = p.页数;
+						console.log(ys + "1111111111111111111");
+					} else {
+						console.log(p.状态);
+					}
+				}
+			});
+			$(window).scroll(function () {
+				var scrollTop = $(this).scrollTop();
+				var scrollHeight = $(document).height();
+				var windowHeight = $(this).height();
+				if (scrollTop + windowHeight == scrollHeight) {
+					var data1 = {};
+					data1.onlyID = onlyID;
+					data1.客户账号 = getCookie("poneNum");
+					data1.页数 = ys;
+					data1 = JSON.stringify(data1);
+					console.log(data1);
+					$.ajax({
+						url: "/ajax.post?func=CZ_YK_dgxq2",
+						type: "POST",
+						data: 'data=' + data1,
+						success: function (p) {
+							if (p.状态 == '成功') {
+								console.log(p);
+								if (p.条数 == null) {
+									t = 3;
+									toast("已无更多数据");
+								}
+								$.each(p.列表, function (i) {
+									$(".ord_info").append('<ul class="ord_detail"><li>套餐号<span class="taocanNum">' +
+										p.列表[i].卡号 + '</span></li><li>商品详情<span class="moreDeta">' +
+										p.列表[i].名称 + '</span></li><li>购买数量<span class="goumaiNum">' +
+										p.列表[i].数量 + '</span></li><li>支付方式<span class="payWay">' +
+										p.列表[i].支付方式 + '</span></li><li>支付金额<span class="zhifuSum">' +
+										p.列表[i].面值 + '</span></li><li>创建时间<span class="operTime">' +
+										p.列表[i].录入时间 + '</span></li></ul>');
+								});
+								ys = p.页数;
+								console.log(ys + "2222222222222222222");
+							} else {
+								console.log(p.状态);
+							}
+						}
+					});
+				}
+
+			});
+		});
+	</script>
+</body>
+
+</html>

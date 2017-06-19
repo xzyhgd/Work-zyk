@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<script src="js/util.js" type="text/javascript"></script>
+		<link href="css/common.css" type="text/css" rel="stylesheet" />
+		<link href="css/merchantApplication.css" type="text/css" rel="stylesheet" />
+
+		<title>会员协议书</title>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="container-box m-b-4r5">
+				<div class="part">
+					<p class="content-title p-tb-1r flex-hc-vc" id="content-title"></p>
+					<p class="content-text p-rl-8" id="content-text" style="word-break:normal"></p>
+				</div>
+			</div>
+		</div>
+		<footer class="footer-2 fixed-bottom">
+			<div class="div-input flex-hl-vc">
+				<div class="agree-flag flex-hl-vc" onclick="agreement.action()">
+					<img class="agree-img" src="img/ic_noselect.png" />
+					<span class="confirm-tips">我已认真阅读并接受以上协议</span>
+				</div>
+			</div>
+
+			<div class="bottom-btn">
+				<button type="button" class="btn-n bgc-666 btn-w-100" id="agree" onclick="send()">确定</button>
+			</div>
+		</footer>
+
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+		<script src="js/share.js" type="text/javascript"></script>
+		<script src="./js/cookie.js"></script>
+
+		<script>
+			// var phone = decodeURI(html_name('phone'));
+			var onlyID = decodeURI(html_name('onlyID'));
+			//油卡类型
+			var tcType = getCookie("tcType");
+
+			//			//同意协议
+			//			var btn_yes = document.getElementById('agree');
+			//			var btn_confirm = document.getElementById('confirm');
+
+			//跳转老套餐
+			function urlA() {
+				window.location.href = "zg_saleBuy.html?" + "type=" + tcType;
+			};
+
+			//跳转新套餐
+			function urlB() {
+				window.location.href = "zg_saleBuyNew.html?" + "type=" + tcType + "&onlyID=" + onlyID;
+			};
+
+			//			var flag = 1;
+
+			//			function agreeFlag() {
+			//				if(flag == 1) {
+			//					flag = 0;
+			//					btn_yes.className = "btn-n bgc-2D9 btn-w-100";
+			//					btn_confirm.className = "confirm-yes";
+			//					if(tcType == '加油套餐') {
+			//						$('#agree').attr('onclick', 'urlB()');
+			//					} else {
+			//						$('#agree').attr('onclick', 'urlB()');
+			//					}
+			//
+			//				} else {
+			//					flag = 1;
+			//					btn_yes.className = "btn-n bgc-666 btn-w-100";
+			//					btn_confirm.className = "confirm-no";
+			//					$('#agree').attr('onclick', 'abc()');
+			//				}
+			//			}
+			//通过切换Flag修改协议书按钮属性
+			var agreement = {};
+			agreement.flag = 1;
+			agreement.action = function() {
+				if(agreement.flag == 1) {
+					agreement.flag = 0;
+					$(".agree-img").attr("src", "img/ic_select_2.png");
+					if(tcType == '加油套餐') {
+						$('#agree').attr({"onclick":"urlB()","class":"btn-n bgc-2D9 btn-w-100"});
+					} else {
+						$('#agree').attr({"onclick":"urlB()","class":"btn-n bgc-2D9 btn-w-100"});
+					}
+				} else {
+					agreement.flag = 1;
+					$(".agree-img").attr("src", "img/ic_noselect.png");
+					$("#agree").attr({"class":"btn-n bgc-666 btn-w-100","onclick":"abc()"});
+				}
+			}
+
+			//获取协议书
+			var data_1 = {};
+
+			// data_1.账号 = phone;
+			data_1.类型 = "油卡套餐协议";
+			data_1.onlyID = onlyID;
+			data_1 = JSON.stringify(data_1);
+			$.ajax({
+				type: "POST",
+				url: "/ajax.post?func=CZ_YK_xys",
+				data: 'data=' + data_1,
+				success: function(json) {
+					//						console.log(json.标题);
+					//						console.log(json.内容);
+					if(json.状态 == '成功') {
+						$("#content-title").html(json.标题);
+						$('#content-text').html(json.内容);
+					} else {
+						console.log("111")
+						console.log(json.状态);
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

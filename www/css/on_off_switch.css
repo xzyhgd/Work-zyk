@@ -1,0 +1,82 @@
+.testswitch {  
+    position: relative;  
+    float: right;   
+    width: 2.4rem;  
+    margin: 0;  
+    -webkit-user-select:none;   
+    -moz-user-select:none;   
+    -ms-user-select: none;  
+}   
+.testswitch-checkbox {  
+    display: none;  
+}   
+.testswitch-label {  
+    display: block;   
+    overflow: hidden;   
+    cursor: pointer;  
+    border: 0.05rem solid #e5e5e5;   
+    border-radius: 0.9rem;
+	-webkit-border-radius: 0.9rem;
+	-moz-border-radius: 0.9rem;  
+}   
+.testswitch-inner {  
+    display: block;   
+    width: 200%;   
+    margin-left: -100%;  
+    transition: margin 0.2s ease-in 0s; 
+    -webkit-transition: margin 0.2s ease-in 0s;
+    -moz-webkit-transition: margin 0.2s ease-in 0s;
+}   
+.testswitch-inner::before, .testswitch-inner::after {  
+    display: block;   
+    float: right;   
+    width: 50%;   
+    height: 1.4rem;   
+    padding: 0;   
+    line-height: 1.4rem;    
+    color: white;   
+    font-family:   
+    Trebuchet, Arial, sans-serif;   
+    font-weight: bold;  
+    box-sizing: border-box;  
+}   
+.testswitch-inner::after {  
+    content: attr(data-on);  
+    padding-left:0.2rem;  
+    background-color: #4bd562; 
+    border:none;  
+    color: #FFFFFF;  
+}   
+.testswitch-inner::before {  
+    content: attr(data-off);  
+    padding-right: 0.2rem;  
+    background-color: #EEEEEE;   
+    color: #999999;  
+    text-align: right;  
+}  
+  
+.testswitch-switch {  
+    position: absolute;   
+    display: block;   
+    width: 1.36rem;  
+    height: 1.36rem;  
+    margin: 0.075rem;  
+    background: #FFFFFF;  
+    top: 0;   
+    bottom: 0;  
+    right: 0.85rem;  
+    border: 0.05rem solid #ccc; 
+    box-sizing: border-box;  
+    border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;  
+    transition: all 0.2s ease-in 0s; 
+    -webkit-transition: all 0.2s ease-in 0s;
+    
+}    
+.testswitch-checkbox:checked + .testswitch-label .testswitch-inner {  
+    margin-left: 0;  
+}    
+.testswitch-checkbox:checked + .testswitch-label .testswitch-switch {  
+    right: 0px;   
+}  

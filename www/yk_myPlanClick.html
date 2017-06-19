@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+		<title>我的套餐</title>
+		<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" href="css/yk_myPlan.css" />
+
+	</head>
+
+	<body>
+
+		<div class="myPlan">
+			<div class="plan_header">
+				<div class="plan_account">
+					<h3 class="acc_name">油费账户</h3>
+					<hr />
+					<span class="acc_money">10.00</span>
+				</div>
+				<!--<ul class="plan_list">
+					<li id="turn_bank" data-target="#myModal" data-toggle="modal"><img src="img/zhuanyinghang@2x.png" /><br/><span class="list_txt">转银行</span></li>
+					<li id="turn_oilCard"><img src="img/zhuanyouka@2x.png" /><br/><span class="list_txt">转油卡</span></li>
+					<li id="turn_bonus"><img src="img/ic_purse_2@2x.png" /><br/><span class="list_txt">转红利</span></li>
+				</ul>-->
+			</div>
+			<div class="plan_content">
+				<div class="con_list" id="yigouxiangqing"><img src="img/xiangqing@2x.png" alt="已购详情" class="plan_icon" /><span class="plan_txt">已购详情</span><img src="img/next.png" alt="下一步" class="next" /></div>
+				<!--<div class="con_list" id="zhanghujilu"><img src="img/zhanghu@2x.png" alt="账户记录" class="plan_icon" /><span class="plan_txt">油卡直充</span><img src="img/next.png" alt="下一步" class="next" /></div>-->
+				<div class="con_list" id="wodeyouka"><img src="img/wodeyouka@2x.png" alt="我的油卡" class="plan_icon" /><span class="plan_txt">我的油卡</span><img src="img/next.png" alt="下一步" class="next" /></div>
+				<!--<div class="con_list" id="youkajilu"><img src="img/youka@2x.png" alt="油卡记录" class="plan_icon" /><span class="plan_txt">油卡记录</span><img src="img/next.png" alt="下一步" class="next" /></div>-->
+				<div class="con_list" id="dingdanjilu"><img src="img/goumaijilv_ic.png" alt="订单记录" class="plan_icon" /><span class="plan_txt">购买记录</span><img src="img/next.png" alt="下一步" class="next" /></div>
+			</div>
+		</div>
+		<!--<div class="popup">
+		</div>
+		<div class="popup-text">
+			<div class="corr">
+				<span class="span-text"><span class="span-name">	
+				</span><span id="close">&times;</span></span>
+			</div>
+			<div class="jfInput jfNum">积分：<input type="text" id="jifen" placeholder="请输入积分" /></div>
+			<div class="jfInput jfPsw">密码：<input type="text" id="password1" placeholder="请输入密码" /></div>
+			<div class="oper_btn">
+				<span class="cancel">取消</span><span class="comfrim" id="makesure">确定</span>
+			</div>
+		</div>
+		<span class="toast">
+				<span class="toast-su">我在测试看看</span>
+		</span>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel" style="font-size: 0.6rem;">选择银行卡</h4>
+					</div>
+					<div class="modal-body addCard">
+						添加新银行卡
+					</div>
+					<!--<div class="modal-body seleCard"><img src="img/bank/gongshang.png"/>
+						<span class="bankCardNum">**************2345</span> 
+					</div>
+					'<div class="modal-body seleCard" "><img src="img/bank/jiansheyinhang.png" data-imgid="'+p.银行卡列表[i].银行图片代码 +'"/>
+						<span class="bankCardNum">****&nbsp;****&nbsp;****&nbsp;' +p.银行卡列表[i].银行卡号.substr(-4, 4) + '</span></div>'-->
+		<!--<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" style="font-size: 0.6rem;">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>				
+		<script type="text/javascript" src="js/share.js"></script>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/jQuery.md5.js"></script>
+		<script type="text/javascript">
+			// var phone = decodeURI(html_name('phone'));
+			var onlyID = decodeURI(html_name('onlyID'));
+			$(function() {
+				var youfei = getCookie("youfei");
+				//获取账户、随机码
+				var data = {};
+				data.onlyID = onlyID;
+				data = JSON.stringify(data);
+				console.log(data);
+				$.ajax({
+					url: "/ajax.post?func=CZ_YK_yfz",
+					type: "POST",
+					data: 'data=' + data,
+					success: function(j) {
+						console.log(j);
+						if(j.状态 == '成功') {
+
+							$(".acc_money").html(j.油费总账户);
+						} else {
+
+						}
+					}
+				});
+
+				$('.acc_money').html(youfei);
+
+				//点击转油卡
+				$("#turn_oilCard").click(function() {
+//					var flag = 1;
+//					window.location.href = "yk_transferOilCard.html?phone=" + phone + "&random=" + random + "&flag=" + flag;
+				});							
+				//点击已购详情
+				$("#yigouxiangqing").click(function(){
+					window.location.href = "wdtc_ygRecord.html?onlyID=" + onlyID ;
+				});
+				//点击账户记录
+				$("#zhanghujilu").click(function(){
+//					window.location.href = "yk_accountRecord.html?phone=" + phone + "&random=" + random;
+                    var flag=1;
+					window.location.href = "yk_newIndex.html?onlyID=" + onlyID  + "&flag=" + flag;
+				});
+				//点击我的油卡
+				$("#wodeyouka").click(function(){
+					window.location.href = "myOilCardBind1.html?onlyID=" + onlyID;
+				});
+				//点击油卡记录
+				$("#youkajilu").click(function(){
+					window.location.href = "yhq.html?onlyID=" + onlyID;
+				});
+				//点击订单记录
+				$("#dingdanjilu").click(function(){
+					window.location.href = "zg_purchasingDetails.html?onlyID=" + onlyID ;
+				});
+								
+			});
+		</script>
+	</body>
+
+</html>

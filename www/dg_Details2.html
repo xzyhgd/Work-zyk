@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+	<title>代购详情</title>
+	<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" href="css/daigouDetails1.css" />
+</head>
+
+<body>
+	<div class="daigouDetails1">
+		<div class="sea_frame">
+			<div class="search">
+				<span id="search"><img src="img/ic_search.png" class="ic_search"/></span>
+				<input type="text" name="username" id="userinfo" value="" placeholder="请输入手机号或姓名" />
+				<span id="close"><img src="./img/ic_search_delete.png" class="ic_delete"></span>
+			</div>
+			<span class="sea_txt">搜索</span>
+		</div>
+		<div class="list">
+		</div>
+		<span class="toast">                 
+                <span class="toast-su">温馨提示</span>
+		</span>
+	</div>
+	<script type="text/javascript" src="js/share.js"></script>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		var onlyID = decodeURI(html_name('onlyID'));
+		var ys, ys2;
+
+		getData(0);
+
+		//点击清空 加载
+		$("#close").click(function () {
+			$("#userinfo").val("");
+			$(".list").html("");
+
+			getData(0);
+		});
+		//点击搜索查询
+		$('.sea_txt').click(function () {
+			$(".list").html("");
+			var flag = true;
+			getData(0, flag);
+		});
+		//实时查询
+		$('#userinfo').bind('input propertychange', function () {
+			var flag = true;
+			getData(0, flag);
+		});
+
+		$(window).scroll(function () {
+			var scrollTop = $(this).scrollTop();
+			var scrollHeight = $(document).height();
+			var windowHeight = $(this).height();
+			if (scrollTop + windowHeight == scrollHeight) {
+				getData(ys2);
+				console.log(ys2 + "  aaaaaaaaaaaaa");
+			}
+		});
+
+		//请求接口 显示查询数据
+		function getData(ys, flag) {
+			var data = {};
+			data.onlyID = onlyID;
+			data.搜索 = $('#userinfo').val();
+			data.页数 = ys;
+			data = JSON.stringify(data);
+			console.log(data);
+
+			//输入框实时搜索
+			if (flag == true) {
+					$.ajax({
+						url: "/ajax.post?func=CZ_YK_dgxq1",
+						type: "POST",
+						data: 'data=' + data,
+						success: function (p) {
+							if (p.状态 == '成功') {
+								console.log(p);
+								$(".list").html("");
+								if (p.条数 == 0) {
+
+									t = 3;
+									toast("已无更多数据");
+								}
+								$.each(p.代购列表, function (i) {
+									$('.list').append('<div class="sea_content">' +
+										'<p class="per_info"><span class="dgName">' + p.代购列表[i].姓名 + '</span></p>' +
+										'<p class="per_info">手机号:<span class="dgMob">' + p.代购列表[i].账号 + '</span><span class="info_right"><a>查看套餐<img class="jiantou" src="./img/jiantou-8.png"></a></span></p>' +
+										'<p class="per_info">套餐数量:<span class="dgNum">' + p.代购列表[i].套餐总数 + '</span></p></div>');
+								});
+
+								$(".info_right").click(function () {
+									var dgName = $(this).parent().siblings().find("span.dgName").html();
+									var poneNum = $(this).parent().find("span.dgMob").html();
+									var goumaiNum = $(this).parent().siblings().find("span.dgNum").html();
+									setCookie("dgName", dgName);
+									setCookie("poneNum", poneNum);
+									setCookie("goumaiNum", goumaiNum);
+									window.location.href = "dg_orderDetails.html?onlyID=" + onlyID;
+								});
+								ys2 = p.页数;
+								console.log(ys2 + "  bbbbbbbbbbbbbbbbbbbbbb");
+								return ys2;
+							} else {
+								$(".list").html("");
+								$('.list').append('<div class="bodyBg"><div class="content"><div><img class="tit_img"src="img/no_data.png"/></div><p class="noData">无数据</p></div></div>');
+							}
+						}
+					});
+
+			} else {
+				$.ajax({
+					url: "/ajax.post?func=CZ_YK_dgxq1",
+					type: "POST",
+					data: 'data=' + data,
+					success: function (p) {
+						if (p.状态 == '成功') {
+							console.log(p);
+
+							$.each(p.代购列表, function (i) {
+								$('.list').append('<div class="sea_content">' +
+									'<p class="per_info"><span class="dgName">' + p.代购列表[i].姓名 + '</span></p>' +
+									'<p class="per_info">手机号:<span class="dgMob">' + p.代购列表[i].账号 + '</span><span class="info_right"><a>查看套餐<img class="jiantou" src="./img/jiantou-8.png"></a></span></p>' +
+									'<p class="per_info">套餐数量:<span class="dgNum">' + p.代购列表[i].套餐总数 + '</span></p></div>');
+							});
+							$(".info_right").click(function () {
+								var dgName = $(this).parent().siblings().find("span.dgName").html();
+								var poneNum = $(this).parent().find("span.dgMob").html();
+								var goumaiNum = $(this).parent().siblings().find("span.dgNum").html();
+								setCookie("dgName", dgName);
+								setCookie("poneNum", poneNum);
+								setCookie("goumaiNum", goumaiNum);
+								window.location.href = "dg_orderDetails.html?onlyID=" + onlyID;
+							});
+							ys2 = p.页数;
+							console.log(ys2 + "  bbbbbbbbbbbbbbbbbbbbbb");
+							return ys2;
+						} else {
+
+							if (ys == 0 && p.状态 == '无数据') {
+								$('.list').append('<div class="bodyBg"><div class="content"><div><img class="tit_img"src="img/no_data.png"/></div><p class="noData">无数据</p></div></div>');
+							} else {
+								t = 3;
+								toast("已无更多数据");
+							}
+						}
+					}
+				});
+			}
+
+		}
+
+		var setAjax = setTimeout(getData, 5000);
+
+		var t = 3;
+
+		function toast(status) {
+			$(".toast").show();
+			$(".toast .toast-su").html(status);
+			var i = setTimeout(toast, 1000);
+			t--;
+			if (t <= 0) {
+				$(".toast").hide();
+				clearTimeout(i);
+			}
+		}
+	</script>
+</body>
+
+</html>

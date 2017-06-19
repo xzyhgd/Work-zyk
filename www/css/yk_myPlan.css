@@ -1,0 +1,277 @@
+.myPlan {
+	width: 18rem;
+	margin: 0 auto;
+}
+
+.plan_header {
+	background: #2B9CED;
+}
+
+.plan_header .plan_account {
+	color: #fff;
+	text-align: center;
+	padding-top: 1.25rem;
+	height: 8rem;
+}
+
+.plan_header .plan_account h3.acc_name {
+	font-size: 0.9rem;
+	margin-bottom: 0.4rem;
+}
+
+.plan_header .plan_account hr {
+	width: 1.9rem;
+	border: 1px solid #fff;
+}
+
+.plan_header .plan_account span.acc_money {
+	margin-top: 0.4rem;
+	font-size: 1.75rem;
+}
+
+.plan_header .plan_list {
+	overflow: hidden;
+	margin-top: 2rem;
+	height: 2.3rem;
+	padding-bottom: 0.2rem;
+	background: rgba(51, 51, 51, 0.2);
+	/*--background: rgba(51,51,51,0.2);*/
+}
+
+.plan_header .plan_list li {
+	float: left;
+	width: 5.9rem;
+	border-right: 1px solid #efefef;
+	margin-top: 0.2rem;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.plan_header .plan_list li img {
+	width: 0.9rem;
+	height: 0.9rem;
+	margin-bottom: 0.3rem;
+}
+
+.plan_header .plan_list li:last-child {
+	border-right: none;
+}
+
+.plan_header .plan_list li .list_txt {
+	font-size: 0.6rem;
+	color: #fff;
+}
+
+.plan_content {
+	overflow: hidden;
+	background: #f3f4f5;
+}
+
+.plan_content .con_list {
+	width: 18rem;
+	height: 2.3rem;
+	line-height: 2.3rem;
+	margin-top: 0.5rem;
+	background: #fff;
+	padding: 0 0.75rem;
+}
+
+.plan_content .con_list img.plan_icon {
+	width: 1.15rem;
+	height: 1.15rem;
+	margin-top: 0.55rem;
+}
+
+.plan_content .con_list span.plan_txt {
+	margin-left: 0.4rem;
+	font-size: 0.75rem;
+	color: #333;
+}
+
+.plan_content .con_list img.next {
+	float: right;
+	width: 0.4rem;
+	height: 0.75rem;
+	margin-top: 0.75rem;
+}
+
+
+/*弹框样式*/
+
+.popup {
+	width: 18rem;
+	height: 34rem;
+	position: fixed;
+	z-index: 999;
+	background: rgb(153, 153, 153);
+	opacity: .8;
+	top: 0;
+	left: 50%;
+	margin-left: -9rem;
+	display: none;
+}
+
+.popup-text {
+	width: 14.4rem;
+	height: 9.7rem;
+	background-color: #fff;
+	position: fixed;
+	z-index: 1000;
+	top: 7rem;
+	left: 45%;
+	margin-left: -6.35rem;
+	-webkit-border-radius: .2rem;
+	-moz-border-radius: .2rem;
+	display: none;
+	overflow: hidden;
+}
+
+.popup-text .span-text {
+	width: 14.4rem;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	font-size: .75rem;
+	display: block;
+	background-color: #2B9CED;
+	color: #fff;
+	-webkit-border-top-left-radius: .2rem;
+	-webkit-border-top-right-radius: .2rem;
+}
+
+.popup-text .span-text .span-name {
+	float: left;
+	margin-left: 48%;
+}
+
+.popup-text .span-text #close {
+	display: block;
+	float: right;
+	font-size: 0.75rem;
+	margin-right: 0.85rem;
+}
+
+.popup-cont {
+	width: 100%;
+	height: 3.1rem;
+	position: relative;
+}
+
+.popup-cont .cg_img {
+	position: absolute;
+	width: 3.1rem;
+	height: 3.1rem;
+	left: 0.85rem;
+	top: 40%;
+}
+
+.popup-cont .con_txt {
+	position: absolute;
+	left: 33%;
+	top: 60%;
+	font-size: 0.75rem;
+	color: #666;
+}
+
+.popup-btn {
+	width: 0.75rem;
+	height: 0.75rem;
+	top: 0.35rem;
+	right: .5rem;
+	position: absolute;
+}
+
+.comfrim {
+	width: 6rem;
+	height: 1.85rem;
+	line-height: 1.85rem;
+	background-color: #2B9CED;
+	color: #fff;
+	display: inline-block;
+	margin-top: 1.2rem;
+	margin-left: 4.8rem;
+	text-align: center;
+	-webkit-border-radius: .2rem;
+	font-size: .75rem;
+}
+
+.toast {
+	width: 18rem;
+	height: 2rem;
+	line-height: 2rem;
+	display: inline-block;
+	position: fixed;
+	font-size: .65rem;
+	left: 0;
+	bottom: 5rem;
+	z-index: 111111;
+	text-align: center;
+	display: none;
+}
+
+.toast .toast-su {
+	height: 2rem;
+	line-height: 2rem;
+	display: inline-block;
+	margin: 0 auto;
+	background-color: #666;
+	border: 0.05rem solid #dfdfdf;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem;
+	font-size: .6rem;
+	color: #fff;
+	padding-left: .5rem;
+	padding-right: .5rem;
+}
+
+input:focus,
+button:focus,
+select:focus,
+option:focus {
+	outline: none;
+}
+
+
+/*模态框*/
+
+.modal-content {
+	text-align: center;
+}
+
+.modal-body {
+	width: 17.25rem;
+	height: 2.4rem;
+	line-height: 1.65rem;
+	font-size: 0.7rem;
+	text-align: center;
+	border-bottom: 0.05rem solid #efefef;
+	overflow: hidden;
+}
+
+.modal-body img {
+	float: left;
+	width: 1.4rem;
+	height: 1.4rem;
+	margin-left: 2rem;
+}
+
+.modal-body .bankCardNum {
+	float: left;
+	display: block;
+	height: 1.65rem;
+	line-height: 1.65rem;
+	text-align: center;
+	margin-left: 2rem;
+	border:1px solid #ff0;
+}
+
+.modal-footer {
+	border-top: none;
+}
+
+.modal-footer button {
+	width: 100%;
+}
+

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/common.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/wdtc_ygOld.css">
+    <title>已购详情</title>
+
+    <style>
+  
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="rowSty"><span class="cardExplain">商城消费金卡</span><span class="cardCountNum">10张</span>
+        </div>
+
+        <div class="interval"></div>
+
+        <div class="xtcList">
+
+            <!--<div class="rowSty ">套餐号<span class="cardTcID">107</span><span class="cardYeRow">余额&nbsp;&nbsp;<span class="cardYe">￥1100.00</span></span></div>
+
+        <div class="rowStyBig">
+        <span class="spanGray">月返日期</span> <span class="cardTime">每月23日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="spanGray">返到</span>&nbsp;&nbsp;<span class="jbjf">基本积分</span>
+
+        <p class=" pInterval"><img class="optionImg" src="./img/ic_turn.png">&nbsp;绑定油卡 </p>
+        <p class="pInterval" style="border-left: 0.05rem solid #e0e0e0;"><img class="optionImg" src="./img/ic_turn.png">&nbsp;绑定油卡 </p>
+
+        </div>
+
+        <div class="IntervalTwo"></div>-->
+
+        </div>
+
+        <span class="toast">
+                    
+            <span class="toast-su">我在测试看看</span>
+
+        </span>
+
+    </div>
+
+    <!--<div class="rowSty ">套餐号<span class="cardTcID">107</span><span class="cardYeRow">余额&nbsp;&nbsp;<span class="cardYe">￥1100.00</span></span></div>
+
+        <div class="rowSty">
+
+        <span class="spanGray">月返日期</span> <span class="cardTime">每月23日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="spanGray">返到</span>&nbsp;&nbsp;<span class="jbjf">基本支付</span><p class="cardOption "><img class="optionImgR" src="./img/ic_record.png">月返详情</p>
+
+        </div> -->
+    <script src="./js/jquery-3.1.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="js/util.js"></script>    
+    <script src="./js/cookie.js"></script>
+    <script type="text/javascript" src="js/share.js"></script>
+    <script>
+        var tcName = '';
+        var tcNum = '';
+		var onlyID = decodeURI(html_name('onlyID'));
+        tcName = decodeURI(html_name('tcName'));
+        tcNum = decodeURI(html_name('tcNum'));
+
+        $('.cardExplain').html(tcName);
+        $('.cardCountNum ').html(tcNum + "张");
+
+        //模态
+        var t = 3;
+        function toast(status) {
+
+            $(".toast").show();
+            $(".toast .toast-su").html(status);
+            var i = setTimeout(toast, 1000);
+            t--;
+            if (t <= 0) {
+
+                $(".toast").hide();
+                clearTimeout(i);
+            }
+
+        }
+
+        var cardType='';
+        var cardID='';
+        
+        var ys = 0;
+        var data = {};
+
+        data.onlyID = onlyID;
+
+        // data2.套餐 = tcName;
+        data.月份 = tcName;
+
+
+        // data2.月份="1200送500";
+        // data2.页数 ="0";
+
+        data = JSON.stringify(data);
+
+        $.ajax({
+            url: "/ajax.post?func=CZ_YK_ygxq2",
+            type: "POST",
+            data: 'data=' + data,
+
+            success: function (p) {
+                ys = p.页数;
+                if (p.状态 == '成功') {
+
+
+                    $.each(p.数据, function (i) {
+                        if(p.数据[i].油卡号=='油费账户'){
+                        $('.xtcList').append('<div class="rowSty ">套餐号<span class="cardTcID">' + p.数据[i].卡号 + '</span><span class="cardYeRow">余额&nbsp;&nbsp;<span class="cardYe">￥' + p.数据[i].未返总额 + '</span></span></div><div class="rowStyBig"><span class="spanGray">月返日期</span> <span class="cardTime">每月' + p.数据[i].录入时间 + '日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="spanGray">返到</span>&nbsp;&nbsp;<span class="yfzf">' + p.数据[i].中油卡号 + '</span></div><div class="IntervalTwo"></div>');}
+                        else{
+                         $('.xtcList').append('<div class="rowSty ">套餐号<span class="cardTcID">' + p.数据[i].卡号 + '</span><span class="cardYeRow">余额&nbsp;&nbsp;<span class="cardYe">￥' + p.数据[i].未返总额 + '</span></span></div><div class="rowStyBig"><span class="spanGray">月返日期</span> <span class="cardTime">每月' + p.数据[i].录入时间 + '日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="spanGray">返到</span>&nbsp;&nbsp;<span class="jbjf">' + p.数据[i].中油卡号 + '</span></div><div class="IntervalTwo"></div>');                           
+                        }
+//  月返详情按钮
+// <p class="cardOption "><img class="optionImgR" src="./img/ic_record.png" data-id="'+p.数据[i].卡号+'" data-type="'+p.数据[i].油卡号+'">月返详情</p>
+                    })
+
+                    $('.cardOption').click(function(){
+                        cardType=$(this).find("img").attr("data-type"); 
+
+                        cardID=$(this).find("img").attr("data-id");                
+                        window.location.href="monthly_Return_Record.html?phone="+phone+"&random="+random+"&cardID="+cardID+"&cardType="+cardType;
+
+                    })
+
+                } else {
+
+
+
+                }
+            }
+        })
+
+        $(window).scroll(function () {
+
+            var windowHeight = $(this).height();
+            var scrollTop = $(this).scrollTop();
+            var scrollHeight = $(document).height();
+
+            // console.log(scrollHeight);
+            // console.log(scrollTop);
+            // console.log(windowHeight);           
+
+            if (scrollTop + windowHeight == scrollHeight) {
+
+                var data2 = {};
+
+                data2.onlyID = onlyID;
+
+                data2.月份 = tcName;
+                data2.页数 = ys;
+
+                // data2.页数=10;
+                // data2.月份="1200送500";
+
+                data2 = JSON.stringify(data2);
+
+                $.ajax({
+                    url: "/ajax.post?func=CZ_YK_ygxq2",
+                    type: "POST",
+                    data: 'data=' + data2,
+
+                    success: function (p) {
+                        ys = p.页数;
+                        if (p.状态 == '成功') {
+                            $.each(p.数据, function (i) {
+                                $('.xtcList').append('<div class="rowSty ">套餐号<span class="cardTcID">' + p.数据[i].卡号 + '</span><span class="cardYeRow">余额&nbsp;&nbsp;<span class="cardYe">' + p.数据[i].未返总额 + '</span></span></div><div class="rowStyBig"><span class="spanGray">月返日期</span> <span class="cardTime">每月' + p.数据[i].录入时间 + '日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="spanGray">返到</span>&nbsp;&nbsp;<span class="jbjf">' + p.数据[i].油卡号 + '</span></div><div class="IntervalTwo"></div>');
+                            })
+                            if (p.条数 == 0) {
+                                t = 3;
+                                toast("已无更多数据");
+                             }
+
+
+                            // $('.cardOption').click(function(){
+                            //     cardType=$(this).find("img").attr("data-type"); 
+                            //     console.log(cardType);   
+                            //     cardID=$(this).find("img").attr("data-id");                
+                            //     window.location.href="monthly_Return_Record.html?phone="+phone+"&random="+random+"&cardID="+cardID+"&cardType="+cardType;
+
+                            // })
+
+                        } else {
+
+                        }
+                    }
+                })
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

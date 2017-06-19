@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>充值记录</title>
+		<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" href="css/yk_CZRecord.css" />
+	</head>
+	<body>
+		<div class="CZRecord">
+			<!--<div class="CZ_list">
+			<ul class="CZ_left">
+				<li><span class="recordTxt">类型：</span><span class="reData ExType">中石油</span></li>
+				<li><span class="recordTxt">油卡号：</span><span class="reData ExCaNum">1234 1234 1234 1234</span></li>
+				<li class="zf"><span class="recordTxt">支付方式：</span><span class="reData ExZfWay">支付宝</span></li>
+				<li><span class="recordTxt">充值：</span><span class="reData ExCzPrice">1000.00</span></li>
+				<li><span class="recordTxt" style="color:#2B9CED ;">实付：</span><span class="reData ExSfMoney">950.00</span></li>
+				<li><span class="ExTime">2016/11/16 21:15:45</span></li>
+			</ul>
+			<div class="CZ_right">
+				<p class="zf_state CZSB">充值失败</p>
+			</div>
+		</div>-->
+		</div>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/share.js"></script>
+		<script>
+			$(function() {
+				var datas = {};
+				datas.onlyID = decodeURI(html_name('onlyID'));
+				datas = JSON.stringify(datas);
+				console.log(datas)
+
+				$.ajax({
+					url: "/ajax.post?func=CZ_YK_czddxq",
+					type: "POST",
+					data: 'data=' + datas,
+					success: function(p) {
+						if(p.状态 == '成功') {
+							console.log(p);
+
+							$.each(p.列表, function(i) {
+								if(p.列表[i].油卡类别 == '1') {
+									$('.CZRecord').append('<div class="CZ_list"><ul class="CZ_left">' +
+										'<li><span class="recordTxt">类型：</span><span class="reData ExType">中石化</span></li>' +
+										'<li><span class="recordTxt">油卡号：</span><span class="reData ExCaNum">' + p.列表[i].中油卡号 + '</span></li>' +
+										'<li class="zf"><span class="recordTxt">支付方式：</span><span class="reData ExZfWay">' + p.列表[i].支付方式 + '</span></li>' +
+										'<li><span class="recordTxt">充值：</span><span class="reData ExCzPrice">' + p.列表[i].充值金额 + '</span></li>' +
+										'<li><span class="recordTxt" style="color:#2B9CED ;">实付：</span><span class="reData ExSfMoney">' + p.列表[i].总金额 + '</span></li>' +
+										'<li><span class="ExTime">' + p.列表[i].录入时间 + '</span></li></ul>' +
+										'<div class="CZ_right"><span class="zf_state">' + p.列表[i].充值状态 + '</span>' +
+										'</div></div>');
+
+								} else if(p.列表[i].油卡类别 == '2') {
+									$('.CZRecord').append('<div class="CZ_list"><ul class="CZ_left">' +
+										'<li><span class="recordTxt">类型：</span><span class="reData ExType">中石油</span></li>' +
+										'<li><span class="recordTxt">油卡号：</span><span class="reData ExCaNum">' + p.列表[i].中油卡号 + '</span></li>' +
+										'<li class="zf"><span class="recordTxt">支付方式：</span><span class="reData ExZfWay">' + p.列表[i].支付方式 + '</span></li>' +
+										'<li><span class="recordTxt">充值：</span><span class="reData ExCzPrice">' + p.列表[i].充值金额 + '</span></li>' +
+										'<li><span class="recordTxt" style="color:#2B9CED ;">实付：</span><span class="reData ExSfMoney">' + p.列表[i].总金额 + '</span></li>' +
+										'<li><span class="ExTime">' + p.列表[i].录入时间 + '</span></li></ul>' +
+										'<div class="CZ_right"><span class="zf_state">' + p.列表[i].充值状态 + '</span>' +
+										'</div></div>');
+
+								}
+
+								if(p.列表[i].支付方式 === '支付宝') {
+									//										$(".ExZfWay").addClass("ZFB").removeClass("DZZF");
+									var a = document.getElementsByClassName("ExZfWay")[i];
+									$(a).addClass("ZFB");
+
+								} else if(p.列表[i].支付方式 === '微信') {
+									//										$(".ExZfWay").addClass("WX").removeClass("DZZF");
+									console.log("1");
+									var b = document.getElementsByClassName("ExZfWay")[i];
+									$(b).addClass("WX");
+
+								} else if(p.列表[i].支付方式 === '积分账户') {
+									//										$(".ExZfWay").addClass("JFZH").removeClass("DZZF");
+									var c = document.getElementsByClassName("ExZfWay")[i];
+									$(c).addClass("JFZH");
+
+								} else if(p.列表[i].支付方式 === '红利账户') {
+									//										$(".ExZfWay").addClass("HLZH").removeClass("DZZF");
+									var d = document.getElementsByClassName("ExZfWay")[i];
+									$(d).addClass("HLZH");
+
+								} else if(p.列表[i].支付方式 === '油费账户') {
+
+									var e = document.getElementsByClassName("ExZfWay")[i];
+									$(e).addClass("YFZH");
+
+								} else if(((p.列表[i].支付方式).indexOf(",")) != -1) {
+
+									var b = document.getElementsByClassName("ExZfWay")[i];
+									$(b).addClass("DZZF");
+								}
+
+								if(p.列表[i].充值状态 == '充值成功') {
+//									$(".zf_state").addClass("CZCG");
+									var m = document.getElementsByClassName("zf_state")[i];
+									$(m).addClass("CZCG");
+
+								} else if(p.列表[i].充值状态 == '充值失败') {
+//									$(".zf_state").addClass("CZSB");
+									var n = document.getElementsByClassName("zf_state")[i];
+									$(n).addClass("CZSB");
+
+								} else if(p.列表[i].充值状态 == '充值中') {
+//									$(".zf_state").addClass("CZZ");
+									var t = document.getElementsByClassName("zf_state")[i];
+									$(t).addClass("CZZ");
+
+								} else if(p.列表[i].充值状态 == '已退款') {
+//									$(".zf_state").addClass("CZZ");
+									var g = document.getElementsByClassName("zf_state")[i];
+									$(g).addClass("CZSB");
+								}
+							});
+
+						} else if(p.状态 == "无更多数据") {
+							$('.CZRecord').append('<div class="bodyBg"><div class="content"><div><img class="tit_img"src="img/no_data.png"/></div><p class="no_Data">无数据</p></div></div>');
+						}
+					}
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<!--<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>自购油卡套餐</title>
+	<script src="js/util.js" type="text/javascript" charset="utf-8"></script>	
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" href="css/daigouyoukaCombo.css" />
+
+</head>
+
+<body>
+	<div class="content">
+		<ul id="combo_list">
+
+		</ul>
+	</div>
+	<script type="text/javascript" src="js/share.js"></script>
+	<script src="./js/jquery-3.1.1.min.js"></script>
+
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function () {
+			//获取账户、随机码
+			// var phone = decodeURI(html_name('phone'));
+			var onlyID = decodeURI(html_name('onlyID'));
+			var fwszt = '';
+			var data = {};
+			data.onlyID = onlyID;
+
+			data = JSON.stringify(data);
+			// $.ajax({
+			// 	url: "/ajax.post?func=fws_zhuangtai",
+			// 	type: "POST",
+			// 	data: 'data=' + data,
+
+			// 	success: function (p) {
+			// 		if (p.状态 == '成功') {
+			// 			console.log(p);
+			// 			if (p.服务商状态 == '否') {
+			// 				$('#combo_list ').each(function () {
+			// 					$(this).attr('class', 'fwsNo')
+			// 				})
+			// 			}
+			// 			else if (p.服务商状态 == '是') {
+			// 				$('#combo_list ').each(function () {
+			// 					$(this).attr('class', 'fwsYes')
+			// 				})
+			// 			}
+			// 		} else {
+			// 			console.log(p.状态);
+			// 		}
+			// 	}
+			// })
+
+			$.ajax({
+				url: "/ajax.post?func=CZ_YK_tclb",
+				type: "POST",
+				data: 'data=' + data,
+				success: function (p) {
+					if (p.状态 == '成功') {
+						console.log(p);
+						$.each(p.列表, function (i) {
+							if (p.列表[i].类别 == '加油套餐') {
+								$("#combo_list").append('<li class="combo"  data-id="' + p.列表[i].套餐id + '"><a href="#"><div class="con_left"><h2 id="combo_title1" class="combo_title">' +
+									p.列表[i].名称 + '</h2><span class="combo_sum">' +
+									p.列表[i].面值 + '</span></div><div class="con_right"><h2 id="combo_type1" class="combo_type ">' +
+									p.列表[i].类别 + '</h2><div class="comP"><p class="combo_plain" data-txt="' + p.列表[i].说明 + '">' +
+									p.列表[i].说明 + '</p></div><span class="triangle">三角形</span></div></a></li>');
+							}
+						});
+						//文字超出部分变成省略号
+						$(".comP").each(function (i) {
+
+							var divH = $(this).height();
+
+							var $p = $("p", $(this)).eq(0);
+
+							while ($p.outerHeight() >= divH) {
+								$p.text($p.text().replace(/(\s)*([a-zA-Z0-9]+|\W)(\.\.\.)?$/, "..."));
+							};
+						});
+
+						// $(".fwsNo").click(function () {
+						// 	var taocan = $(this).find(".combo_type").html();
+						// 	window.location.href = "zg_fwsmeg.html?phone=" + phone + "&random=" + random;
+						// });
+
+						$("#combo_list li").click(function () {
+							var taocan = $(this).find(".combo_type").html();
+							var tcID = $(this).attr("data-id");
+							var tcExplain = $(this).find(".combo_plain").attr("data-txt");
+							var tcNum = $(this).find(".combo_sum").html();
+							var tcTit = $(this).find(".combo_title").html();
+							setCookie("tcID", tcID);
+							setCookie("tcType", taocan);
+							setCookie("tcExplain", tcExplain);
+							setCookie("tcNum", tcNum);
+							setCookie("tcTit", tcTit);
+							window.location.href = "zg_agreement.html?onlyID="+onlyID ;
+						});
+					} else {
+					}
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script src="js/util.js"></script>   
+    <link href="css/common.css">
+    <link rel="stylesheet"href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/wdtc_yg.css">
+    <title>已购详情</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="xtcList">
+            <!--<div class="rowSty"><span class="cardExplain">商城消费金卡</span><span class="cardCountNum">21<span class="triangle"></span></span>   
+        </div>-->
+        </div>
+        <div class="interval"></div>
+        <div class="jtcList">
+        </div>
+        <!--<div class="rowSty ">套餐号<span class="cardTcID">107</span><span class="cardYeRow">余额&nbsp;&nbsp;<span class="cardYe">￥1100.00</span></span>
+        </div>
+
+        <div class="rowStyBig">
+        <span class="spanGray">月返日期</span> <span class="cardTime">每月23日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="spanGray">返到</span>&nbsp;&nbsp;<span class="jbjf">基本支付</span><p class="cardOption"><img class="optionImg" src="./img/ic_turn.png">绑定油卡 <img class="optionImgR" src="./img/ic_record.png">月返详情</p>
+        </div>
+
+        <div class="rowSty ">套餐号<span class="cardTcID">107</span><span class="cardYeRow">余额&nbsp;&nbsp;<span class="cardYe">￥1100.00</span></span>
+        </div>
+
+        <div class="rowSty">
+
+        <span class="spanGray">月返日期</span> <span class="cardTime">每月23日</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="spanGray">返到</span>&nbsp;&nbsp;<span class="jbjf">基本支付</span><p class="cardOption "><img class="optionImgR" src="./img/ic_record.png">月返详情</p>
+
+        </div> -->
+        <span class="toast">              
+        <span class="toast-su">我在测试看看</span>
+        </span>
+    </div>
+    <script src="./js/jquery-3.1.1.min.js"></script>  
+ 
+    <script src="./js/cookie.js"></script>
+    <script type="text/javascript" src="js/share.js"></script>  
+    <script>
+        $(function () {
+            var tcName = '';
+            var tcNum = '';
+            var tcMonth = '';
+
+			var onlyID = decodeURI(html_name('onlyID'));
+
+            // var data ={};
+            // data.账号 = phone;
+            // data.随机码 = random;
+            // data = JSON.stringify(data);
+
+            // $.ajax({
+            // 	url:"/ajax.post?func=ygxqjy",
+            // 	type:"POST",
+            // 	data:'data='+data,
+            // 	success: function(p){
+            // 		if(p.状态 == '成功'){
+
+            //             $.each(p.列表,function(i){
+            //                 $('.xtcList').append('<div class="rowSty"><span class="cardExplain">'+p.列表[i].套餐+'</span><span class="triangle"></span><span class="cardCountNum">'+p.列表[i].套餐总数+'</span>');                        
+            //             })
+            //              $('.xtcList .rowSty').click(function(){
+            //                 tcName=$(this).find(".cardExplain").html();
+            //                 tcNum=$(this).find(".cardCountNum").html();
+            //                 window.location.href="wdtc_ygRecordNew.html?phone="+phone+"&random="+random+"&tcName="+tcName+"&tcNum="+tcNum;
+            //             })  
+            // 			console.log(p);                 
+            // 		}else{
+            //             if(p.条数==0){
+            //                 t=3;
+            //                 toast("无新套餐已购详情");
+            //             }      
+            // 			console.log(p);
+            // 		}
+            // 	}
+            // })  
+            var t = 3;
+            function toast(status) {
+
+                $(".toast").show();
+                $(".toast .toast-su").html(status);
+                var i = setTimeout(toast, 1000);
+                t--;
+                if (t <= 0) {
+
+                    $(".toast").hide();
+                    clearTimeout(i);
+                }
+
+            }
+            var data1 = {};
+
+            data1.onlyID = onlyID;
+
+            data1 = JSON.stringify(data1);
+            $.ajax({
+                url: "/ajax.post?func=CZ_YK_ygxq",
+                type: "POST",
+                data: 'data=' + data1,
+
+                success: function (p) {
+                    if (p.状态 == '成功') {
+                        $.each(p.列表, function (i) {
+                            $('.jtcList').append(
+                                '<div class="rowSty"><span class="cardExplain">' + p.列表[i].录入时间 + '</span><span class="triangle"></span><span class="cardCountNum">' + p.列表[i].套餐总数 + '</span>');
+                        })
+                        $('.jtcList .rowSty').click(function () {
+                            tcName = $(this).find(".cardExplain").html();
+                            tcNum = $(this).find(".cardCountNum").html();
+                            window.location.href = "wdtc_ygRecordOld.html?onlyID=" + onlyID  + "&tcName=" + tcName + "&tcNum=" + tcNum;
+                        })
+
+                        if (p.条数 == 0) {
+                            t = 3;
+                            toast("无数据");
+                            $('.jtcList').append('<div class="bodyBg"><div class="content"><div><img class="tit_img"src="img/no_data.png"/></div><p class="no_Data">无数据</p></div></div>');
+                        }
+                    } else {
+
+                    }
+                }
+            })
+
+        })
+
+    </script>      
+</body>
+</html>

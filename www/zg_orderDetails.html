@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+	<title>订单详情</title>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" href="css/orderDetails.css" />
+	<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+	<!--<div class="header">
+			<span class="icon-chevron-left"></span>代购详情
+	</div>-->
+	<div class="orderDetails">
+		<div class="ord_money">
+			<p>杨军伟<span class="tcNum">10张</span></p>
+		</div>
+		<div class="ord_info">
+			<ul id="ord_detail">
+				<li>套餐号<span>123456</span></li>
+				<li>商品详情<span>商城消费金卡</span></li>
+				<li>购买数量<span>10</span></li>
+				<li>支付方式<span>支付宝</span></li>
+				<li>支付金额<span>950.00</span></li>
+				<li>创建时间<span>2016-01-01 0:00</span></li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/share.js"></script>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var onlyID = decodeURI(html_name('onlyID'));
+			var sel = '';
+			var data = {};
+			data.onlyID = onlyID;
+			data.客户账号 = 15113515131;
+			data = JSON.stringify(data);
+			console.log(data);
+			$.ajax({
+				url: "/ajax.post?func=CZ_YK_dgxq2",
+				type: "POST",
+				data: 'data=' + data,
+				success: function (p) {
+					console.log(p);
+					if (p.状态 == '成功') {
+						console.log(p);
+
+						// $(".orderDetails").append('<div class="ord_money"><h2 id="priceTag">'
+						// 	+ p.面值 + '</h2><button class="zhuangtai">'
+						// 	+ p.商状态 + '</button></div><div class="ord_info"><ul id="ord_detail"><li>订单详情<span>'
+						// 	+ p.套餐 + '</span></li><li>订单数量<span>'
+						// 	+ p.数量 + '</span></li><li>赠送金额<span>'
+						// 	+ p.赠送 + '</span></li><li>支付方式<span>'
+						// 	+ p.支付方式 + '</span></li><li>创建时间<span>'
+						// 	+ p.录入时间 + '</span></li><li>订&nbsp;单&nbsp;号<span>'
+						// 	+ p.卡号 + '</span></li></ul></div>')
+
+					} else {
+						console.log(p.状态);
+					}
+				}
+			});
+
+		});
+	</script>
+</body>
+
+</html>

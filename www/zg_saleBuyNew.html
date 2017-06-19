@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-tap-highlight" content="no">
+    <script src="js/util.js"></script>
+    <link href="css/common.css">
+    <link rel="stylesheet" <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/saleBuyNew.css">
+    <title>自购</title>
+</head>
+
+<body>
+    <div class="container">
+        <!--<div class="jiange"></div>-->
+        <div class="firTitleOne">
+            <div class="firTit">商品详细信息</div>
+            <span class="firSpanC"></span>
+            <span class="firSpanR"></span>
+            <div> </div>
+            <p class="firP"></p>
+        </div>
+
+        <div class="chooseCount">
+            <div class="choCount">
+                分公司编号：<input class="cityInput" id="branch-pro" type="text" readonly="true" onfocus="this.blur();" placeholder="请输入市代理分公司编号">
+            </div>
+            <div class="choMoney">
+                分公司编号：<input id="branch-socity" class="soicalInput" onfocus="this.blur();" type="text" readonly="true" placeholder="请输入社区代理分公司编号">
+            </div>
+        </div>
+
+        <div class="chooseCount">
+            <div class="choCount">
+                服务商手机：<input class="fwsMob" type="tel" maxlength="11" oninput="if(value.length>11)value=value.slice(0,11)"
+                    onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"
+                    onkeyup="if(event.keyCode==13)event.keyCode=9" onKeyPress="if ((event.keyCode<48 || event.keyCode>57 )) event.returnValue=false"
+                    placeholder="请输入服务商手机号">
+            </div>
+            <div class="choMoney">
+                服务商姓名：<input class="fwsName" type="text" readonly="true" onfocus="this.blur();">
+            </div>
+        </div>
+
+        <div class="chooseCount">
+            <div class="choCount">
+                数量
+                <div class="countFloat">
+                    <img class="choReduce" src="./img/ic_minusnumber.png"> &nbsp;
+                    <input class="inputCount" readonly="true" onfocus="this.blur();" type="number" max="10" value="1"> &nbsp;
+                    <img class="choPlus" src="./img/jai.png">
+                </div>
+            </div>
+
+            <div class="choMoney">
+                金额
+                <span class="choMonTxt">8888.00</span>
+            </div>
+        </div>
+
+        <div class="explain">
+            <span class="explainSpan">温馨提示</span>
+            <span class="explainSpan">1、每月可用金额会定期存放至您的油费账户中，套餐金额返完即止</span>
+            <span class="explainSpan">2、购买成功即会返还当月可用金额</span>
+        </div>
+
+        <button class="btnNxtCon">
+            下一步
+        </button>
+
+        <span class="toast">
+        <span class="toast-su">我在测试看看</span>
+        </span>
+
+        <!--模态-->
+        <div class="modal fade cityCon " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header mtTitle">
+                        <h4 class="modal-title " id="myModalLabel">市分公司编号<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;</h4>
+            </div>
+            <div class="modal-body">
+            <input class="cityD" type="number" placeholder="请输入分公司编号"style="height:2.5rem;line-height: 2.5rem;" >
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default cityBtn cityBtn1" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade cityCon" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header mtTitle">
+                        <h4 class="modal-title " id="myModalLabel">市分公司编号<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;</h4>
+            </div>
+            <div class="modal-body">
+            <input class="socialD" type="number" placeholder="请输入分公司编号"style="height:2.5rem;line-height: 2.5rem;" >
+            </div>
+
+            <div class="modal-footer">
+                <button  type="button" class="btn btn-default cityBtn cityBtn2" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup">
+        </div>
+        <div class="popup-text">
+            <div class="corr">
+                <span class="span-text"><span class="span-name">市分公司编号	
+				</span><span id="close"><img src="img/close_btn.png"/></span></span>
+            </div>
+            <input type="tel" id="" placeholder="请输入分公司编号" oninput="if(value.length>11)value=value.slice(0,11)" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                onafterpaste="this.value=this.value.replace(/\D/g,'')" onkeyup="if(event.keyCode==13)event.keyCode=9" onKeyPress="if ((event.keyCode<48 || event.keyCode>57 )) event.returnValue=false">
+            <span class="comfrim">确定</span>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/share.js"></script>
+    <script src="./js/jquery-3.1.1.min.js"></script>
+    <script src="./js/cookie.js"></script>
+    <!--<script src="./js/bootstrap.min.js"></script>-->
+    <script>
+        $(function () {
+
+            var onlyID = decodeURI(html_name('onlyID'));
+            var cityID = '';
+            var cityIDg = "";
+            var soicalIDg = "";
+            var soicalID = '';
+
+            var tcID = getCookie("tcID");
+
+            //获取卡片头部
+            var name = getCookie("name");
+            var tcExplain = getCookie("tcExplain");
+            var tcNum = getCookie("tcNum");
+            var tcTit = getCookie("tcTit");
+
+            //获取最近输入的值
+            var daCookie1 = '';
+            var daCookie2 = '';
+            var daCookie3 = '';
+            var daCookie4 = '';
+            var daCookie5 = '';
+            var daCookie6 = '';
+
+            var winHeight = $(window).height();
+            $(window).resize(function () {
+                var thisHeight = $(this).height();
+                if (winHeight - thisHeight > 50) {
+                    //窗口发生改变(大),故此时键盘弹出
+                    //当软键盘弹出，在这里面操作
+                    $('.btnNxtCon').css({
+                        'display': 'none'
+                    });
+                    $(".popup-text").css("top", "2.5rem");
+                } else {
+                    //窗口发生改变(小),故此时键盘收起
+                    //当软 键盘收起，在此处操作
+                    $('.btnNxtCon').css({
+                        'display': 'block'
+                    });
+                    $(".popup-text").css("top", "6rem");
+                }
+            });
+
+            //设置卡片头部
+            $('.firSpanC').html(tcTit);
+            $('.firSpanR').html(tcNum);
+            $('.choMonTxt').html(tcNum);
+            $('.firP').html(tcExplain);
+
+            var t = 3;
+            function toast(status) {
+                $(".toast").show();
+                $(".toast .toast-su").html(status);
+                var i = setTimeout(toast, 1000);
+                t--;
+                if (t <= 0) {
+                    $(".toast").hide();
+                    clearTimeout(i);
+                }
+            }
+
+            //数量的加减号
+            $('.choPlus').click(function () {
+                var inputNumAdd = $('.inputCount').val();
+                if (inputNumAdd < 10) {
+                    inputNumAdd++;
+                    $('.inputCount').val(inputNumAdd);
+                    $('.choMonTxt').html((inputNumAdd * tcNum) + '.00');
+                    console.log(inputNumAdd);
+                }
+            });
+
+            $('.choReduce').click(function () {
+                var inputNumRe = $('.inputCount').val();
+
+                if (inputNumRe > 1) {
+                    inputNumRe--;
+                    $('.inputCount').val(inputNumRe);
+                    $('.choMonTxt').html((inputNumRe * tcNum) + '.00');
+                    console.log(inputNumRe);
+                }
+            });
+
+            //弹窗 提示框
+            function poptextHide() {
+                $(".popup").hide();
+                $(".popup-text").hide();
+            }
+            function poptextShow() {
+                $(".popup").show();
+                $(".popup-text").show();
+            }
+            $(".popup-btn").click(function () {
+                poptextShow();
+            });
+            $("#close").click(function () {
+                poptextHide();
+            });
+            $("#branch-pro").click(function () {
+                $(".span-name").html("市分公司编号")
+                poptextShow();
+            });
+            $("#branch-socity").click(function () {
+                $(".span-name").html("社区分公司编号")
+                poptextShow();
+                $(".popup-text").find("input").val("");
+            });
+            $(".fwsMob").focus(function () {
+                $('.btnNxtCon').attr('disabled', true);
+            });
+            $(".fwsMob").blur(function () {
+                $('.btnNxtCon').attr('disabled', false);
+            });
+
+            //自动填写上级及分公司
+            var dataA = {};
+
+            dataA.类别 = '自助开卡';
+            dataA.onlyID = onlyID;
+            dataA = JSON.stringify(dataA);
+            $.ajax({
+                url: "/ajax.post?func=CZ_YK_xdcx",
+                type: "POST",
+                data: 'data=' + dataA,
+
+                success: function (p) {
+                    if (p.状态 == '成功') {
+
+                        var isChange = getCookie("isChange");
+                        console.log(isChange);
+
+                        if (isChange == '成功') {
+                            console.log("156156161561")
+                            $('.fwsName').val(getCookie("daCookie1"));
+                            $('.fwsMob').val(getCookie("daCookie2"));
+                            cityID = getCookie("daCookie3");
+                            $('.cityInput').val(getCookie("daCookie4"));
+                            soicalID = getCookie("daCookie5");
+                            $('.soicalInput').val(getCookie("daCookie6"));
+                        } else {
+                            console.log("abdhdhfkjde")
+                            $('.fwsName').val(p.上级姓名);
+                            $('.fwsMob').val(p.上级);
+                            $('.soicalInput').val(p.社区代理分公司名称);
+                            $('.cityInput').val(p.市代理分公司名称);
+                            soicalID = p.社区代理分公司id;
+                            setCookie("soicalIDg", soicalID);
+                            cityID = p.市代理分公司id;
+                            setCookie("cityIDg", cityID);
+                        }
+
+                    } else {
+                        $('.fwsMob').val('');
+                        $('.fwsName').val('');
+                        console.log(p.状态);
+                        t = 3;
+                        toast(p.状态);
+                    }
+                }
+            })
+
+            //服务商手机号查询
+            $('.fwsMob').change(function () {
+                var dataFws = {};
+
+                dataFws.服务商手机号 = $('.fwsMob').val();
+                dataFws.onlyID = onlyID;
+
+                dataFws = JSON.stringify(dataFws);
+
+                $.ajax({
+                    url: "/ajax.post?func=CZ_YK_sjcx",
+                    type: "POST",
+                    data: 'data=' + dataFws,
+
+                    success: function (p) {
+                        if (p.状态 == '成功') {
+                            $('.fwsName').val(p.姓名);
+                            console.log(p);
+
+                        } else {
+                            $('.fwsMob').val('');
+                            $('.fwsName').val('');
+
+                        }
+                    }
+                })
+            });
+
+            // $('.inputCount').change(function () {
+            //     var inputNumRe = $('.inputCount').val();
+            //     $('.choMonTxt').html((inputNumRe * tcNum) + '.00');
+            // })
+
+            $('.inputCount').bind('input propertychange', function () {
+                var inputNumRe = $(".inputCount").val();
+                $(".choMonTxt").html((inputNumRe * tcNum).toFixed(2));
+            });
+
+            //市分公司    
+            $('.popup-text .comfrim').click(function () {
+                if ($(".span-name").html() == '市分公司编号') {
+                    var data2 = {};
+
+                    data2.onlyID = onlyID;
+                    data2.市分公司编号 = $('.popup-text input').val();
+                    console.log(data2.市代理分公司编号);
+                    data2.社区分公司编号 = soicalID;
+
+                    data2 = JSON.stringify(data2);
+
+                    console.log(data2);
+                    console.log("++++++++");
+
+                    $.ajax({
+                        url: "/ajax.post?func=CZ_YK_fgscx",
+                        type: "POST",
+                        data: 'data=' + data2,
+
+                        success: function (p) {
+                            if (p.状态 == '成功') {
+                                console.log(p);
+                                cityID = $('.popup-text input').val();
+                                setCookie("cityIDg", cityID);
+                                $('.cityInput').val(p.市名称);
+                                $('.popup-text input').val('');
+                            } else {
+                                t = 3;
+                                console.log(p.状态)
+                                toast(p.状态);
+
+                                $('.popup-text input').val('');
+                            }
+                        }
+                    })
+                    poptextHide();
+                } else {
+                    //代理分公司    
+                    var data3 = {};
+
+                    data3.onlyID = onlyID;
+                    data3.市分公司编号 = cityID;
+                    data3.社区分公司编号 = $('.popup-text input').val();
+
+                    data3 = JSON.stringify(data3);
+
+                    console.log(data3);
+                    console.log("++++++++");
+
+                    $.ajax({
+                        url: "/ajax.post?func=CZ_YK_fgscx",
+                        type: "POST",
+                        data: 'data=' + data3,
+
+                        success: function (p) {
+                            if (p.状态 == '成功') {
+                                console.log(p);
+                                soicalID = $('.popup-text input').val();
+                                setCookie("soicalIDg", soicalID);
+                                $('.soicalInput').val(p.社区名称);
+                                $('.popup-text input').val('');
+                            } else {
+                                t = 3;
+                                console.log(p.状态)
+                                toast(p.状态);
+                                $('.popup-text input').val('');
+                            }
+                        }
+                    })
+
+                }
+                poptextHide();
+            })
+
+            $(' .btnNxtCon').click(function () {
+
+                var data = {};
+                cityIDg = getCookie("cityIDg");
+                soicalIDg = getCookie("soicalIDg");
+
+                data.服务商姓名 = $('.fwsName').val();
+                data.市分公司名称 = $('.cityInput').val();
+                data.社区分公司名称 = $('.soicalInput').val();
+
+                data.社区分公司编号 = soicalIDg;
+                data.市分公司编号 = cityIDg;
+                data.服务商手机号 = $('.fwsMob').val();
+                data.套餐id = tcID;
+                data.数量 = $('.inputCount').val();
+                data.onlyID = onlyID;
+                data = JSON.stringify(data);
+
+                console.log(data);
+                console.log("++++++++");
+
+                $.ajax({
+                    url: "/ajax.post?func=CZ_YK_zgxd",
+                    type: "POST",
+                    data: 'data=' + data,
+                    success: function (json) {
+                        console.log(json);
+                        if (json.状态 == '成功') {
+                            console.log(json.状态)
+
+                            isChange = '成功';
+                            setCookie("isChange", isChange);
+                            setCookie("daCookie1", $('.fwsName').val());
+                            setCookie("daCookie2", $('.fwsMob').val());
+                            setCookie("daCookie3", cityIDg);
+                            setCookie("daCookie4", $('.cityInput').val());
+                            setCookie("daCookie5", soicalIDg);
+                            setCookie("daCookie6", $('.soicalInput').val());
+
+                            var prams = "prepay_id=" + json.prepay_id + "&appid=" + json.appid + "&onlyID=" + json.onlyID + "&sign=" + json.sign;
+                            window.location.href = json.收银台 + "?" + prams;
+
+                            //清除数据
+                            // $('.cityInput').val("");
+                            // $('.soicalInput').val("");
+                            // $('.fwsMob').val("");
+                            // $('.fwsName').val("");
+                            // $('.inputCount').val("1");
+                            // cityIDg = '';
+                            // soicalIDg = '';
+                            // delCookie("cityIDg");
+                            // delCookie("soicalIDg");
+                        } else {
+                            t = 3;
+                            console.log(json.状态)
+                            toast(json.状态);
+                        }
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>

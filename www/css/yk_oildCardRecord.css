@@ -1,0 +1,137 @@
+.yk_oildCardRecord{
+	width:18rem;
+	margin: 0 auto;
+}
+.record_list{
+	width:18rem;
+	background: #fff;
+	margin-top: 0.5rem;
+	padding: 0.75rem 0;
+	overflow: hidden;
+}
+.record_list .record_info{
+	width:18rem;
+	
+}
+.record_list .record_info p.re_cardNum{
+	font-size:0.8rem;
+	padding-left: 0.75rem;
+	color:#333;
+	border-left:3px solid #2B9CED;
+	
+}
+.record_list .record_info span.re_cardState{
+	display: inline-block;
+	padding:0.1rem 0.25rem;
+	line-height: 0.75rem;
+	font-size: 0.45rem;
+	text-align: center;
+	margin-left: 10.75rem;
+		
+}
+.record_list .record_info span.yzzyk{
+	border:1px dotted #FFBB4E;
+	color: #FFBB4E;
+} 
+.record_list .record_info span.zrz{
+	border:1px dotted #F84838;
+	color: #F84838;
+} 
+.record_list .record_info span.zf{
+	border:1px dotted #999;
+	color: #999;
+} 
+.record_list .record_info P.re_cardPrice{
+	width: 16.5rem;
+	margin:0.2rem 0.75rem;
+	padding-bottom: 0.55rem;
+	text-align: center;
+	font-size: 0.7rem;
+	color: #2B9CED;
+	border-bottom: 1px solid #e0e0e0;
+}
+.record_list .record_info P.zfCard{
+	color: #999;
+}
+.record_list .record_info P.re_cardPrice>span.re_priceNum{
+	font-size: 0.9rem;
+}
+.record_list ul.record_detail{
+	overflow: hidden;
+	width: 16.5rem;
+	margin: 0 0.75rem;
+}
+.record_list ul.record_detail li{
+	height:0.9rem;
+	line-height:0.8rem;
+	font-size:0.8rem;
+	color: #999;
+	margin-bottom: 0.1rem;
+	overflow: hidden;
+}
+.record_list ul.record_detail li span{
+	float:right;
+	color: #666;
+	height:0.9rem;
+	line-height:0.65rem;
+	font-size:0.65rem;
+	display: block;
+	padding: 0;
+	
+}
+ .toast{
+  width: 18rem;
+  height: 2rem;
+  line-height: 2rem;
+  display: inline-block;
+  position: fixed;
+  font-size: .65rem;
+  left: 0;
+  top:50%;
+  z-index: 111111;
+  text-align: center;
+  display: none;
+}
+.toast .toast-su {
+    height: 2rem;
+    line-height: 2rem;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #666;
+    border: 0.05rem solid #dfdfdf;
+    -webkit-border-radius: .25rem;
+    -moz-border-radius: .25rem;
+    -webkit-border-radius: .25rem;
+    -moz-border-radius: .25rem;
+    font-size: .6rem;
+    color: #fff;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+.more{
+	text-align:center;
+	color: white;
+	height:2rem;
+	line-height: 2rem;
+	margin-top: 0.375rem;
+	background-color: #C01923;
+	margin-bottom: 0.375rem;
+	font-size: 0.75rem;
+}
+.nothing{
+	text-align: center;
+	color: #000000;
+	height:2rem;
+	line-height: 2rem;
+	margin-top: 0.375rem;
+	background-color: white;
+	margin-bottom: 0.375rem;
+	font-size: 0.75rem;
+}
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}

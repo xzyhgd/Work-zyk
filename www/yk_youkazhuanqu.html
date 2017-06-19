@@ -1,0 +1,171 @@
+<!--修改时间:2017年5月15日-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+	<title>加油卡专区</title>
+	<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" href="css/yk_youkaIndex.css" />
+</head>
+
+<body>
+	<div class="OilCardZone">
+		<div class="card card_click">
+			<div class="card_list" id="youhuiquan"><img src="img/youhuiquan_btn.png" class="card_icon" /><span class="card_txt">我的优惠券</span><img src="img/next.png" alt="下一步"
+				 class="next" /></div>
+			<div class="card_list" id="ykchongzhi"><img src="img/chongzhi_btn.png" class="card_icon" /><span class="card_txt">油卡充值</span><span class="rig_txt">充值记录<img src="img/next.png" alt="下一步" class="next" /></span></div>
+		</div>
+		<div class="card card_sum">
+			<ul class="sel_sum">
+				<!--<li class="sel_account">
+						<a href="javascript:volid(0);"><span id="jifen_num" data-sum="">￥200</span><br/><span class="dis_type" style="color:#666">中石化充值</span></a>
+					</li>
+					<li class="sel_account">
+						<a href="javascript:volid(0);"><span id="jifen_num" data-sum="">￥500</span><br/><span class="dis_type" style="color:#666">中石化充值</span></a>
+					</li>
+					<li class="sel_account">
+						<a href="javascript:volid(0);"><span id="jifen_num" data-sum="">￥1000</span><br/><span class="dis_type" style="color:#666">中石化充值</span></a>
+					</li>
+					<li class="sel_account">
+						<a href="javascript:volid(0);"><span id="jifen_num" data-sum="">￥200</span><br/><span class="dis_type" style="color:#666">中石油充值</span></a>
+					</li>
+					<li class="sel_account">
+						<a href="javascript:volid(0);"><span id="jifen_num" data-sum="">￥ 500</span><br/><span class="dis_type" style="color:#666">中石油充值</span></a>
+					</li>-->
+			</ul>
+		</div>
+		<div class="card sel_taocan">
+			<p class="youka_func"><img src="img/youkataocan_btn.png" class="yk_btn" /><span class="goumai_txt">购买油卡套餐</span><span class="yigou_func">我的套餐<img src="img/next.png" alt="下一步" class="next" /></span></p>
+		</div>
+		<div class="wode_func">
+			<ul id="combo_list">
+			</ul>
+		</div>
+	</div>
+	<span class="toast">
+            <span class="toast-su">我在测试看看</span>
+	</span>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/share.js"></script>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var onlyID = decodeURI(html_name('onlyID'));
+		$(function () {
+			var dataz = {};
+			dataz.onlyID = onlyID;
+			dataz.开卡 = '自购';
+			dataz = JSON.stringify(dataz);
+			//后台返回金额
+			$.ajax({
+				url: "/ajax.post?func=CZ_YK_czsz",
+				type: "POST",
+				data: 'data=' + dataz,
+				success: function (p) {
+					console.log(p);
+					$.each(p.列表, function (i) {
+						$(".sel_sum").append('<li class="sel_account" data-proType="' +
+							p.列表[i].加油卡类型 + '" data-proId="' +
+							p.列表[i].产品id + '"><a href="javascript:volid(0);" class="canDo"><span id="jifen_num" data-sum="' +
+							p.列表[i].金额 + '">' +
+							p.列表[i].名称.substring(3) + '</span><br/><span class="dis_type">' +
+							p.列表[i].名称.substr(0, 3) + '</span></a></li>');
+					});
+					$(".sel_account").click(function () {
+						//充值金额
+						var czPrice = $(this).find("span#jifen_num").attr("data-sum");
+						//加油卡类型（1/2）
+						var jykType = $(this).attr("data-proType");
+						//产品id
+						var czProId = $(this).attr("data-proId");
+						//油卡类型（个人中石油、中石化）
+						var czType = "个人" + $(this).find("span.dis_type").html();
+
+						setCookie("czPrice", czPrice);
+						setCookie("jykType", jykType);
+						setCookie("czProId", czProId);
+						setCookie("czType", czType);
+
+						//							$(this).css({"background-color":"#49a9ee","box-sizing":"border-box"});
+						//							$(this).find("span#jifen_num").css("color","#fff");
+
+						var flag = 1;
+						var tzyhq = '';
+						setCookie("tzyhq", tzyhq);
+						window.location.href = "yk_youkaPay.html?onlyID=" + decodeURI(html_name('onlyID')) + "&flag=" + flag;
+					});
+				}
+			});
+			//点击跳转到我的优惠券
+			$("#youhuiquan").click(function () {
+				window.location.href = "yk_Coupon.html?onlyID=" + onlyID;
+			});
+
+			//点击跳转到充值记录
+			$("#ykchongzhi").click(function () {
+				window.location.href = "yk_CZRecord.html?onlyID=" + onlyID;
+
+			});
+			//点击跳转到我的套餐
+			$(".yigou_func").click(function () {
+				window.location.href = "yk_myPlanClick.html?onlyID=" + onlyID;
+			});
+
+			//自购套餐
+			$.ajax({
+				url: "/ajax.post?func=CZ_YK_tclb",
+				type: "POST",
+				data: 'data=' + dataz,
+				success: function (p) {
+					if (p.状态 == '成功') {
+
+						console.log(p.列表);
+						$.each(p.列表, function (i) {
+							$("#combo_list").append('<li> <div class="con_left"  data-id="' + p.列表[i].套餐id + '" data-type="' + p.列表[i].类别 + '" data-sum="' + p.列表[i].面值 + '"><img src="' + p.列表[i].图片地址 + '" /></div><div class="con_right"><h2 class="combo_title">' + p.列表[i].名称 + '</h2>' +
+								'<p class="combo_plain" data-txt="' + p.列表[i].说明 + '">' +
+								p.列表[i].说明 + '</p>' +
+								'<button class="buyNow">立即购买</button></div></li>');
+						});
+
+						$("#combo_list li .buyNow").click(function () {
+
+							var taocan = $(this).closest('.con_right').closest('li').find('.con_left').attr("data-type");
+							var tcID = $(this).closest('.con_right').closest('li').find('.con_left').attr("data-id");
+							var tcExplain = $(this).closest('.con_right').find(".combo_plain").attr("data-txt");
+							var tcNum = $(this).closest('.con_right').closest('li').find('.con_left').attr("data-sum");
+							var tcTit = $(this).closest('.con_right').find(".combo_title").html();
+							var isChange = '';
+
+							setCookie("tcID", tcID);
+							setCookie("tcType", taocan);
+							setCookie("tcExplain", tcExplain);
+							setCookie("tcNum", tcNum);
+							setCookie("tcTit", tcTit);
+							setCookie("isChange", isChange);
+							window.location.href = "zg_saleBuyNew.html?onlyID=" + decodeURI(html_name('onlyID'));
+						});
+					} else { }
+				}
+			});
+			//toast提示框
+			var t = 3;
+
+			function toast(status) {
+				console.log(t);
+				$(".toast").show();
+				$(".toast .toast-su").html(status);
+				var i = setTimeout(toast, 1000);
+				t--;
+				if (t <= 0) {
+					$(".toast").hide();
+					clearTimeout(i);
+				}
+			}
+		});
+	</script>
+</body>
+
+</html>

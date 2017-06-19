@@ -1,0 +1,195 @@
+        body {
+            background-color: #f1ffff;
+        }
+
+        .head img {
+            width: 100%;
+        }
+
+        .lqBtn img {
+            margin: 0.9rem 3.9rem 1.1rem 3.9rem;
+            width: 9.8rem;
+            height: 2.3rem;
+        }
+
+        .lqBtn {
+            background-color: #f1ffff;
+        }
+
+        .explain {
+            background-color: #f1ffff;
+            font-size: 0.7rem;
+            line-height: 1.3rem;
+        }
+
+        .explain span {
+            display: inline-block;
+            margin-left: 2.05rem;
+        }
+
+        .explain p {
+            margin-left: 2.05rem;
+        }
+        /*弹窗*/
+
+        .popup {
+            width: 18rem;
+            height: 34rem;
+            position: fixed;
+            z-index: 999;
+            background: #999;
+            opacity: .8;
+            top: 0;
+            left: 50%;
+            margin-left: -9rem;
+            display: none
+        }
+
+        .tiqu {
+            width: 16rem;
+            height: 11.8rem;
+            position: fixed;
+            z-index: 77777;
+            border-radius: 0.2rem;
+            -webkit-border-radius: .2rem;
+            -moz-border-radius: .2rem;
+
+            background-color: #fff;
+            left: 50%;
+            margin-left: -8rem;
+            top: 8rem;
+            display: none;
+        }
+
+        .tiqu .tip {
+            width: 16rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            padding-top: 1.25rem;
+            color: #333;
+            font-size: .8rem;
+            display: inline-block;
+
+            text-align: center;
+        }
+
+        .tipShu {
+            width: 16rem;
+            height: 3rem;
+            margin: 0 0.75rem;
+            padding-top: 1.5rem;
+        }
+
+        .tipShu .fr {
+            width: 2.125rem;
+            height: 2.125rem;
+            text-align: center;
+            display: inline-block;
+            float: left;
+            padding-bottom: .2rem;
+        }
+
+        .shuru {
+            margin: 0 0 0 1.25rem;
+            width: 9.8rem;
+            height: 1.8rem;
+            line-height: 1.1rem;
+            border: none;
+            font-size: .6rem;
+            display: inline-block;
+
+            padding-bottom: .1rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #tiqu1 .tipShu .shuruSp {
+            text-align: center;
+            margin: 0 auto;
+            line-height: 2.1rem;
+            font-size: 0.85rem;
+        }
+        #tiqu2 .shuru{
+            font-size: 1.1rem;
+        }
+        .tipShu .shuruSp {
+            text-align: center;
+            margin: 0 auto;
+            line-height: 2.1rem;
+        }
+
+        .tiqu .but {
+            width: 15rem;
+            height: 2.2rem;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+        }
+
+        .but .yes,
+        .no {
+            width: 7.2rem;
+            height: 2.2rem;
+            line-height: 2.2rem;
+            text-align: center;
+            font-size: .8rem;
+            display: inline-block;
+            float: left;
+            border-radius: 0.2rem;
+            -webkit-border-radius: .2rem;
+            -moz-border-radius: .2rem;
+        }
+
+        .no {
+
+            background-color: #f5f5f5;
+            color: #333;
+            border: .05rem solid #d8d8d8;
+        }
+        #tiqu2 .no{
+            margin-left: 1.65rem;
+            width: 11.2rem;
+            height: 2.2rem;
+            line-height: 2.2rem;
+            text-align: center;
+            font-size: .8rem;
+            display: inline-block;
+            float: left;
+            border-radius: 0.2rem;
+            -webkit-border-radius: .2rem;            
+        }
+        .yes {
+            background-color: #42a6f0;
+            margin-left: .4rem;
+            color: #fff;
+            border: .05rem solid #268ad1;
+        }
+        /*toast*/
+                .toast{
+        width: 18rem;
+        height: 2rem;
+        line-height: 2rem;
+        display: inline-block;
+        position: fixed;
+        font-size: .65rem;
+        left: 0;
+        bottom:5rem;
+        z-index: 111111;
+        text-align: center;
+        display: none;
+        }
+        .toast .toast-su {
+            height: 2rem;
+            line-height: 2rem;
+            display: inline-block;
+            margin: 0 auto;
+            background-color: #666;
+            border: 0.05rem solid #dfdfdf;
+            -webkit-border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            -webkit-border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            font-size: .6rem;
+            color: #fff;
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }   

@@ -1,0 +1,424 @@
+        body{
+            background-color: #efefef;
+            /*height: 100%;*/
+                overflow-x: hidden;
+        }
+        .css {
+            -webkit-transform-style: preserve-3d;
+            -webkit-backface-visibility: hidden;
+            -webkit-perspective: 1000;
+        }   
+        input:focus,button:focus,select:focus,option:focus{outline: none;}            
+        * {
+        -webkit-touch-callout:none;
+        /*-webkit-user-select:none;*/
+        -khtml-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
+        -webkit-appearance :none;
+        } 
+        .container{
+            padding: 0;
+            height: 20rem;
+        }
+
+        @media (max-width:320px){
+         html{
+                    font-size: 12px;
+                }
+		}
+    /*标题*/
+        .jiange{
+            height: 0.7rem;
+            background-color: #f5f6f7;
+        }
+
+        .firTit{
+            height: 2rem;
+            width: 16.5rem;
+            margin: 0 auto;
+            padding: 0.5rem 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .firTitleOne{
+            width: 100%;
+            text-align:center;
+            min-height: 4rem;
+            padding: 0 0.75rem 0.75rem 0.75rem;
+            background-color: white;
+            
+        }
+        .firSpanC{
+            /*position: relative;
+            left: 1.5rem;*/
+            float: left;
+            font-size: 0.7rem;
+            color: #333333;
+            padding: 0.5rem 0;
+        }
+        .firSpanR{
+            float: right;
+            font-size: 0.7rem;
+            color: #333333;
+            color: #F9483C;
+            padding: 0.5rem 0;
+        }
+        .firP{
+            font-size: 0.7rem;
+            color: #555555;
+            padding: 2rem 0 0 0;
+            word-wrap: break-word;
+            word-break: normal;
+            text-align: left;
+
+            /*text-overflow:ellipsis;
+            overflow: hidden;
+            white-space: nowrap;*/
+        }
+
+    /*数量&金额*/
+        .chooseCount{
+            height: 4rem;
+            font-size: 0.7rem;
+            margin: 0.55rem 0;
+            padding: 0 0.75rem;
+            background-color: white;
+            width: 100%;
+
+            /*width: 16.5rem;
+            height: 2.25rem;
+            line-height: 2.25rem;
+            font-size: 0.7rem;
+            margin: 0 auto;
+            border-bottom: 1px solid #efefef;           */
+
+        }
+        .choCount,.choMoney{
+            height: 2rem;
+            line-height: 2rem;
+            font-size: 0.8rem;
+            color: #333333;
+        }
+        .choCount{
+            border-bottom:0.05rem solid lightgray;
+        }
+
+        /*数量框*/
+        .countFloat{
+            float: right;
+            height: 2rem;
+            line-height: 2rem;
+        }
+        input{
+            padding: 0;
+            outline: none;
+            border: none;  
+            text-align:left;   
+            font-size:0.75rem; 
+                width: 9.5rem;
+        }
+        input[placeholder]{
+
+            color: #999;
+        }        
+        .inputCount[disabled]{
+        background-color: #FFFFFF;
+        color:#000000;
+        }        
+        .choCount .inputCount{
+            border: 0.08rem solid #ccc;
+            font-size: 0.75rem;
+            height: 1.25rem;
+            width: 2rem;
+            text-align: center;
+            line-height: 0.75rem;
+            -webkit-border-radius: 0.15rem;
+            -moz-border-radius: 0.15rem;
+            box-sizing: border-box;
+            display: inline-block;
+            /*padding-top: 0.28rem;
+            padding-bottom: 0.28rem;*/
+        }
+
+        .choPlus{
+            height: 0.8rem;
+            width: 0.8rem;
+        }
+        
+        .choReduce{
+            width: 0.8rem;           
+        }
+
+        .choMonTxt{
+            /*position: relative;
+            left:2rem;*/
+            float: right;
+            font-size: 0.95rem;
+            color: #F8483B;
+        }
+    /*服务商*/
+    .choCount input{
+        height: 1rem;
+        text-align: left;
+        line-height: 1rem;
+    }
+    /*后台获取*/
+        .describe{
+            background-color: white;
+            height: 4rem;
+            line-height: 3rem;
+            padding: 0.75rem;
+        }
+        .inputDes{
+            padding: 0;
+            border: none;
+            font-size: 1rem ;
+            color: #949494;
+        }
+        .inputDesNum{
+            float: right;
+            width: 2rem;
+            padding: 0;
+            border: none;
+            font-size: 1rem ;
+        }
+    /*下一步*/
+        .btnNxtCon{        
+            margin-top:1rem;   
+            font-size: 0.8rem;
+            position:fixed;
+            bottom:0;
+            height: 2rem;
+            line-height: 2rem;
+            width: 100%;
+            text-align: center;
+            display:block;
+            background-color: #2a9ded;
+            color: #eaf6fe;
+            border: none;
+        }
+
+        .toast{
+            width: 18rem;
+            height: 2rem;
+            line-height: 2rem;
+            display: inline-block;
+            position: fixed;
+            font-size: .65rem;
+            left: 0;
+            bottom:5rem;
+            z-index: 111111;
+            text-align: center;
+            display: none;
+         }
+
+        .toast .toast-su {
+            height: 2rem;
+            line-height: 2rem;
+            display: inline-block;
+            margin: 0 auto;
+            background-color: #666;
+            border: 0.05rem solid #dfdfdf;
+            border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            -webkit-border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            font-size: .6rem;
+            color: #fff;
+            padding-left: .5rem;
+            padding-right: .5rem;
+         }
+
+        
+
+        .explain{
+            height: 6.5rem;
+            padding: 0.3rem;
+        }
+
+        .explainSpan{
+            display: inline-block;
+            font-size: 0.6rem;
+            color: #666;
+        }
+
+        /*模态*/
+        .mtTitle{
+            background-color: #2b9bed;
+            color: white;
+            text-align: center;
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+        .modal-footer{
+            text-align: center;
+            border: none;
+        }
+
+        .cityBtn{
+        background-color: #2b9bed;
+        color: white;
+        width: 40%;
+        line-height: 1rem;
+        }
+
+         .close{
+            /*background-color: black;*/
+            color:#ffffff;
+            opacity: 1 !important;
+        }
+        .modal-body{
+            height: 4.5rem;
+            line-height: 4.5rem;
+            text-align: center;
+        }
+
+        .modal-content{
+                border-radius: 0.6rem;
+        }
+
+        .modal-body input{
+			border-radius: 0.5rem;
+			-moz-border-radius: .5rem;
+			-webkit-border-radius: .5rem;
+            width: 80%;
+            font-size: .75rem;
+            text-align: center;
+            background-color: #eeeeee;
+            color: #bebebe;
+        }
+
+        .modal-dialog{
+            margin-top: 35%;
+        }
+
+        .cityCon .modal-header{
+            padding: 0.2rem;
+        }
+
+        .cityCon .modal-header .close {
+            padding-right: 0.3rem;
+        }
+
+        .cityCon .modal-dialog{
+            padding: 1.7rem;
+        }
+
+        /*模态*/
+        .popup{
+        width: 18rem;
+        height: 34rem;
+        position: fixed;
+        z-index: 999;
+        background:rgb(153,153,153);
+        opacity: .8;
+        top: 0;
+        left: 50%;
+        margin-left: -9rem;
+        display: none;
+        }
+        .popup-text{
+        width: 15.5rem;
+        height: 8.75rem;
+        background-color: #fff;
+        position: fixed;
+        z-index: 1000;
+        top:8rem;
+        left: 42%;
+        margin-left: -6.35rem;
+        -webkit-border-radius: .2rem;
+        -moz-border-radius: .2rem;
+        display: none;
+        overflow: hidden;
+        }
+        .popup-text .span-text{
+        width: 15.5rem;
+        height: 1.75rem;
+        line-height: 1.75rem;
+        text-align: center;
+        font-size: .8rem;
+        display: block;
+        background-color: #2b9bed;
+        color: #fff;
+        -webkit-border-top-left-radius: .2rem;
+        -webkit-border-top-right-radius: .2rem;
+        }
+        .popup-text .span-text .span-name{
+        float:left;
+        margin-left: 35%;
+        }
+        .popup-text .span-text #close{
+        float:right;
+        display: inline-block;
+        margin-right: 0.75rem;
+        }
+        .popup-text .span-text #close>img{
+        width:0.7rem;
+        height:0.7rem;
+        margin-bottom: 0.1rem;
+        }
+        .popup-btn{
+        width: 0.75rem;
+        height: 0.75rem;
+        top: 0.35rem;
+        right: .5rem;
+        position: absolute;
+        }
+        .popup-text input{
+        width: 11.5rem;
+        height: 1.65rem;
+        display: inline-block;
+        text-align: center;
+        margin-top: 1.6rem;
+        margin-left: 2rem;
+        background-color: #eee;
+        font-size: .75rem;
+        -webkit-border-radius: .2rem;
+        border: none;
+        }
+        .comfrim{
+        width: 6.5rem;
+        height:1.5rem ;
+        line-height: 1.5rem;
+        background-color: #2b9bed;
+        color: #fff;
+        display: inline-block;
+        margin-top: 1.4rem;
+        margin-left: 4.5rem;
+        text-align: center;
+        -webkit-border-radius:.2rem;
+        font-size:.8rem;
+        }
+        .toast{
+        width: 18rem;
+        height: 2rem;
+        line-height: 2rem;
+        display: inline-block;
+        position: fixed;
+        font-size: .65rem;
+        left: 0;
+        bottom:5rem;
+        z-index: 111111;
+        text-align: center;
+        display: none;
+        }
+        .toast .toast-su {
+            height: 2rem;
+            line-height: 2rem;
+            display: inline-block;
+            margin: 0 auto;
+            background-color: #666;
+            border: 0.05rem solid #dfdfdf;
+            -webkit-border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            -webkit-border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            font-size: .6rem;
+            color: #fff;
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }       

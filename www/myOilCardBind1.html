@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<title>我的油卡</title>
+		<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/yk_myOilCard.css" />
+	</head>
+
+	<body>
+
+		<div class="addCard" data-target="#myModal" data-toggle="modal">
+			<span>添加油卡<img class="next"src="img/yk_next_btn.png"/></span>
+		</div>
+		<div class="jiange"></div>
+		<div class="myOilCard">
+			<div class="showlist">
+				<!--<div class="showCard CNPCard" data-target="#myModal2">
+					<dl>
+						<dt><img class="lb_img ZSY" src="img/ic_zsy.png"/></dt>
+						<dd class="cardNature">中石油</dd>
+						<dd class="cardName">我的卡</dd>
+						<dd class="cardNum">*** **** ****　3456</dd>
+					</dl>
+					<ul class="operate_btn">
+						<li class="update_btn">更改</li>
+						<li class="unbind_btn">解绑</li>
+					</ul>
+				</div>
+				<div class="showCard CNPCard" data-target="#myModal2">
+					<dl>
+						<dt><img class="lb_img ZSH" src="img/ic_zsh.png"/></dt>
+						<dd class="cardNature">中石化</dd>
+						<dd class="cardName">我的卡</dd>
+						<dd class="cardNum">*** **** ****　1234</dd>
+					</dl>
+					<ul class="operate_btn">
+						<li class="update_btn">更改</li>
+						<li class="unbind_btn">解绑</li>
+					</ul>
+
+				</div>-->
+
+			</div>
+		</div>
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel" style="font-size: 1rem;">选择油卡</h4>
+					</div>
+					<div class="modal-body syCard" style="font-size: 0.8rem;">
+						中石油油卡
+					</div>
+					<div class="modal-body shCard" style="font-size: 0.8rem;">
+						中石化油卡
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal" style="font-size: 0.8rem;">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="popup">
+		</div>
+		<div class="popup-text">
+			<div class="corr">
+				<span class="span-text">&nbsp;&nbsp;&nbsp;&nbsp;解绑油卡<span class="span-name">  
+				</span><span id="close">&nbsp;</span></span>
+			</div>
+			<input type="text" id="" placeholder="是否解绑油卡" readonly="readonly" onfocus="this.blur();" />
+			<span class="comfrim" id="delBtn">确定</span>
+			<span class="comfrim comfrim1">取消</span>
+		</div>
+		<span class="toast">
+			<span class="toast-su">温馨提示</span>
+		</span>
+
+		<script src="./js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/share.js"></script>
+
+		<script type="text/javascript">
+			$(function() {
+				var ys = 0;
+				var tcID = '';
+
+				//弹窗 提示框
+				function poptextHide() {
+					$(".popup").hide();
+					$(".popup-text").hide();
+				}
+
+				function poptextShow() {
+					$(".popup").show();
+					$(".popup-text").show();
+				}
+				$(".popup-btn").click(function() {
+					poptextShow();
+				});
+				$("#close").click(function() {
+					poptextHide();
+				});
+				$(".comfrim1").click(function() {
+					poptextHide();
+				});
+
+				//获取唯一ID
+				var onlyID = decodeURI(html_name('onlyID'));
+
+				//toast
+				var t = 3;
+
+				function toast(status) {
+					$(".toast").show();
+					$(".toast .toast-su").html(status);
+					var i = setTimeout(toast, 1000);
+					t--;
+					if(t <= 0) {
+						$(".toast").hide();
+						clearTimeout(i);
+					}
+				}
+
+				//添加油卡
+				$('.syCard').click(function() {
+					window.location.href = "SHbrfCard.html?onlyID=" + onlyID +
+						"&cardType=" + '个人中石油';
+				})
+
+				$('.shCard').click(function() {
+					window.location.href = "SHbrfCard.html?onlyID=" + onlyID +
+						"&cardType=" + '个人中石化';
+				})
+				var data = {};
+				data.onlyID = onlyID;
+				data.页数 = ys;
+				data = JSON.stringify(data);
+				$.ajax({
+					url: "/ajax.post?func=CZ_YK_yklb",
+					type: "POST",
+					data: 'data=' + data,
+					success: function(p) {
+						console.log(p);
+						ys = p.页数;
+						if(p.状态 == '成功') {
+							if(p.条数 == 0) {
+								t = 3;
+								toast("无油卡数据");
+							}
+							$.each(p.油卡列表, function(i) {
+								if(p.油卡列表[i].类别 == '个人中石油') {
+									$(".showlist").append('<div class="showCard CNPCard">' +
+										'<dl>' +
+										'<div>' +
+										'<dt><img class="lb_img ZSY" src="img/ic_zsy.png"/></dt>' +
+										'<dd class="cardNature">' + p.油卡列表[i].类别.substring(2) + '</dd>' +
+										'<dd class="cardName">' + p.油卡列表[i].备注 + '</dd>' +
+										'<dd class="cardNum"><span class="SG">***&nbsp;****&nbsp;****&nbsp;</span><span class="CN">' +
+										p.油卡列表[i].中油卡号.substr(-4, 4) + '</span></dd></dl><ul class="operate_btn CNP_btn"' +
+										'data-tcType="' + p.油卡列表[i].类别 + '"' +
+										'data-tcid="' + p.油卡列表[i].id + '"' +
+										' data-id="' + p.油卡列表[i].中油卡号 + '" ' +
+										' data-mob="' + p.油卡列表[i].持卡人账号 + '" ' +
+										' data-name="' + p.油卡列表[i].持卡人姓名 + '">' +
+										'<li class="update_btn">更改</li><li class="unbind_btn">解绑</li></ul></div>');
+
+								} else if(p.油卡列表[i].类别 == '个人中石化') {
+									$(".showlist").append('<div class="showCard CPDCard">' +
+										'<dl>' +
+										'<div>' +
+										'<dt><img class="lb_img ZSH" src="img/ic_zsh.png"/></dt>' +
+										'<dd class="cardNature">' + p.油卡列表[i].类别.substring(2) + '</dd>' +
+										'<dd class="cardName">' + p.油卡列表[i].备注 + '</dd>' +
+										'<dd class="cardNum"><span class="SG">***&nbsp;****&nbsp;****&nbsp;</span><span class="CN">' +
+										p.油卡列表[i].中油卡号.substr(-4, 4) + '</span></dd></dl><ul class="operate_btn CPD_btn"' +
+										'data-tcType="' + p.油卡列表[i].类别 + '"' +
+										'data-tcid="' + p.油卡列表[i].id + '"' +
+										' data-id="' + p.油卡列表[i].中油卡号 + '" ' +
+										' data-mob="' + p.油卡列表[i].持卡人账号 + '" ' +
+										' data-name="' + p.油卡列表[i].持卡人姓名 + '">' +
+										'<li class="update_btn">更改</li><li class="unbind_btn">解绑</li></ul></div>');
+								}
+
+							});
+
+							$(".update_btn").click(function() {
+								tcID = $(this).parent('ul.operate_btn').attr("data-tcid");
+								var cardId = $(this).parent('ul.operate_btn').attr("data-id");
+								var cardType = $(this).parent('ul.operate_btn').attr("data-tcType");
+								var cardMob = $(this).parent('ul.operate_btn').attr("data-mob");
+								var cardName = $(this).parent('ul.operate_btn').attr("data-name");
+								window.location.href = "bindingRefuelingCard.html?cardId=" + cardId + "&cardType=" + cardType +
+									"&cardMob=" + cardMob + "&cardName=" + cardName + "&tcID=" + tcID + "&onlyID=" + onlyID;
+							});
+							$(".unbind_btn").click(function() {
+								tcID = $(this).parent('ul.operate_btn').attr("data-tcid");
+								poptextShow();
+							});
+
+						} else {
+
+						}
+					}
+
+				});
+
+				$('#delBtn').click(function() {
+					poptextHide();
+					var data_1 = {};
+					data_1.onlyID = onlyID;
+					data_1.油卡id = tcID;
+					data_1 = JSON.stringify(data_1);
+
+					$.ajax({
+						type: "POST",
+						url: "/ajax.post?func=CZ_YK_scyk",
+						data: 'data=' + data_1,
+						success: function(json) {
+							if(json.状态 == '成功') {
+								t = 3;
+								toast(json.状态);
+								location.reload();
+							} else {
+								t = 3;
+								toast(json.状态);
+							}
+						}
+					})
+				})
+
+				$(window).scroll(function() {
+
+					var windowHeight = $(this).height();
+					var scrollTop = $(this).scrollTop();
+					var scrollHeight = $(document).height();
+					if(scrollTop + windowHeight == scrollHeight) {
+
+						var data2 = {};
+
+						data2.页数 = ys;
+						data2.onlyID = onlyID;
+
+						data2 = JSON.stringify(data2);
+						$.ajax({
+							url: "/ajax.post?func=CZ_YK_yklb",
+							type: "POST",
+							data: 'data=' + data2,
+							success: function(p) {
+								ys = p.页数;
+								if(p.状态 == '成功') {
+									$.each(p.油卡列表, function(i) {
+										if(p.油卡列表[i].类别 == '个人中石油') {
+											$(".showlist").append('<div class="showCard CNPCard">' +
+												'<dl>' +
+												'<div>' +
+												'<dt><img class="lb_img ZSY" src="img/ic_zsy.png"/></dt>' +
+												'<dd class="cardNature">' + p.油卡列表[i].类别.substring(2) + '</dd>' +
+												'<dd class="cardName">' + p.油卡列表[i].备注 + '</dd>' +
+												'<dd class="cardNum"><span class="SG">***&nbsp;****&nbsp;****&nbsp;</span><span class="CN">' +
+												p.油卡列表[i].中油卡号.substr(-4, 4) + '</span></dd></dl><ul class="operate_btn CNP_btn"' +
+												'data-tcType="' + p.油卡列表[i].类别 + '"' +
+												'data-tcid="' + p.油卡列表[i].id + '"' +
+												' data-id="' + p.油卡列表[i].中油卡号 + '" ' +
+												' data-mob="' + p.油卡列表[i].持卡人账号 + '" ' +
+												' data-name="' + p.油卡列表[i].持卡人姓名 + '">' +
+												'<li class="update_btn">更改</li><li class="unbind_btn">解绑</li></ul></div>');
+
+										} else if(p.油卡列表[i].类别 == '个人中石化') {
+											$(".showlist").append('<div class="showCard CPDCard">' +
+												'<dl>' +
+												'<div>' +
+												'<dt><img class="lb_img ZSH" src="img/ic_zsh.png"/></dt>' +
+												'<dd class="cardNature">' + p.油卡列表[i].类别.substring(2) + '</dd>' +
+												'<dd class="cardName">' + p.油卡列表[i].备注 + '</dd>' +
+												'<dd class="cardNum"><span class="SG">***&nbsp;****&nbsp;****&nbsp;</span><span class="CN">' +
+												p.油卡列表[i].中油卡号.substr(-4, 4) + '</span></dd></dl><ul class="operate_btn CPD_btn"' +
+												'data-tcType="' + p.油卡列表[i].类别 + '"' +
+												'data-tcid="' + p.油卡列表[i].id + '"' +
+												' data-id="' + p.油卡列表[i].中油卡号 + '" ' +
+												' data-mob="' + p.油卡列表[i].持卡人账号 + '" ' +
+												' data-name="' + p.油卡列表[i].持卡人姓名 + '">' +
+												'<li class="update_btn">更改</li><li class="unbind_btn" style="">解绑</li></ul></div>');
+										}
+
+									});
+
+									$(".update_btn").click(function() {
+										tcID = $(this).parent('ul.operate_btn').attr("data-tcid");
+										var cardId = $(this).parent('ul.operate_btn').attr("data-id");
+										var cardType = $(this).parent('ul.operate_btn').attr("data-tcType");
+										var cardMob = $(this).parent('ul.operate_btn').attr("data-mob");
+										var cardName = $(this).parent('ul.operate_btn').attr("data-name");
+										window.location.href = "bindingRefuelingCard.html?cardId=" + cardId + "&cardType=" + cardType +
+											"&cardMob=" + cardMob + "&cardName=" + cardName + "&tcID=" + tcID + "&onlyID=" + onlyID;
+									});
+									$(".unbind_btn").click(function() {
+										tcID = $(this).parent('ul.operate_btn').attr("data-tcid");
+										poptextShow();
+									});
+
+									if(p.条数 == 0) {
+										t = 3;
+										toast("已无更多数据");
+									}
+
+								} else {
+
+								}
+							}
+
+						});
+
+					}
+				})
+			});
+		</script>
+
+	</body>
+	</html>

@@ -1,0 +1,183 @@
+ @media (min-width:321px) and (max-width:360px) {
+ 	.jiange {
+ 		height: 5rem;
+ 	}
+ }
+ .jiange {
+ 	height: .4rem;
+ }
+
+  * {
+  	-webkit-touch-callout: none;
+  	/*系统默认菜单被禁用*/
+  	-webkit-user-select: none;
+  	/*webkit浏览器*/
+  	-khtml-user-select: none;
+  	/*早期浏览器*/
+  	-moz-user-select: none;
+  	/*火狐*/
+  	-ms-user-select: none;
+  	/*IE10*/
+  	user-select: none;
+  }
+
+.noData{
+	margin: auto;
+    height: 10rem;
+    width: 100%;
+    line-height: 10rem;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+ .imgCon {
+ 	margin: 0.9rem auto 0 auto;
+ 	height: 5rem;
+ 	width: 16.5rem;
+ 	background: url(../img/keshiyong.png);
+ 	background-size: 100% 100%;
+ 	background-repeat: no-repeat;
+ 	overflow: hidden;
+ }
+ 
+ .imgConGuoqi {
+ 	margin: 0.9rem auto 0 auto;
+ 	height: 5rem;
+ 	width: 16.5rem;
+ 	background: url(../img/yiguoqi.png);
+ 	background-size: 100% 100%;
+ 	background-repeat: no-repeat;
+ 	overflow: hidden;
+ }
+
+   .imgConjijiangGuoqi {
+  	margin: 0.9rem auto 0 auto;
+  	height: 5rem;
+  	width: 16.5rem;
+  	background: url(../img/jijiangguoqi.png);
+  	background-size: 100% 100%;
+  	background-repeat: no-repeat;
+  	overflow: hidden;
+  }
+
+ .imgConYishiyong {
+ 	margin: 0.9rem auto 0 auto;
+ 	height: 5rem;
+ 	width: 16.5rem;
+ 	background: url(../img/weishiyong.png);
+ 	background-size: 100% 100%;
+ 	background-repeat: no-repeat;
+ 	overflow: hidden;
+ }
+ 
+ .con_left {
+ 	float: left;
+ 	width: 4.65rem;
+ 	height: 5rem;
+ 	line-height: 5rem;
+ }
+ 
+ .con_left .yhq_price {
+ 	font-size: 2.45rem;
+ 	color: #fff;
+ }
+ 
+ .con_left .moneySign {
+ 	margin-left: 1.15rem;
+ 	font-size: 1.5rem;
+ 	color: #fff;
+ }
+ 
+ .con_right {
+ 	float: right;
+ 	width: 9rem;
+ 	height: 4rem;
+ 	margin: 0.3rem 0.7rem 0.3rem 0;
+ }
+ 
+ .con_right .yhq_txt {
+ 	display: inline-block;
+ 	font-size: 0.65rem;
+ 	color: #333;
+ 	margin-top: 0.2rem;
+ 	line-height: 0.95rem;
+ 	height: 1.5rem;
+ }
+ 
+ .con_right .yhq_time {
+ 	display: inline-block;
+ 	font-size: 0.55rem;
+ 	color: #999999;
+ 	margin-top: 0.6rem;
+ 	width: 5.5rem;
+ 	text-align: left;
+ 	line-height: 0.75rem;
+ }
+ 
+ .con_right .yhq_timeNext {
+ 	display: inline-block;
+ 	font-size: 0.55rem;
+ 	color: #999999;
+ 	width: 5.5rem;
+ 	text-align: left;
+ 	/*line-height: 0.75rem;*/
+ }
+ 
+ .con_right .yhq_time .timeFir {
+ 	margin-left: 0.25rem;
+ }
+ 
+ .con_right .yhq_timeNext .timeLast {
+ 	margin-left: 0.25rem;
+ }
+ 
+ #hiddenTxt {
+ 	color: #fff;
+ }
+ 
+ .timeCon {
+ 	width: 5.5rem;
+ 	float: left;
+ }
+ 
+ .uesBtn {
+ 	-webkit-appearance: none;
+ 	float: left;
+ 	height: 1.1rem;
+ 	line-height: 1.1rem;
+ 	text-align: center;
+ 	width: 3rem;
+ 	color: #2B9CED;
+ 	font-size: 0.55rem;
+ 	border: 0.05rem solid #2B9CED;
+ 	border-radius: 0.6rem;
+ 	-webkit-border-radius: 0.6rem;
+ 	-moz-border-radius: 0.6rem;
+ 	margin-top: 0.75rem;
+ 	margin-left: 0.2rem;
+ }
+ /*无数据显示*/
+.bodyBg {
+	background-color: #EFEFEF;
+	line-height: 1;
+}
+
+.content {
+	position: absolute;
+	top: 30%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+}
+
+.content .tit_img {
+	width: 6.95rem;
+	height: 4.85rem;
+}
+
+.content .no_Data {
+	font-size: 0.85rem;
+	color: #cbc9c9;
+	margin-top: 0.8rem;
+}

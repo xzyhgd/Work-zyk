@@ -1,0 +1,88 @@
+/*我的加油卡*/
+.myOilCard{
+	width:18rem;
+	margin: 0 auto;
+}
+.myOilCard .display{
+	width:16.5rem;
+	height:4rem;
+	margin: 0.75rem auto;
+	border-radius: 0.15rem;
+	-moz-border-radius: .15rem;
+	-webkit-border-radius: .15rem;
+	color: #fff;
+}
+.myOilCard .display dl {
+	overflow: hidden;
+}
+.myOilCard .display dl dt{
+	float: left;
+	width:3.25rem;
+	height:4rem;
+}
+.myOilCard .display dl dt img{
+	margin: 0.75rem;
+}
+.myOilCard .display dl dd.cardNature{
+	font-size: 0.7rem;
+	color:#fff;
+	margin: 0.3rem 0;
+}
+.myOilCard .display dl dd.cardName{
+	font-size: 0.6rem;
+	color:#fcfcfc;
+	margin-bottom: ;
+}
+.myOilCard .display dl dd.cardNum{
+	font-size: 1.1rem;
+	color:#fcfcfc;
+}
+.myOilCard .CNPCard{
+	background:rgb(225,164,79);
+}
+.myOilCard .CNPCard  dl dt img{
+	width: 1.775rem;
+	height:1.7rem;
+}
+.myOilCard .CPDCard{
+	background:rgb(222,118,87);
+}
+.myOilCard .CPDCard  dl dt img{
+	width: 1.625rem;
+	height:1.7rem;
+}
+.myOilCard .removeCard{
+	width: 18rem;
+	height:4.05rem;
+	background:rgb(225,164,79);
+	border-radius: 0px;
+}
+.myOilCard .removeCard dt{
+	width: 4.6rem;
+	float:right!important;
+	background:#eb655b;
+	font-size: 0.7rem;
+	line-height:4.05rem;
+	text-align: center;	
+}
+.myOilCard .removeCard dd{
+	margin-left: 0.75rem!important;
+}
+.myOilCard .addCard{
+	width:16.5rem;
+	height:3rem;
+	margin: 0 auto;
+	background: #fff;
+	border-radius: 6px;
+}
+.myOilCard .addCard span{
+	font-size: 0.7rem;
+	line-height:3rem;
+	margin-left: 0.9rem!important;
+}
+.myOilCard .addCard span img{
+	width:1.5rem;
+	height:1.5rem;
+	vertical-align: middle;
+	margin-right: 0.75rem;
+}

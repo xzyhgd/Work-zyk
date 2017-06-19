@@ -1,0 +1,360 @@
+/*我的加油卡*/
+body{
+	background-color: #efefef!important;
+}
+.myOilCard{
+	width:16.5rem;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.myOilCard .showCard{
+	width:16.5rem;
+	overflow: hidden;
+	height:7.4rem;
+	margin: 0.75rem auto;
+	border-radius: 0.15rem;
+	-moz-border-radius: .15rem;
+    -webkit-border-radius: .15rem;
+	color: #fff;	
+}
+.CNPCard{
+	background-color: #1ca8bd;
+}
+.CPDCard{
+	background-color: #ee9153;
+}
+
+.myOilCard .showCard dl {
+	display:block;
+	height:5.15rem;
+	padding-top: 0.45rem;
+	overflow: hidden;
+	margin-bottom: 0.25rem!important;
+}
+.myOilCard .showCard dl dt{
+	float: left;
+	width:3.25rem;
+	height:5rem;
+}
+
+.myOilCard .showCard dl dt img{
+	margin:0 0.75rem 1.5rem 0.75rem;
+	
+}
+.myOilCard .showCard dl dt img.ZSY{
+	width: 1.8rem;
+	height: 1.725rem;
+}
+.myOilCard .showCard dl dt img.ZSH{
+	width: 1.65rem;
+	height: 1.7rem;
+}
+.myOilCard .showCard dl dd{
+	height:1rem;
+}
+.myOilCard .showCard dl dd.cardNature{
+	font-size: 0.8rem;
+	color:#fff;
+	margin: 0.3rem 0 0.25rem 0;
+}
+.myOilCard .showCard dl dd.cardName{
+	font-size: 0.7rem;
+	color:#fcfcfc;
+	
+}
+.myOilCard .showCard dl dd.cardNum{
+	height:1.5rem;
+	overflow: hidden;
+	color:#fcfcfc;
+	margin-top: 0.5rem;
+}
+.myOilCard .showCard dl dd.cardNum .SG{
+	float: left;
+	display: block;
+	height:0.8rem;
+	font-size: 0.8rem;
+	margin-top: 0.25rem;
+}
+.myOilCard .showCard dl dd.cardNum .CN{
+	float: left;
+	display: block;
+	height:1.5rem;
+	font-size: 0.95rem;
+}
+/*更改 解绑按钮*/
+
+.myOilCard .showCard ul.operate_btn{
+	width: 16.5rem;
+	height: 2rem;
+	overflow: hidden;
+	
+}
+.myOilCard .showCard ul.operate_btn li{
+	float: left;
+	width: 8.22rem;
+	height: 2rem;
+	line-height: 2rem;
+	font-size: 0.7rem;
+	text-align: center;
+	color: #fff;
+}
+.myOilCard .showCard ul.CNP_btn li{
+   background-color: #5bbdcc;	
+}
+.myOilCard .showCard ul.CPD_btn li{
+   background-color: #eead81;	
+}
+.myOilCard .showCard ul.operate_btn li.unbind_btn{
+	float: right;
+}
+
+
+.myOilCard .removeCard{
+	width: 18rem;
+	height:4.05rem;
+	background:rgb(225,164,79);
+	border-radius: 0px;
+}
+.myOilCard .removeCard dt{
+	width: 4.6rem;
+	float:right!important;
+	background:#eb655b;
+	font-size: 0.7rem;
+	line-height:4.05rem;
+	text-align: center;	
+}
+.myOilCard .removeCard dd{
+	margin-left: 0.75rem!important;
+}
+.addCard{
+	width:18rem;
+	height:2.2rem;
+	margin-top: 0.75rem;
+	background: #fff;
+	z-index: 9998;
+    cursor:pointer;
+}
+ .addCard span{
+	font-size: 0.75rem;
+	height:2.2rem;
+	line-height:2.2rem;
+	text-align:left;
+	margin-left: 0.75rem!important;
+}
+.addCard span img.next{
+	float:right;
+	width:0.4rem;
+	height:0.7rem;
+	margin-top: 0.7rem;
+	margin-right: 0.75rem;
+	vertical-align: middle;
+	
+}
+
+.swipeleft{transform:translateX(-32.5%);-webkit-transform:translateX(-32.5%);}
+
+			.modal-header{
+				border: none;
+				font-size: 1rem;
+				color: black;
+				border-radius: 0.6rem 0.6rem 0 0;
+				-moz-border-radius: 0.6rem 0.6rem 0 0;
+				-webkit-border-radius: 0.6rem 0.6rem 0 0;
+			}
+			.modal-content {
+				text-align: center;
+				border-radius: 0.15rem;
+				-moz-border-radius: .15rem;
+				-webkit-border-radius: .15rem;
+			}			
+			.modal-body {
+				border-bottom: 0.05rem solid #efefef;				
+			}				
+			#myModal2 .modal-header{
+            border: none;
+        	}
+			.modal-footer {
+				border-top: none;
+			}
+			.modal-dialog{
+				margin: 0 auto;
+				margin-top: 50%;
+				width: 80%;
+			}			
+			.modal-footer button {
+				width: 100%;
+				background-color: #f5f7f7;
+			}
+
+			.bindClass p{
+				position: relative;
+				top:-1.1rem;
+			}
+
+			.bindClass button{
+				width: 45%;				
+			}
+
+			.btnRay{
+				background-color: #f5f6f7;
+			}
+
+			.btnBlue{
+				color: white;
+				background-color: #2b9ced;				
+			}
+
+
+
+			.popup{
+			width: 18rem;
+			height: 34rem;
+			position: fixed;
+			z-index: 9999;
+			background:rgb(153,153,153);
+			opacity: .8;
+			top: 0;
+			left: 50%;
+			margin-left: -9rem;
+			display: none;
+			}
+			.popup-text{
+			width: 12.7rem;
+			height: 7.7rem;
+			background-color: #fff;
+			position: fixed;
+			z-index: 10000;
+			top:7rem;
+			left: 50%;
+			margin-left: -6.35rem;
+			-webkit-border-radius: .2rem;
+			-moz-border-radius: .2rem;
+			display: none;
+			overflow: hidden;
+			}
+			.popup-text .span-text{
+			
+			width: 12.7rem;
+			height: 1.45rem;
+			line-height: 1.45rem;
+			text-align: center;
+			font-size: .75rem;
+			display: block;
+			background-color: #2B9CED;
+			color: #fff;
+			-webkit-border-top-left-radius: .2rem;
+			-webkit-border-top-right-radius: .2rem;
+			}
+			.popup-text .span-text .span-name{
+			float:left;
+			margin-left: 30%;
+			}
+			.popup-text .span-text #close{
+			float:right;
+			margin-right: 0.75rem;
+			}
+			.popup-btn{
+			width: 0.75rem;
+			height: 0.75rem;
+			top: 0.35rem;
+			right: .5rem;
+			position: absolute;
+			}
+			.popup-text input{
+			width: 10rem;
+			height: 1.5rem;
+			display: inline-block;
+			text-align: center;
+			margin-top: 1.6rem;
+			margin-left: 1.35rem;
+			/*background-color: #eee;*/
+			font-size: .75rem;
+			-webkit-border-radius: .2rem;
+			border: none;
+			}
+			.comfrim{
+			width: 5rem;
+			height:1.25rem ;
+			line-height: 1.25rem;
+			background-color: #2B9CED;
+			color: #fff;
+			display: inline-block;
+			margin-top: 1rem;
+			margin-left: 0.65rem;
+			text-align: center;
+			-webkit-border-radius: .2rem;
+			font-size: .65rem;
+			}
+			.comfrim1{
+			background-color: #f5f6f7;
+			color: #333;
+			}
+			.toast{
+			width: 18rem;
+			height: 2rem;
+			line-height: 2rem;
+			display: inline-block;
+			position: fixed;
+			font-size: .65rem;
+			left: 0;
+			bottom:5rem;
+			z-index: 111111;
+			text-align: center;
+			display: none;
+			}
+			.toast .toast-su {
+				height: 2rem;
+				line-height: 2rem;
+				display: inline-block;
+				margin: 0 auto;
+				background-color: #666;
+				border: 0.05rem solid #dfdfdf;
+				-webkit-border-radius: .25rem;
+				-moz-border-radius: .25rem;
+				-webkit-border-radius: .25rem;
+				-moz-border-radius: .25rem;
+				font-size: .6rem;
+				color: #fff;
+				padding-left: .5rem;
+				padding-right: .5rem;
+			}
+			input:focus,button:focus,select:focus,option:focus{outline: none;}
+
+			/*成功提示框*/
+
+			#susModalHea{
+				background-color: #2b9ced;		
+			}
+
+			#bindClassSue{
+				min-height: 8rem;
+			}
+
+			.msg-img{
+				padding: 0 .75rem;
+				padding-top: .25rem;
+				position: absolute;
+				float: left;				
+			}
+
+			.msg-img img{
+				width: 2.5rem;
+				height: 2.5rem;
+				margin-top: 1rem;
+			}
+
+			.msg{
+				text-align: center;
+				height: 5rem;
+				line-height: 5rem;				
+			}
+
+			.sueBtn{
+			outline: none;
+			margin: 0.3rem;
+			width: 40%;
+			background-color: #2b9ced;	
+			}			
+			.zwld{
+				cursor: pointer;
+			}

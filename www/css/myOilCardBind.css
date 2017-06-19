@@ -1,0 +1,231 @@
+        body{
+            background-color: #f5f6f7;
+        }    
+
+        input{
+            outline: none;
+            border: none;
+            height: 96%;
+            padding:0 0.5rem;    
+            text-align: left;          
+        }
+
+        .floatR{
+            float:right;
+            position: relative;
+            top:1rem;
+            
+        }
+
+        .container{
+            padding: 0;
+        }   
+
+        .rowBorder{
+            border-bottom: 0.05rem solid #efefef;
+
+        }
+        .autoMargin{
+            height: 2.25rem;
+            margin: 0 0.75rem;
+            line-height: 2.25rem;
+        }
+
+        .conRefuelinglCard{
+            margin: 0.5rem 0;
+            background-color: white;
+            font-size: 0.8rem;
+        }
+
+
+      /*确定按钮*/
+        .btnNxtCon{
+            position:fixed;
+            bottom:0;
+            height: 2rem;
+            line-height: 2rem;
+            width: 100%;
+            text-align: center;
+            display:block;
+            background-color: #2a9ded;
+            color: #eaf6fe;
+        }
+
+        /*模态*/
+
+        .modal{
+            height: 60%;
+        }
+
+        #myModal3 .modal-content{
+            text-align: center;
+            height: 80%;
+        }
+
+        #myModal3 .modal-body{
+            border-bottom:0.05rem solid #efefef;
+            height: 55%;
+            overflow-x:hidden;
+            overflow-y: auto;    
+            padding: 0rem;       
+        }
+
+        .modal-body{
+            border-bottom:0.05rem solid #efefef;
+        }
+
+        .modal-content dd{
+            height: 2rem;
+            line-height: 2rem;
+            border-bottom:0.05rem solid #efefef;
+            text-align: center;
+		}
+
+        .modal-dialog{
+            height: 95%;
+            margin-top: 20%;
+        }
+
+        .modal-footer{
+            border-top:none;
+        }
+
+        .modal-footer button{
+
+            width: 100%;
+        }
+
+        .shengfenBtn{
+            background-color: #f5f7f7;
+            height: 2rem;
+        }
+
+        #myModal3{
+            overflow-y: hidden;
+        }
+
+        #myModal2{
+            margin-top: 30%;
+            margin-left: 10%;
+            width: 80%;
+            text-align: center;
+            min-height: 70%;                    
+        }
+
+        #myModal{
+            margin-top: 50%;
+            margin-left: 10%;
+            width: 80%;
+            text-align: center;
+        }
+
+        #myModalLabel{      
+            border-radius: 0.5rem 0.5rem 0 0;
+        }
+
+        /*成功提示框*/
+            #queding{
+                border-radius: 0.5rem;
+            }
+
+            #quedingBtn{
+                background-color:#2a9ded;
+                width: 40%;
+                margin-right: 30%;
+                text-align: center;
+                color: white;
+            }
+
+            #queMyModalLabel{
+                background-color: #2a9ded;
+            }
+
+            .quedingBody{
+                height: 5rem;
+                line-height:5rem;
+            }
+
+            .quedingBody img{
+                margin-left: -25%;
+                margin-top: 6%;
+            }
+
+            .quedingBody span{
+                position: relative;
+                left: 8%;
+            }
+
+        /*成功提示框2*/
+			#susModalHea{
+				background-color: #2b9ced;		
+			}
+
+			#bindClassSue{
+				min-height: 8rem;
+			}
+
+			.msg-img{
+				padding: 0 .75rem;
+				padding-top: .25rem;
+				position: absolute;
+				float: left;				
+			}
+
+			.msg-img img{
+				width: 2.5rem;
+				height: 2.5rem;
+				margin-top: 1rem;
+			}
+
+			.msg{
+				text-align: center;
+				height: 5rem;
+				line-height: 5rem;				
+			}
+
+			.sueBtn{
+                outline: none;
+                margin: 0.3rem;
+                width: 40%;
+                background-color: #2b9ced;	
+
+			}   
+
+            .sueBtnC{
+                text-align: center;
+            }     
+
+
+        /*toast样式*/
+
+            .toast{
+            width: 18rem;
+            height: 2rem;
+            line-height: 2rem;
+            display: inline-block;
+            position: fixed;
+            font-size: .65rem;
+            left: 0;
+            bottom:5rem;
+            z-index: 111111;
+            text-align: center;
+            display: none;
+            }
+
+            .toast .toast-su {
+            height: 2rem;
+            line-height: 2rem;
+            display: inline-block;
+            margin: 0 auto;
+            background-color: #666;
+            border: 0.05rem solid #dfdfdf;
+            border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            -webkit-border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            font-size: .6rem;
+            color: #fff;
+            padding-left: .5rem;
+            padding-right: .5rem;
+            }
+

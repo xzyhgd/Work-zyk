@@ -1,0 +1,144 @@
+    /*全局*/
+     body{
+         background-color: #f4f5f6;
+     }
+     .container{
+            padding: 0;
+        }
+
+     .rowSty{
+        /*height: 2rem;*/
+        padding: 0.65rem;
+        background-color: #ffffff;
+        font-size: 0.8rem;
+        border-bottom:0.05rem solid #f4f5f6;
+     }
+
+     .cardCountNum{
+         float: right;
+         color: #999999;
+         font-size: 0.75rem;
+     }
+
+     .triangle{
+             /*position: fixed;
+             left:1rem; */
+             float: right;
+             width: 0.6rem;
+             height: 0.6rem;
+             margin-top: 0.2rem;
+             transform: rotate(45deg);
+             border-right:0.1rem solid #999999;
+             border-top:0.1rem solid #999999;
+     }
+
+     .interval{       
+         margin: 0;
+         height: 1rem;
+         background-color: #f4f5f6;
+     }
+
+    /*展示详情类别*/
+
+     .cardTcID{
+         margin-left: 1rem;
+     }
+
+     .cardYeRow{
+         float: right;
+         font-size: 0.8rem;
+     }
+
+     .rowStyBig{
+        height: 4rem;
+        padding: 0.5rem;
+        background-color: #ffffff;
+        font-size: 0.8rem;
+        border-bottom:0.05rem solid #f4f5f6;
+     }
+
+     .spanGray{
+        color: gray;
+        font-size: 0.7rem;         
+     }
+
+     .cardOption{
+        margin: 0.6rem;
+     }
+     .cardOption img{
+         width: 0.85rem;
+         height: 0.85rem;
+     }
+     .optionImgR{
+         margin-left: 5rem;
+     }
+     .jbjf{
+            padding:0.2rem 0.4rem;
+            font-size:0.8rem;
+            height:2.8rem;
+            width: 1rem;
+            color: #478af5;
+            outline:  #478af5 dotted 0.05rem;    
+     }
+     .yfzf{
+            padding:0.2rem 0.4rem;
+            font-size:0.8rem;
+            height:2.8rem;
+            width: 1rem;
+            color: #f57f3e;
+            outline:  #f57f3e dotted 0.05rem;            
+     }
+    .toast{
+            width: 18rem;
+            height: 2rem;
+            line-height: 2rem;
+            display: inline-block;
+            position: fixed;
+            font-size: .65rem;
+            left: 0;
+            bottom:5rem;
+            z-index: 111111;
+            text-align: center;
+            display: none;
+    }
+    .toast .toast-su {
+            height: 2rem;
+            line-height: 2rem;
+            display: inline-block;
+            margin: 0 auto;
+            background-color: #666;
+            border: 0.05rem solid #dfdfdf;
+            border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            -webkit-border-radius: .25rem;
+            -moz-border-radius: .25rem;
+            font-size: .6rem;
+            color: #fff;
+            padding-left: .5rem;
+            padding-right: .5rem;
+    }
+    /*无数据显示*/
+.bodyBg {
+	background-color: #EFEFEF;
+	line-height: 1;
+}
+
+.content {
+	position: absolute;
+	top: 30%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+}
+
+.content .tit_img {
+	width: 6.95rem;
+	height: 4.85rem;
+}
+
+.content .no_Data {
+	font-size: 0.85rem;
+	color: #cbc9c9;
+	margin-top: 0.8rem;
+}

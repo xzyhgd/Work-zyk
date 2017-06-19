@@ -1,0 +1,413 @@
+<!--修改时间:2017年5月22日-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>充值</title>
+	<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css" />
+	<link rel="stylesheet" href="css/yk_youkaPay.css" />
+</head>
+
+<body>
+	<div class="OilCardPay">
+		<div class="card card_num">
+			<div class="dis_cardNum">
+				<input type="tel" id="cardNum" data-name="" data-phone="" placeholder="请输入油卡卡号" oninput="if(value.length>19)value=value.slice(0,19)"
+				 onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" onkeyup="if(event.keyCode==13)event.keyCode=9"
+				 onKeyPress="if ((event.keyCode<48 || event.keyCode>57 )) event.returnValue=false" /><br/>
+				<span style="display:none;" class="txt_explain" data-type="">个人中石油</span>
+			</div>
+			<span class="card_icon">选择油卡<img class="down_btn"src="img/xiangxia.png" alt="" /></span>
+		</div>
+		<div class="card card_list" id="cardList" style="display:none;">
+			<ul class="cardTab">
+				<!--<li><img class="zsy_btn" src="img/icon_zhongshihua.png" alt="中石油" /><span class="card_Num">1234 1234 5678 5678</span></li>
+					<li><img class="zsy_btn" src="img/icon_zhongshihua.png" alt="中石油" /><span class="card_Num">1234 1234 5678 5678</span></li>
+					<li><img class="zsy_btn" src="img/icon_zhongshihua.png" alt="中石油" /><span class="card_Num">1234 1234 5678 5678</span></li>-->
+			</ul>
+			<div class="bindCard"><span class="bindtxt">绑定加油卡<img src="img/jinru.png" alt="" /></span></div>
+		</div>
+		<div class="card card_info">
+			<ul>
+				<li><span class="intxt">持卡人姓名：</span><input type="text" id="in_Name" placeholder="请输入持卡人姓名" /></li>
+				<li><span class="intxt">持卡人手机：</span><input type="tel" maxlength="11" id="in_phoneNum" oninput="if(value.length>11)value=value.slice(0,11)"
+					 onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" onkeyup="if(event.keyCode==13)event.keyCode=9"
+					 onKeyPress="if ((event.keyCode<48 || event.keyCode>57 )) event.returnValue=false" placeholder="请输入持卡人手机号" /></li>
+				<li class="yhq_txt"><span class="intxt">优惠券：</span><span class="rig_tip" data-ticket="">使用优惠券<img src="img/next.png" alt="下一步" class="next" /></span>
+					<div class="getCouSum" style="display: none;">已减免￥<span id="couSum">50</span><span class="cancelBtn get-ticket" data-ticket="">取消</span></div>
+				</li>
+
+				<li style="border-bottom: none;"><span class="intxt">充值面值：</span><span id="cz_price">200.00</span></li>
+			</ul>
+		</div>
+		<div class="footer" onclick="jugeNum()" id="xiaDan">立即支付:<span id="prTag">200</span></div>
+		<div class="explain-txt">
+			<ul class="p-txt">说明文字：<br/> 1.根据后台获取说明文字
+			</ul>
+		</div>
+	</div>
+	<span class="toast">
+            <span class="toast-su">我在测试看看</span>
+	</span>
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="js/share.js"></script>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var onlyID = decodeURI(html_name('onlyID'));
+		var flag = decodeURI(html_name('flag'));
+		
+		//加油卡类型（1/2）
+		var JYKType = getCookie("jykType");
+		//产品id
+		var CZProId = getCookie("czProId");
+		//油卡类型（个人中石油、中石化）
+		var CZType = getCookie("czType");
+		//充值金额
+		var CZPrice = getCookie("czPrice");
+		$("#cz_price").html(CZPrice);
+
+		$("#prTag").html(CZPrice.slice(0, -3));
+		//中石油只能输入16位数字
+		if (CZType == '个人中石油') {
+			{
+				{
+					var sumA = parseFloat(CZPrice.slice(0, -3));
+					var sumB = ((1 + 0.005) * sumA).toFixed(2);
+					//					console.log(sumB);
+					$("#prTag").html(sumB);
+				}
+			}
+			$('#cardNum').attr('oninput', 'if(value.length>16)value=value.slice(0,16)');
+		}
+		//点击跳转到我的优惠券
+		$(".rig_tip").click(function () {
+			window.location.href = "yk_CouponUse.html?onlyID=" + onlyID;
+
+			var kahao = $('#cardNum').val();
+			var ckrName = $('#in_Name').val();
+			var ckrMob = $('#in_phoneNum').val();
+			setCookie("kahao", kahao);
+			setCookie("ckrName", ckrName);
+			setCookie("ckrMob", ckrMob);
+
+		});
+		$(function () {
+			//进入页面初始化（flag = 1）  默认第一张油卡
+			console.log(flag);
+			if (flag == 1) {
+				loading();
+
+			//使用优惠券（flag = 2）  获取优惠券id	
+			} else if (flag == 2) {
+				var YHje = decodeURI(html_name('couponMon'));
+				var yhqid = decodeURI(html_name('yhqid'));
+				var kahao =getCookie("kahao", kahao);
+				var ckrName =getCookie("ckrName", ckrName);
+				var ckrMob =getCookie("ckrMob", ckrMob);
+				$('#couSum').html(YHje);
+				$('#cardNum').val(kahao);
+				$('#in_Name').val(ckrName);
+				$('#in_phoneNum').val(ckrMob);
+				$(".txt_explain").html(CZType).show();
+				$(".get-ticket").attr("data-ticket", yhqid);
+
+				//立即支付金额显示
+				$(".yhq_txt").find("span.rig_tip").hide();
+				$(".yhq_txt").find(".getCouSum").show();
+				var a = parseInt(CZPrice.slice(0, -3));
+				if (CZType == '个人中石油') {
+					var sumA = parseFloat(CZPrice.slice(0, -3));
+					a = ((1 + 0.005) * sumA).toFixed(2);
+				}
+				var b = parseInt($("#couSum").html());
+				var c = a - b;
+				if (c < 0) {
+					c = 0;
+				}
+				$("#prTag").html(c);
+				// loading();
+				//添加油卡成功跳转
+			} else if (flag == 3) {
+				var ad_CaNum = getCookie("addCaNum");
+				var ad_Name = getCookie("addName");
+				var ad_Phone = getCookie("addPhone");
+				$("#cardNum").val(ad_CaNum).css("color", "#333");
+				$("#in_Name").val(ad_Name);
+				$("#in_phoneNum").val(ad_Phone);
+				loading();
+			}
+			//请求油卡列表
+			function loading() {
+				var dataz = {};
+				dataz.加油卡类型 = JYKType;
+				dataz.油卡类型 = CZType;
+				dataz.onlyID = onlyID;
+				dataz = JSON.stringify(dataz);
+				$.ajax({
+					url: "/ajax.post?func=CZ_YK_yklb2",
+					type: "POST",
+					data: 'data=' + dataz,
+					success: function (j) {
+						console.log(j);
+						if (j.状态 == '成功') {
+							console.log(j.状态);
+							var getCardNum = $("#cardNum").val();
+							if (j.油卡列表 != 0) {
+								$("#cardNum").val(j.油卡列表[0].中油卡号).css("color", "#333");
+								$("#cardNum").attr("data-name", j.油卡列表[0].持卡人姓名);
+								$("#cardNum").attr("data-phone", j.油卡列表[0].持卡人账号);
+								$(".txt_explain").html(j.油卡列表[0].类别).show();
+								$("#in_Name").val(j.油卡列表[0].持卡人姓名);
+								$("#in_phoneNum").val(j.油卡列表[0].持卡人账号);
+								var typeT = $(".txt_explain").html();
+							}
+						} else {
+							console.log(j.状态);
+						}
+					}
+				});
+
+			}
+			//点击取消
+			$(".cancelBtn").click(function () {
+				$(".yhq_txt").find("span.rig_tip").show();
+				$(".yhq_txt").find(".getCouSum").hide();
+				$("#prTag").html(CZPrice.slice(0, -3));
+				if (CZType == '个人中石油') {
+					var sumA = parseFloat(CZPrice.slice(0, -3));
+					var sumB = ((1 + 0.005) * sumA).toFixed(2);
+					$("#prTag").html(sumB);
+				}
+				$(".get-ticket").attr("data-ticket", "");
+
+			});
+			//点击选择油卡
+			var state = 1;
+			$(".card_icon").click(function () {
+				if (state == 1) {
+					state = 2;
+					$(".down_btn").attr("src", "img/xiangshang.png");
+					$("#cardList").show();
+					selCard();
+
+				} else if (state == 2) {
+					state = 1;
+					$(".down_btn").attr("src", "img/xiangxia.png");
+					$("#cardList").hide();
+					selCard();
+				}
+
+				function selCard() {
+					var data_yk = {};
+					data_yk.onlyID = onlyID;
+					data_yk.油卡类型 = CZType;
+					data_yk = JSON.stringify(data_yk);
+					console.log(data_yk);
+					$.ajax({
+						url: "/ajax.post?func=CZ_YK_yklb2",
+						type: "POST",
+						data: 'data=' + data_yk,
+						success: function (p) {
+							console.log(p);
+							$(".cardTab").html("");
+							if (p.状态 == '成功') {
+								console.log(p.油卡列表);
+								if (CZType == '个人中石油') {
+									if (p.油卡列表 == 0) {
+										$(".cardTab").append('<span class="tip">无数据...</span>');
+										$(".tip").css({
+											"display": "block",
+											"margin-top": "3rem",
+											"color": "#333",
+											"text-align": "center",
+											"font-size": "0.8rem"
+										});
+									}
+									$.each(p.油卡列表, function (i) {
+										$(".cardTab").append('<li class="liTab" data-name="' +
+											p.油卡列表[i].持卡人姓名 + '" data-phone="' +
+											p.油卡列表[i].持卡人账号 + '"><img class="zsy_btn" src="img/icon_zhongshiyou.png" /><span class="card_Num">' +
+											p.油卡列表[i].中油卡号 + '</span></li>');
+									});
+								} else if (CZType == '个人中石化') {
+									if (p.油卡列表 == 0) {
+										$(".cardTab").append('<span class="tip">无数据...</span>');
+										$(".tip").css({
+											"display": "block",
+											"margin-top": "3rem",
+											"color": "#333",
+											"text-align": "center",
+											"font-size": "0.8rem"
+										});
+
+									}
+									$.each(p.油卡列表, function (i) {
+										$(".cardTab").append('<li class="liTab" data-name="' +
+											p.油卡列表[i].持卡人姓名 + '" data-phone="' +
+											p.油卡列表[i].持卡人账号 + '"><img class="zsy_btn" src="img/icon_zhongshihua.png" /><span class="card_Num">' +
+											p.油卡列表[i].中油卡号 + '</span></li>');
+									});
+								}
+
+								$(".liTab").click(function () {
+									var tNum = $(this).find("span.card_Num").html();
+									var tName = $(this).attr("data-name");
+									var tPhone = $(this).attr("data-phone");
+									$("#cardNum").val(tNum).css("color", "#333");
+									$("#in_Name").val(tName);
+									$("#in_phoneNum").val(tPhone);
+									$("#cardList").css("display", "none");
+								});
+								$(".bindtxt").click(function () {
+									var cardType = getCookie("czType");
+									window.location.href = "yk_addCard.html?onlyID=" + onlyID + "&cardType=" + cardType;
+								});
+
+							} else {
+								console.log(p.状态);
+							}
+						}
+
+					});
+				}
+
+			});
+
+			//后台说明文字
+			var data_xq = {};
+			data_xq.类别说明 = "油卡充值说明";
+			data_xq.onlyID = onlyID;
+			data_xq = JSON.stringify(data_xq);
+			$.ajax({
+				type: "POST",
+				url: "/ajax.post?func=CZ_YK_tcsm",
+				data: 'data=' + data_xq,
+				success: function (json) {
+					if (json.状态 == '成功') {
+						var con_txt = json.内容;
+						var strs = new Array();
+						strs = con_txt.split("；");
+						var htmlAdd = '';
+						for (var i = 0; i < strs.length; i++) {
+							if (i == strs.length - 1) {
+								htmlAdd += "<li>" + strs[i] + "</li>";
+							} else {
+								htmlAdd += "<li>" + strs[i] + ";</li>";
+							}
+						}
+						$(".p-txt").html(htmlAdd);
+
+					} else {
+						console.log(json.状态);
+					}
+				}
+			});
+
+		});
+
+		function jugeNum() {
+			if (CZType == '个人中石油') {
+				if ($('#cardNum').val() == null || $('#cardNum').val() == '') {
+					t = 3;
+					toast("请输入油卡卡号");
+				} else if ($("#cardNum").val().length != 16) {
+					t = 3;
+					toast("请输入16位的油卡卡号");
+				} else if ($("#in_Name").val() == null || $('#in_Name').val() == '') {
+					t = 3;
+					toast("请输入持卡人姓名");
+				} else if ($("#in_phoneNum").val() == null || $('#in_phoneNum').val() == '') {
+					t = 3;
+					toast("请输入持卡人手机号");
+				} else if ($("#in_phoneNum").val().length != 11 || isNaN($("#in_phoneNum").val())) {
+					t = 3;
+					toast("请输入正确的持卡人手机号");
+				} else {
+					getPay();
+
+				}
+			} else if (CZType == '个人中石化') {
+				if ($('#cardNum').val() == null || $('#cardNum').val() == '') {
+					t = 3;
+					toast("请输入油卡卡号");
+				} else if ($("#cardNum").val().length != 19) {
+					t = 3;
+					toast("请输入19位的油卡卡号");
+				} else if ($("#in_Name").val() == null || $('#in_Name').val() == '') {
+					t = 3;
+					toast("请输入持卡人姓名");
+				} else if ($("#in_phoneNum").val() == null || $('#in_phoneNum').val() == '') {
+					t = 3;
+					toast("请输入持卡人手机号");
+				} else if ($("#in_phoneNum").val().length != 11 || isNaN($("#in_phoneNum").val())) {
+					t = 3;
+					toast("请输入正确的持卡人手机号");
+				} else {
+					getPay();
+				}
+			}
+
+		}
+		//点击下单
+		function getPay() {
+			var cz_sum = $("span#cz_price").html();
+			var data1 = {};
+			//加油卡直充下单
+			data1.onlyID = onlyID;
+			data1.产品id = CZProId;
+			data1.中油卡号 = $("#cardNum").val();
+			data1.持卡人手机号 = $("#in_phoneNum").val();
+			data1.持卡人姓名 = $("#in_Name").val();
+			data1.油卡类别 = JYKType;
+			if ($(".get-ticket").attr("data-ticket") == "") {
+				//								data1.优惠券id = $(".get-ticket").attr("data-ticket");				
+				data1.优惠券id = $(".rig_tip").attr("data-ticket");
+			} else {
+				data1.优惠券id = $(".get-ticket").attr("data-ticket");
+
+			}
+
+			console.log(data1.优惠券id + "nnow");
+			data1.充值金额 = CZPrice.slice(0, -3);
+			data1 = JSON.stringify(data1);
+			console.log(data1);
+			$.ajax({
+				url: "/ajax.post?func=CZ_YK_yhzcxd",
+				type: "POST",
+				data: 'data=' + data1,
+				success: function (json) {
+					console.log(json);
+					if (json.状态 != '成功') {
+						t = 3;
+						toast(json.状态);
+					} else {
+						console.log(json.状态);
+						var prams = "prepay_id=" + json.prepay_id + "&appid=" + json.appid + "&onlyID=" + json.onlyID + "&sign=" + json.sign;
+						window.location.href = json.收银台 + "?" + prams;
+					}
+				}
+
+			});
+
+		}
+		//toast提示框
+		var t = 3;
+
+		function toast(status) {
+			console.log(t);
+			$(".toast").show();
+			$(".toast .toast-su").html(status);
+			var i = setTimeout(toast, 1000);
+			t--;
+			if (t <= 0) {
+				$(".toast").hide();
+				clearTimeout(i);
+			}
+		}
+	</script>
+</body>
+
+</html>

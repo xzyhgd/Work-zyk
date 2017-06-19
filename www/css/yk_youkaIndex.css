@@ -1,0 +1,298 @@
+/*油卡专区*/
+.OilCardZone {
+	width: 18rem;
+	margin: 0 auto;
+	background: #efefef;
+	overflow: hidden;
+}
+.card {
+	width: 18rem;
+	background: #fff;
+	overflow: hidden;
+}
+.card_click .card_list{
+	height: 2.25rem;
+	line-height: 2.25rem;
+	background: #fff;
+	color: #333;
+	font-size: 0.75rem;
+	border-bottom: 0.05rem solid #e0e0e0;
+	overflow: hidden;
+}
+.card_click #youhuiquan{
+	border-bottom: 0.05rem solid #efefef;
+}
+.card_click #ykchongzhi{
+	width: 16.5rem;
+	margin: 0 0.75rem;
+}
+.card_click #youhuiquan img.card_icon{
+	width:0.9rem;
+	height:0.9rem;
+	margin: 0.6rem 0.4rem 0 0.75rem;
+	
+}
+.card_click #ykchongzhi img.card_icon{
+	width:0.65rem;
+	height:1rem;
+	margin-top: 0.6rem;
+	margin-right: 0.625rem;
+}
+.card_click #ykchongzhi span.rig_txt{
+	float: right;
+	display: block;
+	color: #666;
+	font-size: 0.7rem;
+}
+.card_click .card_list img.next{
+	float: right;
+	width: 0.4rem;
+	height: 0.7rem;
+	margin-top: 0.7rem;
+}
+.card_click #youhuiquan img.next{
+	margin-right: 0.75rem;
+}
+.card_click #ykchongzhi img.next{
+	float: right;
+	width:0.4rem;
+	height:0.7rem;
+	margin-left: 0.3rem;
+}
+/*返回金额*/
+.card_sum{
+	width: 18rem;
+	background: #f5f6f7;
+	/*margin-bottom: 0.5rem;*/
+}
+.card_num .dis_cardNum {
+	float: left;
+	width: 12.75rem;
+	height: 3.5rem;
+	border-right:0.05rem solid #e0e0e0;
+	overflow: hidden;	
+}
+.card_sum{
+    overflow: hidden;
+    padding: 0 0.75rem;
+}
+.card_sum .sel_sum {
+	width: 16.5rem;
+	padding-bottom: 1rem;
+	overflow: hidden;
+}
+.card_sum .sel_sum li {
+	float: left;
+	width: 5rem;
+	height: 3.5rem;
+	background: #fff;
+	-webkit-border-radius: 0.15rem;
+	margin: 0.75rem 0.25rem 0 0.25rem;
+}
+.card_sum .sel_sum li #jifen_num{
+	display:block;
+	font-size:0.9rem;
+	color:#333;
+}
+.card_sum .sel_sum li .dis_type{
+	font-size:0.6rem;
+	color:#666;
+}
+ .canSel{
+ 	background-color:#2B9CED;
+ 	border:0.05rem dashed #fff;
+ }
+ .canDo{
+ 	color:#fff!important;
+ }
+.card_sum .sel_sum li:first-child{
+    margin-left: none;
+}
+.card_sum .sel_sum li:last-child{  
+    margin-right: none;
+}
+.card_sum .sel_sum li a {
+	display: block;
+	width: 5rem;
+	height: 3.5rem;
+	padding: 0.75rem;
+	color: #999;
+	text-align: center;
+	cursor: pointer;
+	border: 0.05rem dashed #2B9CED;
+	-webkit-border-radius: 0.2rem ;
+}
+/*.card_sum .sel_sum li:hover {
+	background-color:#49a9ee;
+	box-sizing:border-box"
+}
+.card_sum .sel_sum li:hover #jifen_num
+    color: #fff;
+}*/
+.card_tip{
+	width: 16.5rem;
+	margin-top:0.2rem;
+	font-size: 0.55rem;
+	margin-bottom: 1.2rem;
+}
+.card_tip .wenxin_tip{
+	overflow: hidden;
+}
+.card_tip .wenxin_tip .tip_txt{
+	width: 80%;
+	float:left;
+    color:#333;
+}
+.card_tip .wenxin_tip .details{
+	display: block;
+	text-align: right;
+	width: 20%;
+	float: right;
+	color: #2B9CED;
+}
+.card_tip .wenxin_tip .details img{
+	width: 0.55rem;
+	height:0.35rem;
+	margin: 0.1rem 0 0.1rem 0.25rem;
+}
+.card_tip .show_txt{
+	display: none;
+	margin-top: 0.5rem;
+	font-size: 0.55rem;
+	color: #666;
+}
+.card_tip .show_txt li{
+	width: 16.5rem;
+	line-height: 1.5;
+}
+.sel_taocan{
+	padding: 0.45rem 0.75rem;
+    overflow: hidden;
+    border-bottom: 0.05rem solid #e0e0e0;
+}
+.sel_taocan .youka_func{
+	height:1.3rem;
+	font-size: 0.75rem;
+	line-height: 1.3rem;
+	/*padding-top: 0.1rem;*/
+	
+}
+.sel_taocan .youka_func .goumai_txt{
+	display: inline-block;
+	font-size: 0.75rem;
+	color: #333;
+	/*margin-top:0.2rem;*/
+}
+.sel_taocan .youka_func img.yk_btn{
+	width:0.9rem;
+	height:1rem;
+	margin-top: 0.2rem;
+	margin-right: 0.5rem;
+}
+.sel_taocan .youka_func .yigou_func{
+	float:right;
+	font-size: 0.7rem;
+	color: #666;
+	/*padding:0.15rem 0;*/
+}
+.sel_taocan .youka_func .yigou_func img.next{
+	width:0.4rem;
+	height:0.7rem;
+	margin-left: 0.3rem;
+	margin-top: 0.28rem;
+}
+/*自购套餐*/
+.wode_func{
+	width: 18rem;
+	padding: 0 0.75rem ;
+	background: #fff;
+}
+.wode_func #combo_list{
+	overflow: hidden;
+	width:16.5rem;
+}
+.wode_func #combo_list li{
+	width: 100%;
+	height:6rem;
+	padding: 0.5rem 0 0.6rem 0;
+	border-bottom: 0.05rem solid #E0E0E0;
+	box-sizing: border-box;
+}
+.wode_func #combo_list li .con_left{
+	width: 9.25rem;
+	float:left;
+}
+.wode_func #combo_list li .con_left img{
+	width:8.5rem;
+	height:5rem;
+}
+.wode_func #combo_list li .con_right{
+	width: 7.25rem;
+	float:right;
+	margin-top: 0.1rem;
+	overflow: hidden;
+}
+.wode_func #combo_list li .con_right .combo_title{
+	font-size: 0.85rem;
+	color:#333;
+	margin-bottom: 0.45rem;
+}
+.wode_func #combo_list li .con_right .combo_plain{
+	font-size: 0.65rem;
+	color:#666;
+	line-height: 1.5;
+	margin-bottom: 0.35rem;
+}
+.wode_func #combo_list li .con_right button{
+	border:none;
+	width: 3rem;
+	height: 1.25rem;
+	background-color:#2b9ced;
+	-webkit-border-radius: 0.15rem;
+	color: #fff;
+	font-size: 0.55rem;
+	float: right;
+	outline: none;
+}
+.toast {
+	width: 18rem;
+	height: 2rem;
+	line-height: 2rem;
+	display: inline-block;
+	position: fixed;
+	font-size: .65rem;
+	left: 0;
+	bottom: 5rem;
+	z-index: 111111;
+	text-align: center;
+	display: none;
+}
+.toast .toast-su {
+	height: 2rem;
+	line-height: 2rem;
+	display: inline-block;
+	margin: 0 auto;
+	background-color: #666;
+	border: 0.05rem solid #dfdfdf;
+	border-radius: .25rem;
+	-moz-border-radius: .25rem;
+	-webkit-border-radius: .25rem;
+	-moz-border-radius: .25rem;
+	font-size: .6rem;
+	color: #fff;
+	padding-left: .5rem;
+	padding-right: .5rem;
+}
+/*弹窗*/
+.popup {
+	width: 18rem;
+	height: 34rem;
+	position: fixed;
+	z-index: 999;
+	background: rgb(153, 153, 153);
+	opacity: .8;
+	top: 0;
+	left: 50%;
+	margin-left: -9rem;
+	display: none;
+}

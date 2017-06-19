@@ -1,0 +1,18 @@
+/*账户记录*/
+	.account-record-st{height: 2.5rem;position:relative}
+	.account-record-nd{height: 3.5rem;position:relative}
+	.account-record-st:after{ position:absolute;bottom:-0.1rem;left:.75rem;content:'';width:16.5rem;height:1px;border-bottom:.1rem solid #E0E0E0;-webkit-transform: scaleY(0.5);}
+	.ac-r-name,.ac-r-account{font-size:.75rem}
+	.ac-r-account{padding-left: .2rem;}
+	.ac-r-title{font-size:.8rem;padding-left: .75rem; border-left:3px solid #2B9CED}
+	.ac-r-price{font-size: .9rem;position:relative}
+	.top-symbol{font-size:.6rem;color:#FFFFFF;padding: .1rem .2rem;-webkit-border-radius: .1rem;position:absolute;top:-.8rem;right: -1.5rem;}
+	.operate-details{height: 2.8rem;}
+	.ac-r-time,.ac-r-cardnum,.ac-r-operate{font-size: .6rem;color:#666}
+	.ac-r-operate{padding: .2rem .2rem;}
+	.ac-r-points{font-size:.9rem;color:#000;line-height: 1.5;}
+	
+	.ac-r-time{line-height: 1.5}
+	.operate-details li:first-child{flex:1;}
+	.operate-details li:nth-child(2){flex:1;}
+	.operate-details li:last-child{flex:1;}

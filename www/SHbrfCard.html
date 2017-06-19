@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!--自适应-->
+		<script src="js/util.js"></script>
+		<link href="css/common.css">
+		<link rel="stylesheet" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" href="./css/brc.css">
+
+		<title>添加加油卡</title>
+	</head>
+
+	<body>
+		<div class="contain">
+			<!--油卡类型-->
+			<div class="conRefuelinglCard">
+				<div class=" autoMargin rowBorder">
+					油卡类型：<input class="cardTypeName" type="text" readonly="true" disabled="true" placeholder="请选择油卡类型">
+					<!--<input class="rflCardType" type="text" data-target="#myModal" data-toggle="modal"  placeholder="请选择油卡类型">
+                <img class="floatR rflCardType" data-target="#myModal" data-toggle="modal" src="./img/xiala-.png">-->
+				</div>
+				<div class="rflCardID autoMargin rowBorder">
+					加油卡号：<input class="crflCardID" type="tel" id="flCardID" placeholder="请输入常用的油卡号" oninput="if(value.length>19)value=value.slice(0,19)" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" onkeyup="if(event.keyCode==13)event.keyCode=9" onKeyPress="if ((event.keyCode<48 || event.keyCode>57 )) event.returnValue=false">
+				</div>
+				<div class="rflCardName autoMargin rowBorder">
+					持卡人姓名：<input class="crflCardName" type="text" placeholder="请输入持卡人的姓名">
+				</div>
+				<div class="rflCardMob autoMargin ">
+					持卡人手机号：<input class="crflCardMob" type="tel" maxlength="11" placeholder="请输入持卡人手机号" oninput="if(value.length>11)value=value.slice(0,11)" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" onkeyup="if(event.keyCode==13)event.keyCode=9" onKeyPress="if ((event.keyCode<48 || event.keyCode>57 )) event.returnValue=false">
+				</div>
+			</div>
+
+			<!--省份-->
+			<!--<div class="conRefuelinglCard">
+
+			<div class="Province autoMargin rowBorder ">
+				省份：<input class="shengfen" type="text" placeholder="请选择油卡所属省份" data-target="#myModal3" data-toggle="modal" readonly="true">
+				<img class="floatR" src="./img/xiala-.png" data-target="#myModal3" data-toggle="modal">
+			</div>
+
+			<div class="Area autoMargin ">
+				区域：<input class="quyu" type="text" readonly="true" disabled="true">
+			</div>
+
+		</div>-->
+
+			<!--证件  -->
+			<!--<div class="conRefuelinglCard">
+				<div class="credentials autoMargin rowBorder">
+					证件类型：<input class="certificatesSel" type="text" value="身份证" readonly="true">
+
+				</div>
+
+				<div class="credentialsID autoMargin ">
+					证件号：<input class="c_credentialsID" type="text" placeholder="请输入证件号">
+				</div>
+			</div>-->
+
+			<!--备注  -->
+			<div class="conRefuelinglCard">
+				<div class="remarks autoMargin">
+					备注：<input type="text" placeholder="例如，女儿的卡（非必填）">
+				</div>
+			</div>
+
+			<!--密码-->
+			<!--<div class="conRefuelinglCard">
+
+            <div class="passWord autoMargin rowBorder">
+                密码：<input class="cpassWord" type="password" placeholder="请输入支付密码">
+            </div>
+
+        </div>  -->
+
+			<span class="toast">
+        <span class="toast-su">我来看看你</span>
+			</span>
+		</div>
+		<div class="btnNxtCon">
+			确定
+		</div>
+
+		<!--油卡模态-->
+		<!--<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-lg" role="document">
+			<div class="modal-content certificatesType">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">选择证件类型</h4>
+				</div>
+				<div class="modal-body ccateSel" data-dismiss="modal">身份证</div>
+				<div class="modal-body ccateSel" data-dismiss="modal">护照</div>
+				<div class="modal-body ccateSel" data-dismiss="modal">驾驶证</div>
+				<div class="modal-body ccateSel" data-dismiss="modal">回乡证</div>
+				<div class="modal-body ccateSel" data-dismiss="modal">台胞证</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+		<div class="modal-dialog" role="document">
+
+			<div class="modal-content " id="modfirst">
+
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">选择省份</h4>
+				</div>
+
+				<div class="modal-body">
+					<dl class="shengfenbiao" id="modfirst">
+
+					</dl>
+				</div>
+
+				<div class="modal-footer ">
+					<button type="button" class="btn btn-default shengfenBtn" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>-->
+
+		<div class="popup">
+		</div>
+		<div class="popup-text">
+			<div class="corr">
+				<span class="span-text">提示<span class="span-name"></span></span>
+			</div>
+			<div class="msg-img">
+				<img src="img/chenggong.png">
+			</div>
+			<div class="msg">
+				<span>添加油卡成功</span>
+			</div>
+			<span class="comfrim">确定</span>
+		</div>
+
+		<!--<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" id="bindClassSue">
+				<div class="modal-header" id="susModalHea">
+					<h5 class="modal-title" id="myModalLabel" style="font-size: 0.8rem;
+						color:white;background-color:#2b9ced;">提示</h5>
+				</div>
+				<div>
+					<div class="msg-img">
+						<img src="img/chenggong.png">
+					</div>
+					<div class="msg">
+						<span>添加油卡成功</span>
+					</div>
+				</div>
+				<div class="sueBtnC">
+					<button type="button" class="sueBtn btn btn-default" data-dismiss="modal" style="font-size: 0.6rem;">确定</button> </div>
+			</div>
+		</div>
+	</div>-->
+
+		<script src="./js/cookie.js"></script>
+		<script src="./js/jquery-3.1.1.min.js"></script>
+
+		<script type="text/javascript" src="js/share.js"></script>
+		<script type="text/javascript" src="js/sweetalert2.min.js"></script>
+		<script type="text/javascript" src="js/jQuery.md5.js"></script>
+
+		<script>
+			$(function() {
+
+				// 省份
+				// var phone = '';
+
+				var name = getCookie("name");
+				// phone = decodeURI(html_name('phone'));
+				var onlyID = decodeURI(html_name('onlyID'));
+
+				var cardType = decodeURI(html_name('cardType'));
+				$('.cardTypeName').val(cardType).css("color", "#000");
+				var data = {};
+				// data.账号 = phone;
+				data.页数 = 1;
+				data.省 = '';
+
+				data = JSON.stringify(data);
+
+				// $.ajax({
+				// 	url: "/ajax.post?func=shengfenliebiao",
+				// 	type: "POST",
+				// 	data: 'data=' + data,
+				// 	success: function (p) {
+				// 		if (p.状态 = '成功') {
+				// 			for (i = 0; i < p.省级列表.length; i++) {
+				// 				$('.shengfenbiao').append('<dd data-dismiss="modal">' + p.省级列表[i].省份 + '</dd>');
+				// 			}
+				// 			$('.shengfenbiao dd').click(function () {
+				// 				var ticket = $(this);
+				// 				$(".shengfen").val(ticket.html());
+
+				// 				var data1 = {}
+				// 				data1.账号 = phone;
+				// 				data1.随机码 = random;
+				// 				data1.省 = $(".shengfen").val();
+
+				// 				data1 = JSON.stringify(data1);
+
+				// 				$.ajax({
+				// 					url: "/ajax.post?func=find_region",
+				// 					type: "POST",
+				// 					data: 'data=' + data1,
+
+				// 					success: function (p) {
+				// 						if (p.状态 == '成功') {
+				// 							$('.quyu').val((p.所属区域));
+				// 						}
+				// 					}
+				// 				})
+				// 			});
+				// 		} else {
+				// 		}
+				// 	}
+				// })
+				//  证件类型
+				// $('.certificatesType .ccateSel').click(function () {
+				// 	var catesel = $(this).html();
+				// 	$(".certificatesSel").val(catesel);
+				// });
+
+				//弹窗 提示框
+				function poptextHide() {
+					$(".popup").hide();
+					$(".popup-text").hide();
+				}
+
+				function poptextShow() {
+					$(".popup").show();
+					$(".popup-text").show();
+				}
+				// $(".btnNxtCon").click(function() {
+				// 	poptextShow();
+				// });
+				$("#close").click(function() {
+					poptextHide();
+				});
+				$('.comfrim').click(function() {
+					poptextHide();
+				})
+
+				var winHeight = $(window).height();
+				$(window).resize(function() {
+					var thisHeight = $(this).height();
+					if(winHeight - thisHeight > 50) {
+						//窗口发生改变(大),故此时键盘弹出
+						//当软键盘弹出，在这里面操作
+						$('.btnNxtCon').css({
+							'display': 'none'
+						});
+					} else {
+						//窗口发生改变(小),故此时键盘收起
+						//当软 键盘收起，在此处操作
+						$('.btnNxtCon').css({
+							'display': 'block'
+						});
+					}
+				});
+				//toast 提示
+				var t = 3;
+
+				function toast(status) {
+					$(".toast").show();
+					$(".toast .toast-su").html(status);
+					var i = setTimeout(toast, 1000);
+					t--;
+					if(t <= 0) {
+
+						$(".toast").hide();
+						clearTimeout(i);
+					}
+
+				}
+				//中石油只能输入16位数字
+				if($('.cardTypeName').val() == '个人中石油') {
+					$('.crflCardID').attr('oninput', 'if(value.length>16)value=value.slice(0,16)');
+				}
+				//加油卡号只能输入数字
+				var JudgeNum = true;
+				$("#flCardID").blur(function() {
+					if(isNaN($("#flCardID").val())) {
+						t = 3;
+						toast("加油卡号只能输入数字！");
+						JudgeNum = false;
+					} else {
+						JudgeNum = true;
+					}
+				});
+
+				// $("input").bind('focus', function() {
+				// $('.btnNxtCon').css('position', 'static');
+				// 或者$('#viewport').height($(window).height()+'px');  
+				// }).bind('blur', function() {
+				// $('.btnNxtCon').css({ 'position': 'fixed', 'bottom': '0' }); 
+				// 或者$('#viewport').height('auto');  
+				// });
+
+				function submit() {
+
+					var dataJudge = {};
+					dataJudge.onlyID = onlyID;
+					dataJudge.姓名 = name;
+					dataJudge.油卡类型 = $('.cardTypeName').val();
+					dataJudge.加油卡号 = $('.crflCardID').val();
+					dataJudge.持卡人姓名 = $('.crflCardName').val();
+					dataJudge.持卡人手机号 = $('.crflCardMob').val();
+					// dataJudge.省 = $('.shengfen').val();
+					// dataJudge.区域 = $('.quyu').val();
+					// dataJudge.证件类型 = $('.certificatesSel').val();
+					// dataJudge.证件号 = $('.c_credentialsID').val();
+					dataJudge.备注 = $('.remarks input').val();
+					// if($('.cpassWord').val()== null||$('.cpassWord').val()==""){
+					//     dataJudge.密码 = "";
+					// }else{
+					//     dataJudge.密码 = ($.md5($('.cpassWord').val()));
+					// }	
+					dataJudge = JSON.stringify(dataJudge);
+					$.ajax({
+						url: "/ajax.post?func=CZ_HY_yktj",
+						type: "POST",
+						data: 'data=' + dataJudge,
+						success: function(p) {
+							if(p.状态 == '成功') {
+								poptextShow();
+								$('.popup-text .comfrim').click(function() {
+									window.location.href = "myOilCardBind1.html?onlyID=" + onlyID;
+								})
+							} else {
+								t = 3;
+								toast(p.状态);
+							}
+						}
+					});
+				}
+
+				// 确定按钮
+				$('.btnNxtCon').click(function() {
+
+					var length_min = 10;
+					var length_max = 19;
+					// var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+					if($('.cardTypeName').val() == '个人中石油') {
+						// if (($(".crflCardID").val().length < length_min || $(".crflCardID").val().length > 16) && $(".crflCardID").val().length != 0) {
+						if($(".crflCardID").val() == '') {
+							t = 3;
+							toast("请输入加油卡号");
+						} else if($(".crflCardID").val().length != 16) {
+							t = 3;
+							toast("加油卡号不能低于16位");
+						} else if($('.crflCardName').val() == null || $('.crflCardName').val() == '') {
+							t = 3;
+							toast("请输入姓名");
+						} else if($('.crflCardMob').val() == '') {
+							t = 3;
+							toast("请输入手机号");
+						} else if($('.crflCardMob').val().length != 11 || isNaN($('.crflCardMob').val())) {
+							t = 3;
+							toast("请输入正确的手机号");
+						} else if(JudgeNum == false) {
+							t = 3;
+							toast("请重新输入加油卡号");
+						} else {
+							submit();
+						}
+
+					} else if($('.cardTypeName').val() == '个人中石化') {
+						if($(".crflCardID").val().length != 19) {
+							t = 3;
+							toast("加油卡号不能低于19位");
+						} else if($('.crflCardName').val() == null || $('.crflCardName').val() == '') {
+							t = 3;
+							toast("请输入姓名");
+						} else if($('.crflCardMob').val() == '') {
+							t = 3;
+							toast("请输入手机号");
+						} else if($('.crflCardMob').val().length != 11 || isNaN($('.crflCardMob').val())) {
+							t = 3;
+							toast("请输入正确的手机号");
+						} else if(JudgeNum == false) {
+							t = 3;
+							toast("请重新输入加油卡号");
+						} else {
+							submit();
+						}
+
+					}
+
+					// else if($(".c_credentialsID").val().length > length_max) {
+					// 	t = 3;
+					// 	toast("证件号不能高于25位");
+					// } 
+					// else if(reg.test($('.c_credentialsID').val()) === false) {
+					// 	t = 3;
+					// 	toast("身份证号格式不正确");
+					// } 
+
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

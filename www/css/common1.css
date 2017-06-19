@@ -1,0 +1,171 @@
+* { padding: 0px; margin: 0px; font-family: "微软雅黑"; color: #000000; box-sizing: border-box; -webkit-box-sizing: border-box;}
+
+
+a { text-decoration:none;}
+a:hover { text-decoration:none;}
+p{ margin: 0px;}
+ul li {list-style: none;}
+input{outline:none}
+/*body{background: #f5f6f7;}*/
+body{background: #ddd;}
+
+
+/* reset */  
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {margin:0;padding:0}  /* 初始化标签在所有浏览器中的margin、padding值 */  
+fieldset,img {border:0 none}  /* 重置fieldset（表单分组）、图片的边框为0*/  
+dl,ul,ol,menu,li {list-style:none}   /* 重置类表前导符号为onne,menu在HTML5中有效 */  
+blockquote, q {quotes: none}   /* 重置嵌套引用的引号类型 */  
+blockquote:before, blockquote:after,q:before, q:after {content:'';content:none}  /* 重置嵌套引用*/  
+input,select,textarea,button {vertical-align:middle}  /* 重置表单控件垂直居中*/  
+button {border:0 none;background-color:transparent;cursor:pointer}  /* 重置表单button按钮效果 */  
+body,th,td,input,select,textarea,button {font-size:12px;line-height:1 ;font-family:"微软雅黑", "黑体","宋体";color:#666} /* 重置页面文字属性 */  
+a {color:#666;text-decoration:none}  /* 重置链接a标签 */  
+a:active, a:hover {text-decoration:none}   /* 重置链接a标签的鼠标滑动效果 */  
+address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}  /* 重置样式标签的样式 */  
+caption {display:none;}    /* 重置表格标题为隐藏 */  
+table {width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;}    /* 重置table属性 */  
+img{vertical-align:top}  /* 图片在当前行内的垂直位置 */  
+   
+/* 页面设置 */  
+   
+  /* 取消a标签点击后的虚线框 */  
+a {outline: none;}    
+a:active {star:expression(this.onFocus=this.blur());}  
+   
+ /* 设置页面文字等在拖动鼠标选中情况下的背景色与文字颜色 */  
+/*   
+::selection {color: #fff;background-color: #4C6E78;}      
+::-moz-selection {color: #fff;background-color: #4C6E78;}   
+*/  
+  
+/*清除浮动*/  
+.clear{clear: both;}  
+  
+/*清除浮动--推荐使用*/  
+.clearfix:before,.clearfix:after{content: '';display: table;}  
+.clearfix:after{clear: both;}
+.fl{float: left;}
+.fr{float: right;}
+.hide{display:none;}
+.show{display:block;}
+.show-lb{display: inline-block;}
+.text-center{text-align: center;}
+
+
+
+	html{font-size:20px}
+	/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+	
+	input[type="checkbox"]:focus,button:focus,select:focus,option:focus{outline: none;}
+	
+/*布局*/	
+ 	.fixed-bottom{position: fixed; right: 0; left: 0; z-index: 1030; bottom: 0; margin-bottom: 0;}
+
+/*color*/
+	.col-333{color:#333333;}
+	.col-666{color:#666666;}
+	.col-999{color:#999999;}
+	.col-FF4{color:#FF4848;}
+	.col-F76{color:#F76F65;}
+	.col-B4B{color:#B4B4B4;}
+	.col-2B9{color:#2B9CED;}
+	.bgc-2D9{background-color: #2D9CED;}
+	.bgc-666{background-color: #666666;}
+	.bgc-fff{background-color: #FFFFFF;}
+	.border-col-F84{border: 1px dashed #F84838!important; color:#F84838!important}
+	.border-col-FFB{border: 1px dashed #FFBB4E!important; color:#FFBB4E!important}
+
+/*padding & margin*/
+    .m-t-06r{margin-top: .6rem;}
+    .m-t-1r{margin-top: 1rem;}
+    .m-tb-1r{margin: 1rem 0;}
+    .m-b-4r5{margin-bottom: 4.5rem;}
+    .m-b-2r{margin-bottom: 2rem;}
+    
+    
+    .p-t-1r{padding-top: 1rem;}
+    .p-tb-1r{padding: 1rem 0;}
+    .p-rl-8{padding: 0 8%;}
+    .p-lr-075r{padding:0 .75rem}
+    .p-r-075r{padding-right: .75rem;}
+    .p-l-075r{padding-left: .75rem;}
+
+	
+/*flex布局*/	
+
+	/* 父元素-flex容器 */
+	.flex { display: box; /* OLD - Android 4.4- */ display: -webkit-box;	  /* OLD - iOS 6-, Safari 3.1-6 */ display: -moz-box;		 /* OLD - Firefox 19- (buggy but mostly works) */ display: -ms-flexbox;	  /* TWEENER - IE 10 */ display: -webkit-flex;	 /* NEW - Chrome */ display: flex;			 /* NEW, Spec - Opera 12.1, Firefox 20+ */ }
+	
+	.flex-r{ display: box; /* OLD - Android 4.4- */ display: -webkit-box;	  /* OLD - iOS 6-, Safari 3.1-6 */ display: -moz-box;		 /* OLD - Firefox 19- (buggy but mostly works) */ display: -ms-flexbox;	  /* TWEENER - IE 10 */ display: -webkit-flex;	 /* NEW - Chrome */ display: flex;			 /* NEW, Spec - Opera 12.1, Firefox 20+ */ -webkit-flex-direction: row;  }
+	
+	.flex-c{ display: box;/* OLD - Android 4.4- */ display: -webkit-box;	  /* OLD - iOS 6-, Safari 3.1-6 */ display: -moz-box;		 /* OLD - Firefox 19- (buggy but mostly works) */ display: -ms-flexbox;	  /* TWEENER - IE 10 */ display: -webkit-flex;	 /* NEW - Chrome */ display: flex;			 /* NEW, Spec - Opera 12.1, Firefox 20+ */ -webkit-flex-direction: column; }
+	
+	/* 父元素-竖直居中（主轴是横向才生效） */
+	.flex-vc { /* 09版 */ -webkit-box-align: center; /* 12版 */ -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; -o-align-items: center; align-items: center; }
+	
+	/* 父元素-水平居中（主轴是横向才生效） */
+	.flex-hc { /* 09版 */ -webkit-box-pack: center; /* 12版 */ -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; -o-justify-content: center; justify-content: center; /* 其它取值如下： align-items	 主轴原点方向对齐 flex-end		主轴延伸方向对齐 space-between   等间距排列，首尾不留白 space-around	等间距排列，首尾留白 */ }
+	
+	/* 父元素-水平居左（主轴是横向才生效） */
+	.flex-hr { /* 09版 */ -webkit-box-pack:start; /* 12版 */ -webkit-justify-content:flex-start; -moz-justify-content: start; -ms-justify-content: start; -o-justify-content: start; justify-content:flex-start; /* 其它取值如下： align-items	 主轴原点方向对齐 flex-end		主轴延伸方向对齐 space-between   等间距排列，首尾不留白 space-around	等间距排列，首尾留白 */ }
+	
+	/*flex 水平居中&垂直居中 兼容写法*/
+	.flex-hc-vc { display: box; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; -o-align-items: center; align-items: center; -webkit-box-pack: center; -webkit-justify-content: center; -moz-justify-content: center; -ms-justify-content: center; -o-justify-content: center; justify-content: center; }
+	
+	/*flex 水平居左&垂直居中 兼容写法*/
+	.flex-hl-vc { display: box; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; -o-align-items: center; align-items: center; -webkit-box-pack: start; -webkit-justify-content: flex-start; -moz-justify-content: start; -ms-justify-content: start; -o-justify-content: start; justify-content: flex-start; }
+	
+	/*flex 水平居右&垂直居中 兼容写法*/
+	.flex-hr-vc { display: box; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; -o-align-items: center; align-items: center; -webkit-box-pack: end; -webkit-justify-content: flex-end; -moz-justify-content: end; -ms-justify-content: end; -o-justify-content: end; justify-content: flex-end; }
+	
+	/*flex 水平等间距排列，首尾不留白&垂直居中 兼容写法*/
+	.flex-hb-vc { display: box; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; -o-align-items: center; align-items: center; -webkit-box-pack: space-between; -webkit-justify-content: space-between; -moz-justify-content: space-between; -ms-justify-content: space-between; -o-justify-content: space-between; justify-content: space-between; }
+	
+	/*flex 水平等间距排列，首尾留白&垂直居中 兼容写法*/
+	.flex-ha-vc { display: box; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -webkit-align-items: center; -moz-align-items: center; -ms-align-items: center; -o-align-items: center; align-items: center; -webkit-box-pack: space-around; -webkit-justify-content: space-around; -moz-justify-content: space-around; -ms-justify-content: space-around; -o-justify-content: space-around; justify-content: space-around; }
+	
+	
+	/* 子元素-平均分栏 */
+	.flex1 { -webkit-box-flex: 1; /* OLD - iOS 6-, Safari 3.1-6 */ -moz-box-flex: 1; /* OLD - Firefox 19- */ width: 20%; /* For old syntax, otherwise collapses. */ -webkit-flex: 1; /* Chrome */ -ms-flex: 1; /* IE 10 */ flex: 1; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	}
+	
+	/* 父元素-横向换行 */
+	.flex-hw {
+	/* 09版 */ /*-webkit-box-lines: multiple;*/ /* 12版 */ -webkit-flex-wrap: wrap; -moz-flex-wrap: wrap; -ms-flex-wrap: wrap; -o-flex-wrap: wrap; flex-wrap: wrap; }
+	
+	/* 父元素-横向排列（主轴） */
+	.flex-h { display: box; /* OLD - Android 4.4- */ display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ display: -ms-flexbox; /* TWEENER - IE 10 */ display: -webkit-flex; /* NEW - Chrome */ display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */ /* 09版 */ -webkit-box-orient: horizontal; /* 12版 */ -webkit-flex-direction: row; -moz-flex-direction: row; -ms-flex-direction: row; -o-flex-direction: row; flex-direction: row; }
+	
+	/* 父元素-纵向排列（主轴） */
+	.flex-v { display: box; /* OLD - Android 4.4- */ display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */ display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */ display: -ms-flexbox; /* TWEENER - IE 10 */ display: -webkit-flex; /* NEW - Chrome */ display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */ /* 09版 */ -webkit-box-orient: vertical; /* 12版 */ -webkit-flex-direction: column; -moz-flex-direction: column; -ms-flex-direction: column; -o-flex-direction: column; flex-direction: column; }
+
+
+.toast_z{
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	display: inline-block;
+	position: fixed;
+	font-size: .65rem;
+	left: 0;
+	bottom:3rem;
+	z-index: 111111;
+	text-align: center;
+	display: none;
+}
+.toast_z .toast-su {
+    height: 2rem;
+    line-height: 2rem;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #666;
+    border: 0.05rem solid #dfdfdf;
+    border-radius: .25rem;
+    -moz-border-radius: .25rem;
+    -webkit-border-radius: .25rem;
+    -moz-border-radius: .25rem;
+    font-size: .6rem;
+    color: #fff;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
